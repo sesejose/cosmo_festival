@@ -9,7 +9,10 @@ export default function Home() {
       <title>The Festival | Home</title>
         <meta name="description" content="This is my KEA thrid semester Frontend Elective exam" />
         <meta name="keywords" content="festival, music, exam, reactjs, nextjs"></meta>
-      </Head>       
+      </Head>   
+
+      
+
     </div>
   )
 }
