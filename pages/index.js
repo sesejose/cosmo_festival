@@ -4,6 +4,8 @@ import Lineup from "../components/Lineup";
 import styles from "../styles/Home.module.css";
 import Tickets from "../components/TIckets";
 import Accomodation from "../components/Accomodation";
+import Basket from "../components/Basket";
+
 export default function Home({ bands }) {
   return (
     <>
@@ -17,6 +19,7 @@ export default function Home({ bands }) {
       <Lineup bands={bands} />
       <Tickets />
       <Accomodation />
+      <Basket></Basket>
     </>
   );
 }
