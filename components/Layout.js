@@ -1,13 +1,13 @@
 import { Children } from "react";
 import Footer from "./Footer";
-import Navigation from "./Navigation";
+import Nav from "./Nav";
 export default function Layout({ children }) {
   return (
     <>
       <header>
-        <Navigation />
+        <Nav />
       </header>
-      <main>{children}</main>
+      <div className="wrapper">{children}</div>
       <Footer />
     </>
   );
