@@ -10,7 +10,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={styles.newsletter}>
         <div className={styles.flogosection}>
-          <Image src={darkthemelogo} />
+          <Image src={darkthemelogo} alt="dark themed logo" />
           <p>The greatest festival of all the times.</p>
         </div>
         <div>
