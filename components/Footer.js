@@ -16,7 +16,7 @@ function Footer() {
         <div>
           <h3>Sign up to our newsletter</h3>
           <p>Sign up to our newsletter and stay up to date with the new shows, bands , promotions and more.</p>
-          <form name="newsletter" autocomplete="on">
+          <form name="newsletter" autoComplete="on">
             <input type="email" />
             <button type="submit" value="Submit">
               Submit

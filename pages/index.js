@@ -16,7 +16,7 @@ export default function Home({ bands }) {
       </Head>
 
       <Herosection />
-      <Lineup />
+      <Lineup bands={bands} />
       <Tickets />
       <Accomodation />
     </>

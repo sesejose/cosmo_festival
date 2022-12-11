@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
-export default function Lineup() {
+export default function Lineup({ bands }) {
   return (
     <>
       <section className={styles.lineup}>
@@ -30,30 +30,31 @@ export default function Lineup() {
           </li>
         </ol>
       </section>
+      {/* 
+      {bands.map((band) => (
+        <div key={band.name + Date.now()}>
+          <Link href={`${band.name}`}>
+            <h3>Band: {band.name}</h3>
+          </Link>
+        </div>
+      ))} */}
     </>
   );
 }
-// {bands.map((band) => (
-//     <div key={band.name + Date.now()}>
-//       <Link href={`bands/${band.name}`}>
-//         <h3>Band: {band.name}</h3>
-//       </Link>
-//     </div>
-//   ))}
+
 // export async function getStaticProps() {
 //   /* This function runs before the component bands is render
-//       - fetch the data
-//       - wait for that data
-//       - once we have the data, it put into the component
-//       - so the component can render with that data inside it  */
+//        - fetch the data
+//        - wait for that data
+//        - once we have the data, it put into the component
+//        - so the component can render with that data inside it  */
 
 //   const res = await fetch("http://localhost:8080/bands#");
 //   const data = await res.json();
-
 //   /* - we return a value for this function
-//   - that value is got we have a props property we give the property a value
-//   - that value is going to be an object
-//   - inside the objecint to be an object so we can past all the properties that we need*/
+//    - that value is got we have a props property we give the property a value
+//    - that value is going to be an object
+//    - inside the objecint to be an object so we can past all the properties that we need*/
 //   return {
 //     props: { bands: data },
 //   };
