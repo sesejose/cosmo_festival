@@ -80,12 +80,14 @@
 .herosection {
   position: relative;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 .herosection img {
   object-fit: cover;
   opacity: 50%;
   max-width: 100%;
-  height: 15rem;
+  height: 20rem;
 }
 .herosection h1 {
   margin-top: 2rem;
@@ -106,33 +108,34 @@
   font-weight: 100;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%;
-  left: 22%;
+  top: 15rem;
+  left: 7rem;
   font-size: 4rem;
-  z-index: 1;
 }
-.herosection h3 {
-  font-weight: bold;
+.herosection .callTA {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 65%;
-  left: 85%;
-  right: 9%;
-  font-size: 0.6rem;
+  top: 17rem;
+  right: 0;
+  display: flex;
   text-align: right;
-  line-height: 0.6rem;
+  width: 4rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
-.booknowBtn {
-  color: var(--turquoise);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 85%;
-  left: 81%;
+.herosection .callTA h3 {
+  font-weight: bold;
+  font-size: 0.9rem;
+  line-height: 0.8rem;
+}
+.herosection .callTA .booknowBtn {
   background-color: transparent;
   border: 0.5px solid var(--pink);
-  padding: 0.5rem;
+  color: var(--turquoise);
   font-size: 0.5rem;
+  padding: 0.5rem;
 }
+
 /*------------------------------Lineup------------------------------*/
 .lineup {
   color: var(--turquoise);
@@ -163,6 +166,7 @@
 .tickets {
   display: grid;
   margin: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 .tickets .cards {
   text-align: center;
@@ -219,21 +223,29 @@
 /*------------------------------Accomodation------------------------------*/
 .accomodationSec {
   background-color: var(--blue);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.accomodation {
-  margin: 1.5rem;
+.accomodationSec .accomodation {
+  margin: 1rem 1.5rem;
+  padding: 1.5rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.accomodationSec .accomodationDesc {
+  margin: 1rem 1.5rem;
   padding: 1.5rem;
 }
-.accomodation img {
-  max-width: 100%;
-  height: 350px;
+.accomodationSec .accomodation img {
+  height: 20rem;
+  width: 20rem;
   object-fit: cover;
   border-radius: 50%;
 }
-.accomodation h2 {
+.accomodationSec .accomodationDesc h2 {
   color: var(--green1);
 }
-.accomodationSec .accomodation button {
+.accomodationSec .accomodationDesc button {
   background-color: transparent;
   border: 1px solid var(--turquoise);
   padding: 0.5rem;
@@ -416,10 +428,22 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+/*---------------------------------------------------Media queries---------------------------------------------------*/
+/*--Tablet--*/
+@media (max-width: 768px) {
+  /*---Herosection---*/
+  .herosection img {
+    height: 28rem;
+  }
+  .herosection h1 {
+    margin-top: 5rem;
+    font-size: 15rem;
+  }
+  .herosection h2 {
+    top: 22rem;
+  }
+  .herosection .callTA {
+    top: 24rem;
   }
 }
 

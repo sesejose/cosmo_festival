@@ -7,10 +7,14 @@ export default function Herosection() {
       <Image src={heroImg} alt="festival" width={1512} height={830} />
       <h1>Cosmo</h1>
       <h2>15/12</h2>
-      <h3>WILL YOU MISS IT?</h3>
-      <button className={styles.booknowBtn} value="Book now">
-        BOOK NOW
-      </button>
+      <div className={styles.callTA}>
+        <h3>
+          WILL <br></br>YOU <br></br>MISS<br></br> IT?
+        </h3>
+        <button className={styles.booknowBtn} value="Book now">
+          BOOK NOW
+        </button>
+      </div>
     </section>
   );
 }
