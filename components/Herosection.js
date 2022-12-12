@@ -1,16 +1,27 @@
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import heroImg from "/public/festival-landing.jpg";
+// import heroImg from "/public/festival-landing.jpg";
+
 export default function Herosection() {
   return (
-    <section className={styles.herosection}>
-      <Image src={heroImg} alt="festival" width={1512} height={830} />
-      <h1>Cosmo</h1>
-      <h2>15/12</h2>
-      <h3>WILL YOU MISS IT?</h3>
-      <button className={styles.booknowBtn} value="Book now">
-        BOOK NOW
-      </button>
-    </section>
+    <>
+      <section>
+        {/* <Image src={heroImg} alt="festival" width={1512} height={830} /> */}
+        <div className="herosection">
+          <div className="dates-and-will-you-container flex-row-space-around">
+            <div className="flex-row-space-around dates-animated">
+              <div className="huge pink">15/12</div>
+            </div>
+            <div className="will-you-and-btn-container">
+              <h3 className="pink will-you">
+                WILL<br></br>YOU<br></br>MISS<br></br>IT?
+              </h3>
+              <button className="btn-main" value="Book now">
+                BOOK NOW
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

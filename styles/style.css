@@ -159,6 +159,9 @@ h4 {
   font-family: var(--font);
   font-size: 6rem;
   line-height: auto;
+  font-weight: 100;
+  letter-spacing: -1.5rem;
+  line-height: 0.8;
   /* margin-bottom: 1.5rem; */
 }
 
@@ -168,6 +171,231 @@ p {
   font-size: 1rem;
   /* line-height: 1.125rem; */
   color: var(--white) !important;
+}
+
+/*******************************************/
+
+/* Home wrapper */
+
+.container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin: var(--m-auto);
+  padding: var(--ptb-large);
+  max-width: 1024px;
+}
+
+/* Herosection */
+
+.herosection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background-image: url("../public/festival-landing.jpg");
+  background-size: cover;
+  padding: var(--p-large);
+  /* text-align: center; */
+}
+
+.dates-and-will-you-container {
+  display: flex;
+  align-items: flex-end;
+  padding: var(--p-large);
+  height: 100vh;
+}
+
+.will-you-and-btn-container {
+  display: flex;
+  flex-flow: column;
+  width: 20%;
+}
+
+.will-you {
+  display: flex;
+  flex-flow: column;
+  text-align: right;
+  width: 100%;
+}
+
+.dates-animated {
+}
+
+/* Lineup */
+
+#lineup {
+  padding: var(--ptb-large);
+  color: var(--turquoise);
+}
+#lineup h1 {
+  text-align: center;
+}
+#lineup ol {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-direction: row;
+  padding-left: 0;
+}
+
+.btn-days {
+  font-family: var(--font);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--turquoise);
+  border: 1px solid var(--black);
+  background-color: var(--black);
+  cursor: pointer;
+  height: 48px;
+  padding: 15px 32px;
+}
+.btn-days:hover {
+  font-family: var(--font);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--turquoise);
+  border: 1px solid var(--turquoise);
+  background-color: var(--black);
+  cursor: pointer;
+  height: 48px;
+  padding: 15px 32px;
+}
+
+.btn-turquoise {
+  font-family: var(--font);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--turquoise);
+  border: 1px solid var(--turquoise);
+  background-color: transparent;
+  cursor: pointer;
+  height: 48px;
+  padding: 15px 32px;
+}
+.btn-turquoise:hover {
+  font-family: var(--font);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--black);
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  cursor: pointer;
+  height: 48px;
+  padding: 15px 32px;
+}
+
+/* Tickets Home Page */
+
+.cards {
+  display: flex;
+  justify-content: center;
+  margin: var(--m-auto);
+  flex-direction: column;
+  width: 50%;
+}
+
+.card1 p,
+.card2 p {
+  color: var(--black) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 300px;
+  font-weight: 600;
+}
+
+.card1 {
+  transform: rotate(-20deg);
+  background-color: var(--green-2);
+  width: 70%;
+  margin: var(--m-auto);
+}
+
+.card2 {
+  background-color: var(--yellow);
+  transform: rotate(-10deg);
+  width: 70%;
+  margin: var(--m-auto);
+}
+
+.desc {
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  justify-content: baseline;
+  align-items: baseline;
+}
+
+/* Acommodation Home Page*/
+
+#accomodation-home {
+  background-color: var(--blue);
+}
+.accomodation {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding: var(--ptb-auto-large);
+  background-color: var(--blue);
+}
+#accomodation-home img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: var(--m-auto);
+}
+.accomodation h2 {
+  color: var(--green1);
+}
+
+/* About */
+
+#about,
+#tickets,
+#personal,
+#payment,
+#thanks {
+  width: 100%;
+}
+
+.container-about {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin: var(--m-auto);
+  padding: var(--ptb-large);
+  max-width: 1024px;
+}
+
+.about-hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background-image: url("../public/about.png");
+  background-size: cover;
+}
+
+.about-img img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* border-radius: 50%; */
+  margin: var(--m-auto);
 }
 
 /*Forms*/
@@ -415,8 +643,8 @@ footer svg {
 }
 .container-page {
   /* grid-column: 1/2; */
-  /* min-width: 1024px; */
-  width: 78vw;
+  min-width: 1024px;
+  width: 100%;
   margin-top: 6.5rem;
   /* height: 100vh; */
   /* overflow: auto; */
@@ -424,7 +652,8 @@ footer svg {
 
 #basket {
   margin-top: 6.5rem;
-  width: 22vw;
+  width: 25vw;
+  min-width: fit-content;
   display: none;
   border-left: 1px solid var(--pink);
 }
@@ -451,7 +680,7 @@ footer svg {
   display: flex;
   flex-flow: column;
   min-width: fit-content;
-  max-width: 65%;
+  max-width: 50%;
   justify-content: center;
   margin: var(--m-auto);
   padding: var(--ptb-large);
