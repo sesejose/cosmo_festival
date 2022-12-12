@@ -771,6 +771,14 @@ footer svg {
   gap: 0.5rem;
 }
 
+.flex-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .flex-column {
   display: flex;
   flex-flow: column;
@@ -1279,14 +1287,15 @@ footer svg {
 
 .modal-acommodation-container {
   display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
+  width: 40%;
 }
 
 .modal-map-container {
-  width: 40%;
+  /* width: 40%; */
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -1319,4 +1328,25 @@ footer svg {
 .modal-stages-description-container h4,
 .modal-stages-description-container h4 {
   margin: 0.5rem;
+}
+
+.modal-map-stage {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--p);
+  border: 1px solid var(--purple);
+  width: fit-content;
+  text-align: center;
+}
+
+.modal-camping-area {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--p);
+  border: 1px solid var(--green-1);
+  width: fit-content;
 }
