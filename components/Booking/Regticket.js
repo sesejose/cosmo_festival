@@ -1,4 +1,7 @@
 export default function Regtickets(props) {
+  function add() {
+    props.addToCart(props.data);
+  }
   return (
     <>
       <div className="ticket-regular">
@@ -44,7 +47,7 @@ export default function Regtickets(props) {
             <h3 className="totalTicketsRegular">0</h3>
           </div>
         </div>
-        <button onClick={props.addToCart} className="btn-add">
+        <button onClick={add} className="btn-add">
           Add to cart
         </button>
       </div>

@@ -1,4 +1,7 @@
 export default function Viptickets(props) {
+  function add() {
+    props.addToCart(props.data);
+  }
   return (
     <>
       <div className="ticket-vip">
@@ -43,7 +46,7 @@ export default function Viptickets(props) {
             <h3 className="totalTicketsVip">0</h3>
           </div>
         </div>
-        <button onClick={props.addToCart} className="btn-add">
+        <button onClick={add} className="btn-add">
           Add to cart
         </button>
       </div>

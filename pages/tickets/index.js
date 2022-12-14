@@ -8,12 +8,13 @@ import Tickets from "../../components/Booking/Ticket";
 // 3.  step
 //
 export default function TicketsPage(props) {
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([
     ,//{tickettype:"x",
     //ticketprice:1111, amount:2}
   ]);
-  function addToCart() {
-    console.log("addToCart");
+  function addToCart(data) {
+    console.log("addToCart", data);
   }
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   // console.log(areas);
@@ -31,6 +32,14 @@ export default function TicketsPage(props) {
   // console.log(area4);
   // const area5 = areas[4].available;
   // console.log(area5);
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch("http://localhost:8080/available-spots");
+      const data = await res.json();
+      setProducts(data);
+    }
+    getData();
+  }, []);
   return (
     <>
       <Tickets areas={props.areas} addToCart={addToCart} />
