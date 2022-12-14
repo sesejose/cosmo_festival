@@ -13,8 +13,8 @@ export default function Tickets(props) {
               <p className="text-center">Note! The limit per purchase is 9 tickets!</p>
             </div>
             <div className="tickets-container">
-              <Regtickets addToCart={props.addToCart} />
-              <Viptickets addToCart={props.addToCart} />
+              <Regtickets ticket={props.tickets} addToCart={props.addToCart} />
+              <Viptickets ticket={props.tickets} addToCart={props.addToCart} />
             </div>
           </div>
         </div>

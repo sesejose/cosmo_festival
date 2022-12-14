@@ -1,13 +1,14 @@
 import React from "react";
 import Basket from "../../components/Booking/Basket";
 import { useState, useEffect } from "react";
-import Tickets from "../../components/Booking/Ticket";
+import Ticket from "../../components/Booking/Ticket";
 
 // 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
 // 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
 // 3.  step
 //
 export default function TicketsPage(props) {
+  const [tickets, setData] = useState([]);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([
     ,//{tickettype:"x",
@@ -32,17 +33,47 @@ export default function TicketsPage(props) {
   // console.log(area4);
   // const area5 = areas[4].available;
   // console.log(area5);
+
+  useEffect(() => {
+    async function getData() {
+      const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
+      const headers = {
+        "Content-Type": "application/jsonS",
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Prefer: "return-representation",
+      };
+      const options = {
+        method: "GET",
+        headers: headers,
+      };
+      const body = {
+        body: "false",
+      };
+      // Await then execute the code.
+      const res = await fetch(url, options, body); // Fetchs the data (await)
+      const tickets = await res.json(); //When it's done getting it
+      // return data; // This returned "data/array" used in the showData();
+      setData(tickets);
+      console.log(tickets);
+    }
+    getData();
+  }, []);
+
   useEffect(() => {
     async function getData() {
       const res = await fetch("http://localhost:8080/available-spots");
       const data = await res.json();
       setProducts(data);
+      console.log(data);
     }
     getData();
   }, []);
   return (
     <>
-      <Tickets areas={props.areas} addToCart={addToCart} />
+      <Ticket areas={props.areas} tickets={tickets} addToCart={addToCart} />
       <Basket areas={props.areas} />
     </>
   );

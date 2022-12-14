@@ -1,7 +1,8 @@
 export default function Viptickets(props) {
   function add() {
-    props.addToCart(props.data);
+    props.addToCart(props.ticket[1]);
   }
+  const ticket2 = props.ticket[1];
   return (
     <>
       <div className="ticket-vip">

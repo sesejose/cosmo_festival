@@ -1,7 +1,8 @@
 export default function Regtickets(props) {
   function add() {
-    props.addToCart(props.data);
+    props.addToCart(props.ticket[0]);
   }
+
   return (
     <>
       <div className="ticket-regular">
@@ -25,7 +26,6 @@ export default function Regtickets(props) {
       <div id="choose-quantity-regular" className="open-ticket-regular">
         <div className="flex-row-space-around quantity-container">
           <form className="flex-row-space-around">
-            {/* have to send the available tickets here */}
             <label htmlFor="ticket-regular-quantity"></label>
             <input
               id="ticket-regular-quantity"
@@ -47,7 +47,7 @@ export default function Regtickets(props) {
             <h3 className="totalTicketsRegular">0</h3>
           </div>
         </div>
-        <button onClick={add} className="btn-add">
+        <button value="Add to cart" onClick={add} className="btn-add">
           Add to cart
         </button>
       </div>
