@@ -6,16 +6,8 @@ import { useState, useEffect } from "react";
 // 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
 // 3.  step
 //
-export default function TicketsPage({ areas }) {
-  // const [availableTickets, setTickets] = useState([]);
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch("http://localhost:8080/available-spots");
-  //     const data = await res.json();
-  //     setTickets(data);
-  //   }
-  //   getData();
-  // }, []);
+export default function TicketsPage({ areas, bookingInfo }) {
+  console.log(bookingInfo);
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   console.log(areas);
   // const {
@@ -32,6 +24,7 @@ export default function TicketsPage({ areas }) {
   // console.log(area4);
   // const area5 = areas[4].available;
   // console.log(area5);
+  totalTicketsSum();
 
   return (
     <>
@@ -41,7 +34,7 @@ export default function TicketsPage({ areas }) {
           <div className="wrapper-forms">
             <div className="forms-intro-text">
               <h1 className="turquoise text-center">Tickets</h1>
-              <p className="text-center">Lorem ipsum</p>
+              <p className="text-center">Note! The limit per purchase is 9 tickets!</p>
             </div>
             <div className="tickets-container">
               <div className="ticket-regular">
@@ -57,7 +50,7 @@ export default function TicketsPage({ areas }) {
                   <div className="flex-row-space-around">
                     <button className="read-more">Read more</button>
                     <button className="btn-add" onClick={openRegular}>
-                      Add to card
+                      Add to cart
                     </button>
                   </div>
                 </div>
@@ -72,6 +65,7 @@ export default function TicketsPage({ areas }) {
                       type="number"
                       name="tickets-quantity"
                       min="0"
+                      max="9"
                       placeholder="0"
                       className="input-number-tickets"
                       onChange={displayQuantityTicketsRegular}
@@ -86,7 +80,7 @@ export default function TicketsPage({ areas }) {
                     <h3 className="totalTicketsRegular">0</h3>
                   </div>
                 </div>
-                <button className="btn-add">Add to card</button>
+                <button className="btn-add">Add to cart</button>
               </div>
               <div className="ticket-vip">
                 <div className="seven-days">
@@ -101,7 +95,7 @@ export default function TicketsPage({ areas }) {
                   <div className="flex-row-space-around">
                     <button className="read-more">Read more</button>
                     <button className="btn-add" onClick={openVip}>
-                      Add to card
+                      Add to cart
                     </button>
                   </div>
                 </div>
@@ -115,6 +109,7 @@ export default function TicketsPage({ areas }) {
                       type="number"
                       name="tickets-quantity"
                       min="0"
+                      max="9"
                       placeholder="0"
                       className="input-number-tickets"
                       onChange={displayQuantityTicketsVip}
@@ -129,14 +124,15 @@ export default function TicketsPage({ areas }) {
                     <h3 className="totalTicketsVip">0</h3>
                   </div>
                 </div>
-                <button className="btn-add">Add to card</button>
+                <button className="btn-add">Add to cart</button>
               </div>
             </div>
           </div>
         </div>
+        <p></p>
       </section>
       {/* Basket */}
-      <Basket></Basket>
+      <Basket totalTicketsSum={totalTicketsSum}></Basket>
     </>
   );
 }
@@ -145,6 +141,7 @@ function displayQuantityTicketsRegular() {
   const quantity = document.querySelector(".regular-quantity");
   const tickets = document.querySelector("#ticket-regular-quantity");
   quantity.textContent = tickets.value + "x";
+  console.log(tickets.value);
   // Calculating the total
   const total = tickets.value * 799;
   document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;
@@ -154,9 +151,22 @@ function displayQuantityTicketsVip() {
   const quantity = document.querySelector(".vip-quantity");
   const tickets = document.querySelector("#ticket-vip-quantity");
   quantity.textContent = tickets.value + "x";
+  console.log(tickets.value);
   // Calculating the total
   const total = tickets.value * 1299;
   document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
+}
+
+function totalTicketsSum() {
+  const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
+  // console.log(regTicketCount);
+  const notstring = parseInt(regTicketCount, 10);
+  const vipTicketCount = document.querySelector("#ticket-vip-quantity").value;
+  // console.log(vipTicketCount);
+  const notstring1 = parseInt(vipTicketCount, 10);
+  const totalTickets = notstring + notstring1;
+  // console.log(notstring1);
+  console.log(totalTickets);
 }
 
 function openRegular() {

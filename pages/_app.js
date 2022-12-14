@@ -53,3 +53,11 @@ function MyApp({ Component, pageProps }) {
 //   "tent3": 1
 //   }
 export default MyApp;
+
+// all the endpoints
+// http://localhost:8080/available-spots
+// http://localhost:8080/schedule
+// http://localhost:8080/bands
+// http://localhost:8080/reserve-spot
+// http://localhost:8080/fullfill-reservation
+// http://localhost:8080/settings

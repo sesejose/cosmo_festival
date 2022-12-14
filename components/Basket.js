@@ -1,6 +1,6 @@
 import React from "react";
 
-function Basket(props) {
+function Basket({ totalTicketsSum }) {
   return (
     <>
       <section id="basket">
@@ -12,7 +12,7 @@ function Basket(props) {
           </div>
           <div>
             <h4 className="white">Amount of tickets:</h4>
-            <p className="turquoise">0</p>
+            <p className="turquoise">{totalTicketsSum}</p>
           </div>
           <div className="posts">
             <div className="post-text-container">
