@@ -5,7 +5,7 @@ import Lineup from "../components/Lineup";
 import styles from "../styles/Home.module.css";
 import Ticketsmain from "../components/Ticketsmain";
 import Accomodation from "../components/Accomodation";
-import Basket from "../components/Basket";
+import Basket from "../components/Booking/Basket";
 
 export default function Home({ areas, schedule, bands }) {
   // const [availableTickets, setTickets] = useState([]);
