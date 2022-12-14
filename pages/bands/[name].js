@@ -29,8 +29,7 @@ export default function Band ({bands}) {
 
 export async function getStaticPaths(){
   const res = await fetch("http://localhost:8080/bands#");
-/*   const res = await fetch("https://rough-snowflake-4981.fly.dev/bands"); //karina URL:  (just in case)
- */  
+ 
   const dataBands = await res.json();
   const paths = dataBands.map(band =>{
     return {
