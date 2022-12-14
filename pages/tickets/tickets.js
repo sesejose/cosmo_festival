@@ -18,16 +18,21 @@ export default function TicketsPage({ areas }) {
   // }, []);
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   console.log(areas);
-  const {
-    0: { area, spots, available },
-  } = areas;
+  // const {
+  //   0: { area, spots, available },
+  // } = areas;
+  // console.log(areas[0]);
+  // const area1 = areas[0].available;
+  // console.log(area1);
+  // const area2 = areas[1].available;
+  // console.log(area2);
+  // const area3 = areas[2].available;
+  // console.log(area3);
+  // const area4 = areas[3].available;
+  // console.log(area4);
+  // const area5 = areas[4].available;
+  // console.log(area5);
 
-  //  const area2 {
-  //    1: { area, spots, available }
-  //  } = areas;
-
-  // const max = Math.max(...availability);
-  // console.log(max);
   return (
     <>
       {/* Tickets */}
