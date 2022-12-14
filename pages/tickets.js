@@ -148,27 +148,3 @@ function openVip() {
     vip.style.display = "none";
   }
 }
-
-// It shows the quantity of tickets in the basket
-// Passing props by the the component Basket
-// function showQuantity() {
-//   const numberChoosenR = displayQuantityTicketsRegular();
-//   // console.log(numberChoosenR);
-//   const numberChoosenV = displayQuantityTicketsVip();
-//   // console.log(numberChoosenV);
-//   return numberChoosenR;
-// }
-
-// It shows the quantity of tickets in the basket
-// Passing props by the the component Basket
-// function showQuantityRegular() {
-//   const numberChoosenR = displayQuantityTicketsRegular();
-//   return numberChoosenR;
-//   // console.log(numberChoosenR);
-// }
-
-// function showQuantityVip() {
-//   const numberChoosenV = displayQuantityTicketsVip();
-//   return numberChoosenV;
-//   // console.log(numberChoosenV);
-// }
