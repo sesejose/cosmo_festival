@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Herosection from "../components/Herosection";
-import Lineup from "../components/Lineup";
-import styles from "../styles/Home.module.css";
-import Ticketsmain from "../components/Ticketsmain";
-import Accomodation from "../components/Accomodation";
-import Basket from "../components/Basket";
+import Herosection from "../components/elements/Herosection";
+import Lineup from "../components/elements/Lineup";
+import Ticketsmain from "../components/elements/Ticketsmain";
+import Accomodation from "../components/elements/Accomodation";
+import Basket from "../components/Booking/Basket";
 
 export default function Home({ areas, schedule, bands }) {
   // const [availableTickets, setTickets] = useState([]);
