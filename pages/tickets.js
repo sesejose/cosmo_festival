@@ -3,8 +3,17 @@ import Basket from "../components/Basket";
 import { useEffect, useState } from "react";
 
 function Tickets(props) {
-  const [tickets, setTickets] = useState([]);
-  const [data, setData] = useState([]);
+  const [tickets, setTickets] = useState();
+  const [data, setData] = useState();
+  const [regTickets, setRegTickets] = useState();
+  const [vipTickets, setVipTickets] = useState();
+
+  function setQuantities() {
+    const quantityReg = displayQuantityTicketsRegular;
+    const quantityVip = displayQuantityTicketsVip;
+    setRegTickets(quantityReg);
+    setVipTickets(quantityVip);
+  }
 
   // Sending Tickets to the Supabase --> Then fetch from the basket
 
@@ -41,10 +50,6 @@ function Tickets(props) {
   // function addTickets(tickets) {
   //   console.log(tickets);
   // }
-
-  function consoleData() {
-    console.log(data);
-  }
 
   return (
     <>
@@ -90,7 +95,7 @@ function Tickets(props) {
                     <h3 className="totalTicketsRegular">0</h3>
                   </div>
                 </div>
-                <button className="btn-add" onClick={consoleData}>
+                <button className="btn-add" onClick={setQuantities}>
                   Add to card
                 </button>
               </div>
@@ -127,7 +132,7 @@ function Tickets(props) {
                     <h3 className="totalTicketsVip">0</h3>
                   </div>
                 </div>
-                <button className="btn-add" onClick={consoleData}>
+                <button className="btn-add" onClick={setQuantities}>
                   Add to card
                 </button>
               </div>
@@ -136,7 +141,7 @@ function Tickets(props) {
         </div>
       </section>
       {/* Basket */}
-      <Basket tickets={tickets}></Basket>
+      <Basket regTickets={regTickets} vipTickets={vipTickets}></Basket>
     </>
   );
 }
@@ -150,6 +155,7 @@ function displayQuantityTicketsRegular() {
   // Calculating the total
   const total = tickets.value * 799;
   document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;
+  return tickets.value;
 }
 
 function displayQuantityTicketsVip() {
@@ -159,6 +165,7 @@ function displayQuantityTicketsVip() {
   // Calculating the total
   const total = tickets.value * 1299;
   document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
+  return tickets.value;
 }
 
 function openRegular() {
@@ -179,4 +186,26 @@ function openVip() {
   }
 }
 
-function addTickets() {}
+// It shows the quantity of tickets in the basket
+// Passing props by the the component Basket
+// function showQuantity() {
+//   const numberChoosenR = displayQuantityTicketsRegular();
+//   // console.log(numberChoosenR);
+//   const numberChoosenV = displayQuantityTicketsVip();
+//   // console.log(numberChoosenV);
+//   return numberChoosenR;
+// }
+
+// It shows the quantity of tickets in the basket
+// Passing props by the the component Basket
+// function showQuantityRegular() {
+//   const numberChoosenR = displayQuantityTicketsRegular();
+//   return numberChoosenR;
+//   // console.log(numberChoosenR);
+// }
+
+// function showQuantityVip() {
+//   const numberChoosenV = displayQuantityTicketsVip();
+//   return numberChoosenV;
+//   // console.log(numberChoosenV);
+// }

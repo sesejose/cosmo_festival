@@ -1,10 +1,12 @@
 import React from "react";
 
-function Basket(tickets) {
+function Basket(regTickets, vipTickets) {
+  const quaReg = regTickets;
+  const quaVip = vipTickets;
   showTickets();
 
-  async function showTickets(tickets) {
-    // console.log(tickets.age.value);
+  async function showTickets() {
+    console.log(quaReg);
     // const data = await getTickets();
     // Await: It makes the code wait until the promise returns a result.
     // console.log(data);
@@ -36,7 +38,7 @@ function Basket(tickets) {
           </div>
           <div>
             <h4 className="white">Amount of tickets:</h4>
-            <p className="turquoise">0</p>
+            <p className="turquoise">{{ regTickets } + { vipTickets }}</p>
           </div>
 
           {/* Template */}
