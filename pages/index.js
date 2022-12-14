@@ -3,21 +3,21 @@ import Head from "next/head";
 import Herosection from "../components/Herosection";
 import Lineup from "../components/Lineup";
 import styles from "../styles/Home.module.css";
-import Tickets from "../components/Tickets";
+import Ticketsmain from "../components/Ticketsmain";
 import Accomodation from "../components/Accomodation";
 import Basket from "../components/Basket";
 
-export default function Home(props) {
-  const [availableTickets, setTickets] = useState([]);
+export default function Home({ areas, schedule, bands }) {
+  // const [availableTickets, setTickets] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch("http://localhost:8080/available-spots");
-      const data = await res.json();
-      setTickets(data);
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch("http://localhost:8080/available-spots");
+  //     const data = await res.json();
+  //     setTickets(data);
+  //   }
+  //   getData();
+  // }, []);
 
   return (
     <>
@@ -29,15 +29,15 @@ export default function Home(props) {
       <div className="container-page">
         <Herosection />
         <Lineup />
-        <Tickets />
+        <Ticketsmain />
         <Accomodation />
       </div>
-      <Basket availableTickets={availableTickets}></Basket>
+      <Basket areas={areas}></Basket>
     </>
   );
 }
 export async function getServerSideProps() {
-  const [scheduleRes, bandsRes] = await Promise.all([
+  const [scheduleRes, bandsRes, areasRes] = await Promise.all([
     fetch(`http://localhost:8080/schedule`),
 
     //fetch("https://rough-snowflake-4981.fly.dev/schedule"), //karina URL:  (just in case)
@@ -48,7 +48,7 @@ export async function getServerSideProps() {
     fetch(`http://localhost:8080/available-spots`),
   ]);
 
-  const [schedule, bands] = await Promise.all([scheduleRes.json(), bandsRes.json()]);
+  const [schedule, bands, areas] = await Promise.all([scheduleRes.json(), bandsRes.json(), areasRes.json()]);
 
   return { props: { schedule, bands, areas } };
 }

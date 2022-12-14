@@ -1,5 +1,5 @@
 // import styles from "../styles/Home.module.css";
-export default function Tickets(props) {
+export default function Ticketsmain(props) {
   return (
     <>
       <section id="tickets-home">

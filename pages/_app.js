@@ -4,6 +4,7 @@ import "../styles/style.css";
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+  // object to store the order of the user
   const [bookingInfo, setBookingInfo] = useState({
     totalTickets: 0,
     regTicket: 0,
@@ -29,11 +30,11 @@ function MyApp({ Component, pageProps }) {
     <Layout>
       <Component
         {...pageProps}
-        bookingInfo={bookingInfo}
-        setBookingInfo={setBookingInfo}
-        setallTickets={setallTickets}
-        setAccomodation={setAccomodation}
-        setExtras={setExtras}
+        // bookingInfo={bookingInfo}
+        // setBookingInfo={setBookingInfo}
+        // setallTickets={setallTickets}
+        // setAccomodation={setAccomodation}
+        // setExtras={setExtras}
       />
     </Layout>
   );

@@ -1,18 +1,21 @@
 import React from "react";
 
-function Basket({ totalTicketsSum }) {
+function Basket(props) {
   return (
     <>
       <section id="basket">
         <div className="basket-container">
           <h2 className="turquoise">Summary order</h2>
+
           <div>
             <h4 className="white">Time to complete the order:</h4>
             <p className="turuoise">0</p>
           </div>
           <div>
             <h4 className="white">Amount of tickets:</h4>
-            <p className="turquoise">{totalTicketsSum}</p>
+            <p className="turquoise"></p>
+            <h5 className="turquoise">Total number of tickets</h5>
+            <p>0</p>
           </div>
           <div className="posts">
             <div className="post-text-container">
