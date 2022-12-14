@@ -1,7 +1,51 @@
 import React from "react";
 import Basket from "../components/Basket";
+import { useEffect, useState } from "react";
 
-function tickets() {
+function Tickets(props) {
+  const [tickets, setTickets] = useState([]);
+  const [data, setData] = useState([]);
+
+  // Sending Tickets to the Supabase --> Then fetch from the basket
+
+  // init();
+
+  // async function init() {
+  //   showTickets();
+  // }
+
+  // Fetching the data
+  useEffect(() => {
+    async function getData() {
+      const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/cosmo_festival";
+      const headers = {
+        "Content-Type": "application/json",
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Prefer: "return-representation",
+      };
+      const options = {
+        method: "GET",
+        headers: headers,
+      };
+      // Await then execute the code.
+      const res = await fetch(url, options); // Fetchs the data (await)
+      const data = await res.json(); //When it's done getting it
+      // return data; // This returned "data/array" used in the showData();
+      setData(data);
+      console.log(data);
+    }
+    getData();
+  }, []);
+
+  // function addTickets(tickets) {
+  //   console.log(tickets);
+  // }
+
+  function consoleData() {
+    console.log(data);
+  }
+
   return (
     <>
       {/* Tickets */}
@@ -46,7 +90,9 @@ function tickets() {
                     <h3 className="totalTicketsRegular">0</h3>
                   </div>
                 </div>
-                <button className="btn-add">Add to card</button>
+                <button className="btn-add" onClick={consoleData}>
+                  Add to card
+                </button>
               </div>
               <div className="ticket-vip">
                 <div className="seven-days">
@@ -81,19 +127,21 @@ function tickets() {
                     <h3 className="totalTicketsVip">0</h3>
                   </div>
                 </div>
-                <button className="btn-add">Add to card</button>
+                <button className="btn-add" onClick={consoleData}>
+                  Add to card
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
       {/* Basket */}
-      <Basket></Basket>
+      <Basket tickets={tickets}></Basket>
     </>
   );
 }
 
-export default tickets;
+export default Tickets;
 
 function displayQuantityTicketsRegular() {
   const quantity = document.querySelector(".regular-quantity");
@@ -130,3 +178,5 @@ function openVip() {
     vip.style.display = "none";
   }
 }
+
+function addTickets() {}

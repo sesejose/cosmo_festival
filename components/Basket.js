@@ -1,6 +1,30 @@
 import React from "react";
 
-function Basket() {
+function Basket(tickets) {
+  showTickets();
+
+  async function showTickets(tickets) {
+    // console.log(tickets.age.value);
+    // const data = await getTickets();
+    // Await: It makes the code wait until the promise returns a result.
+    // console.log(data);
+    // data.forEach((element) => {
+    //   const template = document.querySelector("#ticket-template").content;
+    //   const copy = template.cloneNode(true);
+    //   copy.querySelector(".type").textContent = element.type;
+    //   copy.querySelector(".price").textContent = element.price;
+    //   const button = copy.querySelector("btn-remove");
+    //   button.addEventListener("click", () => {
+    //     deleteTickets(element.id);
+    //   });
+    //   document.querySelector(".post-text-container").appendChild(copy);
+    // });
+  }
+
+  // function deleteTickets() {
+  //   console.log(props.id);
+  // }
+
   return (
     <>
       <section id="basket">
@@ -14,6 +38,17 @@ function Basket() {
             <h4 className="white">Amount of tickets:</h4>
             <p className="turquoise">0</p>
           </div>
+
+          {/* Template */}
+          {/* <template id="ticket-template">
+            <div className="post-text-container">
+              <h3 className="turquoise type">Regular Pass</h3>
+              <h4 className="white price">Ticket price: DKK 799</h4>
+            </div>
+            <button className="btn-remove">Remove</button>
+          </template> */}
+          {/* Template ends */}
+
           <div className="posts">
             <div className="post-text-container">
               <h3 className="turquoise">Regular Pass</h3>
