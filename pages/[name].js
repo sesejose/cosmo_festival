@@ -1,56 +1,62 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import artistImg from "/public/artist.png";
-import styles from "../styles/Home.module.css";
+// import styles from "../styles/Home.module.css";
 import Link from "next/link";
+
 export default function Band({ bands }) {
   const router = useRouter();
   const { name } = router.query;
   const band = bands.find((band) => band.name === name);
 
   return (
-    <section className={styles.artist}>
-      <section className={styles.artisthero}>
-        <Image src={artistImg} alt="artist image" />
-        <h1>{band.name}</h1>
-      </section>
-      <section className={styles.stageInfo}>
-        <h2>Stage</h2>
-        <h2>Time</h2>
-        <h6>Find the artist:</h6>
+    <div className="container-page">
+      <div className="container">
+        <section className="artist">
+          {/* <section className="artisthero">
+            <Image src={artistImg} alt="artist image" />
+            <h1>{band.name}</h1>
+          </section> */}
 
-        <div className={styles.artistSocials}>
-          <button type="button" target="_blank">
-            Facebook
-          </button>
-          <button type="button" target="_blank">
-            Spotify
-          </button>
-          <button type="button" target="_blank">
-            Youtube
-          </button>
-          <button type="button" target="_blank">
-            Instagram
-          </button>
-        </div>
-      </section>
-      <section className={styles.artistInfo}>
-        <h2>{band.name}</h2>
-        <h5>Genre: {band.genre}</h5>
-        {/*     <Image alt={band.name} src={band.logo} width={200} height={200} />
-         */}{" "}
-        <h3>Members</h3>
-        <ul>
-          {band.members.map((member, index) => {
-            return <li key={index}>{member}</li>;
-          })}
-        </ul>
-        <p>{band.bio}</p>
-      </section>
-    </section>
+          {/* <section className="stageInfo">
+            <h2>Stage</h2>
+            <h2>Time</h2>
+            <h6>Find the artist:</h6>
+            <div className={styles.artistSocials}>
+              <button type="button" target="_blank">
+                Facebook
+              </button>
+              <button type="button" target="_blank">
+                Spotify
+              </button>
+              <button type="button" target="_blank">
+                Youtube
+              </button>
+              <button type="button" target="_blank">
+                Instagram
+              </button>
+            </div>
+          </section> */}
+
+          {/* <section className="artistInfo">
+            <h2>{band.name}</h2>
+            <h5>Genre: {band.genre}</h5>
+            <h3>Members</h3>
+            <ul>
+              {band.members.map((member, index) => {
+                return <li key={index}>{member}</li>;
+              })}
+            </ul>
+            <p>{band.bio}</p>
+          </section> */}
+        </section>
+      </div>
+    </div>
   );
 }
 
+// {/*     <Image alt={band.name} src={band.logo} width={200} height={200} />
+//  */}
 export async function getStaticPaths() {
   const res = await fetch("http://localhost:8080/bands#");
   /*   const res = await fetch("https://rough-snowflake-4981.fly.dev/bands"); //karina URL:  (just in case)
