@@ -1,6 +1,6 @@
 import React from "react";
 
-function Basket() {
+function Basket(props) {
   return (
     <>
       <section id="basket">

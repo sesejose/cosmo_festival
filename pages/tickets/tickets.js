@@ -1,7 +1,33 @@
 import React from "react";
-import Basket from "../components/Basket";
+import Basket from "../../components/Basket";
+import { useState, useEffect } from "react";
 
-function tickets() {
+// 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
+// 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
+// 3.  step
+//
+export default function TicketsPage({ areas }) {
+  // const [availableTickets, setTickets] = useState([]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch("http://localhost:8080/available-spots");
+  //     const data = await res.json();
+  //     setTickets(data);
+  //   }
+  //   getData();
+  // }, []);
+  // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
+  console.log(areas);
+  const {
+    0: { area, spots, available },
+  } = areas;
+
+  //  const area2 {
+  //    1: { area, spots, available }
+  //  } = areas;
+
+  // const max = Math.max(...availability);
+  // console.log(max);
   return (
     <>
       {/* Tickets */}
@@ -34,8 +60,17 @@ function tickets() {
               <div id="choose-quantity-regular" className="open-ticket-regular">
                 <div className="flex-row-space-around quantity-container">
                   <form className="flex-row-space-around">
+                    {/* have to send the available tickets here */}
                     <label htmlFor="ticket-regular-quantity"></label>
-                    <input id="ticket-regular-quantity" type="number" name="tickets-quantity" min="0" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsRegular}></input>
+                    <input
+                      id="ticket-regular-quantity"
+                      type="number"
+                      name="tickets-quantity"
+                      min="0"
+                      placeholder="0"
+                      className="input-number-tickets"
+                      onChange={displayQuantityTicketsRegular}
+                    ></input>
                   </form>
                   <div className="flex-row-space-around">
                     <h3 className="regular-quantity">0X</h3>
@@ -70,7 +105,15 @@ function tickets() {
                 <div className="flex-row-space-around quantity-container">
                   <form className="flex-row-space-around">
                     <label htmlFor="ticket-vip-quantity"></label>
-                    <input id="ticket-vip-quantity" type="number" name="tickets-quantity" min="0" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsVip}></input>
+                    <input
+                      id="ticket-vip-quantity"
+                      type="number"
+                      name="tickets-quantity"
+                      min="0"
+                      placeholder="0"
+                      className="input-number-tickets"
+                      onChange={displayQuantityTicketsVip}
+                    ></input>
                   </form>
                   <div className="flex-row-space-around">
                     <h3 className="vip-quantity">0X</h3>
@@ -92,8 +135,6 @@ function tickets() {
     </>
   );
 }
-
-export default tickets;
 
 function displayQuantityTicketsRegular() {
   const quantity = document.querySelector(".regular-quantity");
@@ -129,4 +170,22 @@ function openVip() {
   } else {
     vip.style.display = "none";
   }
+}
+export async function getStaticProps() {
+  /* This function runs before the component bands is render
+    - fetch the data
+    - wait for that data
+    - once we have the data, it put into the component
+    - so the component can render with that data inside it  */
+
+  const res = await fetch("http://localhost:8080/available-spots");
+  const data = await res.json();
+
+  /* - we return a value for this function 
+- that value is got we have a props property we give the property a value
+- that value is going to be an object 
+- inside the objecint to be an object so we can past all the properties that we need*/
+  return {
+    props: { areas: data },
+  };
 }
