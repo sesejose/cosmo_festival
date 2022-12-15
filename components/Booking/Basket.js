@@ -109,3 +109,14 @@ function Basket(props) {
 }
 
 export default Basket;
+function totalTicketsSum() {
+  const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
+  // console.log(regTicketCount);
+  const notstring = parseInt(regTicketCount, 10);
+  const vipTicketCount = document.querySelector("#ticket-vip-quantity").value;
+  // console.log(vipTicketCount);
+  const notstring1 = parseInt(vipTicketCount, 10);
+  const totalTickets = notstring + notstring1;
+  // console.log(notstring1);
+  console.log(totalTickets);
+}
