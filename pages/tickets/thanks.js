@@ -1,5 +1,5 @@
 import React from "react";
-import Basket from "../../components/Basket";
+import Basket from "../../components/Booking/Basket";
 
 function thanks() {
   return (

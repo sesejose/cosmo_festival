@@ -1,6 +1,6 @@
 import React from "react";
-import Basket from "../../components/Basket";
-import ModalAcommodation from "../../components/ModalAcommodation";
+import Basket from "../../components/Booking/Basket";
+import ModalAcommodation from "../../components/Elements/ModalAcommodation";
 
 // let setUpPrice
 // let tentSize = ""

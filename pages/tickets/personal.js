@@ -6,7 +6,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import Basket from "../../components/Basket";
+import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
 
 function personal() {
