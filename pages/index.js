@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Herosection from "../components/Herosection";
 import Lineup from "../components/Lineup";
-import styles from "../styles/Home.module.css";
-import Tickets from "../components/TIckets";
+// import styles from "../styles/Home.module.css";
+import Tickets from "../components/Tickets";
 import Accomodation from "../components/Accomodation";
 import Basket from "../components/Basket";
 

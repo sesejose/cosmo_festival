@@ -1,6 +1,6 @@
 import React from "react";
 import Basket from "../components/Basket";
-import ModalAcommodation from "../../components/ModalAcommodation";
+import ModalAcommodation from "../components/ModalAcommodation";
 
 function Acommodation() {
   return (

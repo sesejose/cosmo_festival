@@ -1,19 +1,21 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function Basket(props) {
+function Basket(regTickets, vipTickets) {
   const [data, setData] = useState();
-  const quaReg = props.regTickets;
-  const quaVip = props.vipTickets;
+  const quaReg = regTickets;
+  const quaVip = vipTickets;
 
-  // Fetching the data from Supabase
+  // Fetching the data
   useEffect(() => {
     async function getData() {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/cosmo_festival";
       const headers = {
         "Content-Type": "application/json",
-        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
         Prefer: "return-representation",
       };
       const options = {
@@ -74,23 +76,20 @@ function Basket(props) {
           </div>
           <div>
             <h4 className="white">Amount of tickets:</h4>
-            <p className="turquoise">{quaReg} Regular Pass</p>
-            <p className="turquoise">{quaVip} Vip Pass</p>
+            <p className="turquoise">{{ regTickets } + { vipTickets }}</p>
           </div>
 
           {/* Template */}
-          <template id="ticket-template">
-            <article>
-              <div className="post-text-container">
-                <h3 className="turquoise type">Regular Pass</h3>
-                <h4 className="white price">Ticket price: DKK 799</h4>
-              </div>
-              <button className="btn-remove">Remove</button>
-            </article>
-          </template>
+          {/* <template id="ticket-template">
+            <div className="post-text-container">
+              <h3 className="turquoise type">Regular Pass</h3>
+              <h4 className="white price">Ticket price: DKK 799</h4>
+            </div>
+            <button className="btn-remove">Remove</button>
+          </template> */}
           {/* Template ends */}
 
-          {/* <div className="posts">
+          <div className="posts">
             <div className="post-text-container">
               <h3 className="turquoise">Regular Pass</h3>
               <h4 className="white">Ticket price: DKK 799</h4>
@@ -124,7 +123,7 @@ function Basket(props) {
               <h4 className="white">Ticket price: DKK 799</h4>
             </div>
             <button className="btn-remove">Remove</button>
-          </div> */}
+          </div>
           <hr></hr>
           <div className="posts">
             <div className="post-text-container">
