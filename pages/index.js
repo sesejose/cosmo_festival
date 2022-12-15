@@ -28,7 +28,7 @@ export default function Home({ areas, schedule, bands }) {
       <div className="container-page">
         <Herosection />
         <Lineup />
-        <Ticketsmain />
+        {/* <Ticketsmain /> */}
         <Accomodation />
       </div>
       <Basket areas={areas}></Basket>
