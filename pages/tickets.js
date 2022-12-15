@@ -12,25 +12,6 @@ function Tickets() {
     const quantityVip = displayQuantityTicketsVip;
     setRegTickets(quantityReg);
     setVipTickets(quantityVip);
-
-    if (quantityReg.value > 0) {
-      console.log("if works");
-      showTicketRegular();
-    }
-  }
-
-  function showTicketRegular() {
-    const template = document.getElementById("ticket-template").content;
-
-    const copy = template.cloneNode(true);
-    copy.querySelector(".type").textContent = "Regular";
-
-    // const button = copy.querySelector("button");
-    // button.addEventListener("click", () => {
-    //   deleteShow(element.id);
-    // });
-
-    document.querySelector(".basket-container").appendChild(copy);
   }
 
   return (
@@ -66,7 +47,15 @@ function Tickets() {
                 <div className="flex-row-space-around quantity-container">
                   <form className="flex-row-space-around">
                     <label htmlFor="ticket-regular-quantity"></label>
-                    <input id="ticket-regular-quantity" type="number" name="tickets-quantity" min="0" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsRegular}></input>
+                    <input
+                      id="ticket-regular-quantity"
+                      type="number"
+                      name="tickets-quantity"
+                      min="0"
+                      placeholder="0"
+                      className="input-number-tickets"
+                      onChange={displayQuantityTicketsRegular}
+                    ></input>
                   </form>
                   <div className="flex-row-space-around">
                     <h3 className="regular-quantity">0X</h3>
@@ -103,7 +92,15 @@ function Tickets() {
                 <div className="flex-row-space-around quantity-container">
                   <form className="flex-row-space-around">
                     <label htmlFor="ticket-vip-quantity"></label>
-                    <input id="ticket-vip-quantity" type="number" name="tickets-quantity" min="0" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsVip}></input>
+                    <input
+                      id="ticket-vip-quantity"
+                      type="number"
+                      name="tickets-quantity"
+                      min="0"
+                      placeholder="0"
+                      className="input-number-tickets"
+                      onChange={displayQuantityTicketsVip}
+                    ></input>
                   </form>
                   <div className="flex-row-space-around">
                     <h3 className="vip-quantity">0X</h3>
