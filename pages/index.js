@@ -38,10 +38,10 @@ export default function Home({ areas, schedule, bands }) {
 export async function getServerSideProps() {
   const [scheduleRes, bandsRes, areasRes] = await Promise.all([
     // fetch(`https://bitter-moon-5524.fly.dev/schedule`),
-    fetch(`http://localhost:8080/schedule`),
+    fetch("http://localhost:8080/schedule"),
 
     // fetch(`https://bitter-moon-5524.fly.dev/bands`),
-    fetch(`http://localhost:8080/bands`),
+    fetch("http://localhost:8080/bands"),
 
     // fetch(`https://bitter-moon-5524.fly.dev/available-spots`),
     fetch("http://localhost:8080/bands"),
