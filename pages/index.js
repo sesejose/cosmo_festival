@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Herosection from "../components/elements/Herosection";
 import Lineup from "../components/elements/Lineup";
-// import Ticketsmain from "../components/elements/Ticketsmain";
+import Ticketsmain from "../components/elements/Ticketsmain";
 import Accomodation from "../components/elements/Accomodation";
 import Basket from "../components/Booking/Basket";
 
@@ -28,7 +28,7 @@ export default function Home({ areas, schedule, bands }) {
       <div className="container-page">
         <Herosection />
         <Lineup />
-        {/* <Ticketsmain /> */}
+        <Ticketsmain />
         <Accomodation />
       </div>
       <Basket areas={areas}></Basket>
