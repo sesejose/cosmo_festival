@@ -20,8 +20,8 @@ export default function TicketsPage(props) {
     // we already have the ticket
     // we don't have the ticket yet
     // so 1. step is to figure out if we have IF we have the ticket
-    if (cart.find((entry) => entry.id == data.id)) {
-    }
+    // if (cart.find((entry) => entry.id == data.id)) {
+    // }
   }
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   // console.log(areas);
