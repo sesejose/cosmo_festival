@@ -13,12 +13,12 @@ export default function Band({ bands }) {
     <div className="container-page">
       <div className="container">
         <section className="artist">
-          {/* <section className="artisthero">
+          <section className="artisthero">
             <Image src={artistImg} alt="artist image" />
             <h1>{band.name}</h1>
-          </section> */}
-
-          {/* <section className="stageInfo">
+          </section>
+          {/* 
+         <section className="stageInfo">
             <h2>Stage</h2>
             <h2>Time</h2>
             <h6>Find the artist:</h6>
@@ -36,9 +36,9 @@ export default function Band({ bands }) {
                 Instagram
               </button>
             </div>
-          </section> */}
+          </section>  */}
 
-          {/* <section className="artistInfo">
+          <section className="artistInfo">
             <h2>{band.name}</h2>
             <h5>Genre: {band.genre}</h5>
             <h3>Members</h3>
@@ -48,7 +48,7 @@ export default function Band({ bands }) {
               })}
             </ul>
             <p>{band.bio}</p>
-          </section> */}
+          </section>
         </section>
       </div>
     </div>

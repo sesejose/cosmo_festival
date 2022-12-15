@@ -37,14 +37,14 @@ export default function Home({ areas, schedule, bands }) {
 }
 export async function getServerSideProps() {
   const [scheduleRes, bandsRes, areasRes] = await Promise.all([
-    fetch(`http://localhost:8080/schedule`),
+    fetch(`https://bitter-moon-5524.fly.dev/schedule`),
 
     //fetch("https://rough-snowflake-4981.fly.dev/schedule"), //karina URL:  (just in case)
 
-    fetch(`http://localhost:8080/bands#`),
+    fetch(`https://bitter-moon-5524.fly.dev/bands`),
 
     //fetch("https://rough-snowflake-4981.fly.dev/bands") //karina URL:  (just in case)
-    fetch(`http://localhost:8080/available-spots`),
+    fetch(`https://bitter-moon-5524.fly.dev/available-spots`),
   ]);
 
   const [schedule, bands, areas] = await Promise.all([scheduleRes.json(), bandsRes.json(), areasRes.json()]);
