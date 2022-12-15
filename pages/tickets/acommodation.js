@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Basket from "../../components/Booking/Basket";
 import ModalAcommodation from "../../components/Elements/ModalAcommodation";
 
@@ -30,6 +30,8 @@ import ModalAcommodation from "../../components/Elements/ModalAcommodation";
 // }
 
 function Acommodation({ areas }) {
+  const [disabled, setDisabled] = useState(false);
+
   const area1 = areas[0].available;
   console.log(area1);
   const area2 = areas[1].available;
@@ -41,6 +43,15 @@ function Acommodation({ areas }) {
   const area5 = areas[4].available;
   console.log(area5);
 
+  function disablebutton(e) {
+    const totalTickets = 100;
+    if (totalTickets > area1) {
+      return setDisabled(true);
+
+      //   // document.querySelector("#svartheim").disabled = true;
+      //   // console.log("area1 disabled");
+    }
+  }
   return (
     <>
       <section id="acommodation">
@@ -81,7 +92,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="1"
                       className="radio-input"
-                      defaultChecked
+                      onChange={disablebutton}
                     ></input>
                   </div>
 
@@ -89,7 +100,14 @@ function Acommodation({ areas }) {
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Nilfheim</div>
                     </label>
-                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
+                    <input
+                      type="radio"
+                      id="nilfheim"
+                      name="camping-area"
+                      value="2"
+                      className="radio-input"
+                      onClick={() => setDisabled(!false)}
+                    ></input>
                   </div>
                 </div>
 
@@ -102,21 +120,42 @@ function Acommodation({ areas }) {
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Helheim</div>
                     </label>
-                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
+                    <input
+                      type="radio"
+                      id="helheim"
+                      name="camping-area"
+                      value="2"
+                      className="radio-input"
+                      onClick={() => setDisabled(!false)}
+                    ></input>
                   </div>
 
                   <div className="camping-area">
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Muspelheim</div>
                     </label>
-                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
+                    <input
+                      type="radio"
+                      id="muspelheim"
+                      name="camping-area"
+                      value="2"
+                      className="radio-input"
+                      onClick={() => setDisabled(!false)}
+                    ></input>
                   </div>
 
                   <div className="camping-area">
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Alfheim</div>
                     </label>
-                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
+                    <input
+                      type="radio"
+                      id="muspelheim"
+                      name="camping-area"
+                      value="2"
+                      className="radio-input"
+                      onClick={() => setDisabled(!false)}
+                    ></input>
                   </div>
                 </div>
               </div>
