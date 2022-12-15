@@ -1,6 +1,12 @@
 import React from "react";
-import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
-import Basket from "../components/Basket";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
 
 function personal() {
@@ -24,24 +30,56 @@ function personal() {
                       <div class="field-group">
                         <div className="field">
                           <label forHtml="name">Full name</label>
-                          <input type="text" name="name" id="name" placeholder="Insert your full name" minlength="2" className="input-text" required />
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Insert your full name"
+                            minlength="2"
+                            className="input-text"
+                            required
+                          />
                           <span class="error-message">Enter a valid value</span>
                         </div>
                         <div className="field">
                           <label forHtml="email">Email</label>
-                          <input type="text" name="email" id="email" placeholder="Insert your email" minlength="2" className="input-text" required />
+                          <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            placeholder="Insert your email"
+                            minlength="2"
+                            className="input-text"
+                            required
+                          />
                           <span class="error-message">Enter a valid value</span>
                         </div>
                       </div>
                       <div class="field-group">
                         <div className="field">
                           <label forHtml="age">Age</label>
-                          <input type="text" name="age" id="age" placeholder="Insert your age" minlength="2" className="input-text" required />
+                          <input
+                            type="text"
+                            name="age"
+                            id="age"
+                            placeholder="Insert your age"
+                            minlength="2"
+                            className="input-text"
+                            required
+                          />
                           <span class="error-message">Enter a valid value</span>
                         </div>
                         <div className="field">
                           <label forHtml="id">ID</label>
-                          <input type="text" name="id" id="id" placeholder="Insert your ID" minlength="2" className="input-text" required />
+                          <input
+                            type="text"
+                            name="id"
+                            id="id"
+                            placeholder="Insert your ID"
+                            minlength="2"
+                            className="input-text"
+                            required
+                          />
                           <span class="error-message">Enter a valid value</span>
                         </div>
                       </div>
@@ -108,7 +146,16 @@ function personal() {
                     <label htmlFor="tents-quantity"></label>
                     <h3 className="pink">Tent (2 persons) DKK 299,-</h3>
                     <div className="flex-row-space-around">
-                      <input type="number" name="tents-quantity" id="tent2-quantity" min="0" placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent2}></input>
+                      <input
+                        type="number"
+                        name="tents-quantity"
+                        id="tent2-quantity"
+                        min="0"
+                        placeholder="0"
+                        disabled
+                        className="input-number-tents"
+                        onChange={displayQuantityTent2}
+                      ></input>
                       <h3 className="tent2">x</h3>
                       <h3 className="white">DKK 299,-</h3>
                       <h3 className="white">Total:</h3>
@@ -119,7 +166,16 @@ function personal() {
                     <label htmlFor="tents-quantity"></label>
                     <h3 className="pink">Tent (3 persons) DKK 399,-</h3>
                     <div className="flex-row-space-around">
-                      <input type="number" name="tents-quantity" id="tent3-quantity" min="0" placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent3}></input>
+                      <input
+                        type="number"
+                        name="tents-quantity"
+                        id="tent3-quantity"
+                        min="0"
+                        placeholder="0"
+                        disabled
+                        className="input-number-tents"
+                        onChange={displayQuantityTent3}
+                      ></input>
                       <h3 className="tent3">x</h3>
                       <h3 className="white">DKK 399,-</h3>
                       <h3 className="white">Total:</h3>

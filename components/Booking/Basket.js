@@ -65,11 +65,13 @@ function Basket(regTickets, vipTickets) {
   //   console.log(props.id);
   // }
 
+function Basket(props) {
   return (
     <>
       <section id="basket">
         <div className="basket-container">
           <h2 className="turquoise">Summary order</h2>
+
           <div>
             <h4 className="white">Time to complete the order:</h4>
             <p className="turuoise">0</p>
@@ -77,6 +79,9 @@ function Basket(regTickets, vipTickets) {
           <div>
             <h4 className="white">Amount of tickets:</h4>
             <p className="turquoise">{{ regTickets } + { vipTickets }}</p>
+            <p className="turquoise"></p>
+            <h5 className="turquoise">Total number of tickets</h5>
+            <p>0</p>
           </div>
 
           {/* Template */}
@@ -181,3 +186,14 @@ function Basket(regTickets, vipTickets) {
 }
 
 export default Basket;
+function totalTicketsSum() {
+  const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
+  // console.log(regTicketCount);
+  const notstring = parseInt(regTicketCount, 10);
+  const vipTicketCount = document.querySelector("#ticket-vip-quantity").value;
+  // console.log(vipTicketCount);
+  const notstring1 = parseInt(vipTicketCount, 10);
+  const totalTickets = notstring + notstring1;
+  // console.log(notstring1);
+  console.log(totalTickets);
+}
