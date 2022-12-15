@@ -12,6 +12,25 @@ function Tickets() {
     const quantityVip = displayQuantityTicketsVip;
     setRegTickets(quantityReg);
     setVipTickets(quantityVip);
+
+    if (quantityReg.value > 0) {
+      console.log("if works");
+      showTicketRegular();
+    }
+  }
+
+  function showTicketRegular() {
+    const template = document.getElementById("ticket-template").content;
+
+    const copy = template.cloneNode(true);
+    copy.querySelector(".type").textContent = "Regular";
+
+    // const button = copy.querySelector("button");
+    // button.addEventListener("click", () => {
+    //   deleteShow(element.id);
+    // });
+
+    document.querySelector(".basket-container").appendChild(copy);
   }
 
   return (

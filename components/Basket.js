@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function Basket(regTickets, vipTickets) {
+function Basket(props) {
   const [data, setData] = useState();
-  const quaReg = regTickets;
-  const quaVip = vipTickets;
+  const quaReg = props.regTickets;
+  const quaVip = props.vipTickets;
 
-  // Fetching the data
+  // Fetching the data from Supabase
   useEffect(() => {
     async function getData() {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/cosmo_festival";
@@ -74,20 +74,23 @@ function Basket(regTickets, vipTickets) {
           </div>
           <div>
             <h4 className="white">Amount of tickets:</h4>
-            <p className="turquoise">{{ regTickets } + { vipTickets }}</p>
+            <p className="turquoise">{quaReg} Regular Pass</p>
+            <p className="turquoise">{quaVip} Vip Pass</p>
           </div>
 
           {/* Template */}
-          {/* <template id="ticket-template">
-            <div className="post-text-container">
-              <h3 className="turquoise type">Regular Pass</h3>
-              <h4 className="white price">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </template> */}
+          <template id="ticket-template">
+            <article>
+              <div className="post-text-container">
+                <h3 className="turquoise type">Regular Pass</h3>
+                <h4 className="white price">Ticket price: DKK 799</h4>
+              </div>
+              <button className="btn-remove">Remove</button>
+            </article>
+          </template>
           {/* Template ends */}
 
-          <div className="posts">
+          {/* <div className="posts">
             <div className="post-text-container">
               <h3 className="turquoise">Regular Pass</h3>
               <h4 className="white">Ticket price: DKK 799</h4>
@@ -121,7 +124,7 @@ function Basket(regTickets, vipTickets) {
               <h4 className="white">Ticket price: DKK 799</h4>
             </div>
             <button className="btn-remove">Remove</button>
-          </div>
+          </div> */}
           <hr></hr>
           <div className="posts">
             <div className="post-text-container">
