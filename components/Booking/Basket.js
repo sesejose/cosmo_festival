@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function Basket(regTickets, vipTickets) {
+export default function Basket(regTickets, vipTickets) {
   const [data, setData] = useState();
   const quaReg = regTickets;
   const quaVip = vipTickets;
@@ -60,12 +60,6 @@ function Basket(regTickets, vipTickets) {
     //   document.querySelector(".post-text-container").appendChild(copy);
     // });
   }
-
-  // function deleteTickets() {
-  //   console.log(props.id);
-  // }
-
-function Basket(props) {
   return (
     <>
       <section id="basket">
@@ -86,12 +80,12 @@ function Basket(props) {
 
           {/* Template */}
           {/* <template id="ticket-template">
-            <div className="post-text-container">
-              <h3 className="turquoise type">Regular Pass</h3>
-              <h4 className="white price">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </template> */}
+              <div className="post-text-container">
+                <h3 className="turquoise type">Regular Pass</h3>
+                <h4 className="white price">Ticket price: DKK 799</h4>
+              </div>
+              <button className="btn-remove">Remove</button>
+            </template> */}
           {/* Template ends */}
 
           <div className="posts">
@@ -185,7 +179,10 @@ function Basket(props) {
   );
 }
 
-export default Basket;
+// function deleteTickets() {
+//   console.log(props.id);
+// }
+
 function totalTicketsSum() {
   const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
   // console.log(regTicketCount);
