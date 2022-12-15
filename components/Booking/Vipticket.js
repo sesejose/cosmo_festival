@@ -1,8 +1,18 @@
+import { useState } from "react";
+
 export default function Viptickets(props) {
   function add() {
-    props.addToCart(props.ticket[1]);
+    // props.addToCart(props.ticket[1]);
   }
-  const ticket2 = props.ticket[1];
+
+  const [vipTickets, setVipTickets] = useState();
+
+  function setQuantities() {
+    const quantityVip = displayQuantityTicketsVip;
+    setVipTickets(quantityVip);
+    props.addToCart(vipTickets);
+  }
+
   return (
     <>
       <div className="ticket-vip">
@@ -27,16 +37,7 @@ export default function Viptickets(props) {
         <div className="flex-row-space-around quantity-container">
           <form className="flex-row-space-around">
             <label htmlFor="ticket-vip-quantity"></label>
-            <input
-              id="ticket-vip-quantity"
-              type="number"
-              name="tickets-quantity"
-              min="0"
-              max="9"
-              placeholder="0"
-              className="input-number-tickets"
-              onChange={displayQuantityTicketsVip}
-            ></input>
+            <input id="ticket-vip-quantity" type="number" name="tickets-quantity" min="0" max="9" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsVip}></input>
           </form>
           <div className="flex-row-space-around">
             <h3 className="vip-quantity">0X</h3>
@@ -47,7 +48,7 @@ export default function Viptickets(props) {
             <h3 className="totalTicketsVip">0</h3>
           </div>
         </div>
-        <button onClick={add} className="btn-add">
+        <button onClick={setQuantities} className="btn-add">
           Add to cart
         </button>
       </div>
@@ -62,6 +63,7 @@ function displayQuantityTicketsVip() {
   // Calculating the total
   const total = tickets.value * 1299;
   document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
+  return tickets.value;
 }
 function openVip() {
   const vip = document.querySelector(".open-ticket-vip");

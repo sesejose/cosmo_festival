@@ -2,26 +2,33 @@ import React from "react";
 import Basket from "../../components/Booking/Basket";
 import { useState, useEffect } from "react";
 import Ticket from "../../components/Booking/Ticket";
+import Regtickets from "../../components/Booking/Regticket";
 
 // 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
 // 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
 // 3.  step
 //
 export default function TicketsPage(props) {
-  const [tickets, setData] = useState([]);
+  const [tickets, setTickets] = useState([]);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([
     ,//{tickettype:"x",
     //ticketprice:1111, amount:2}
   ]);
+
   function addToCart(data) {
-    console.log("addToCart", data);
+    const vipTickets = data;
+    console.log("addToCart", vipTickets);
+    const regTickets = data;
+    console.log("addToCart", regTickets);
+
     // there are 2 options
     // we already have the ticket
     // we don't have the ticket yet
     // so 1. step is to figure out if we have IF we have the ticket
     // if (cart.find((entry) => entry.id == data.id)) {
     // }
+    // data.return;
   }
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   // console.log(areas);
@@ -40,6 +47,7 @@ export default function TicketsPage(props) {
   // const area5 = areas[4].available;
   // console.log(area5);
 
+  // Fetching tickets from Supabase (Tickets table)
   useEffect(() => {
     async function getData() {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
@@ -60,12 +68,13 @@ export default function TicketsPage(props) {
       const res = await fetch(url, options, body); // Fetchs the data (await)
       const tickets = await res.json(); //When it's done getting it
       // return data; // This returned "data/array" used in the showData();
-      setData(tickets);
+      setTickets(tickets);
       console.log(tickets);
     }
     getData();
   }, []);
 
+  // Fetching areas from Available spots
   useEffect(() => {
     async function getData() {
       // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
@@ -83,6 +92,8 @@ export default function TicketsPage(props) {
     </>
   );
 }
+
+// Fetching areas from Available spots
 export async function getStaticProps() {
   /* This function runs before the component bands is render
     - fetch the data

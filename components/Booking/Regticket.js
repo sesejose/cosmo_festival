@@ -1,6 +1,16 @@
+import { useState } from "react";
+
 export default function Regtickets(props) {
   function add() {
-    props.addToCart(props.ticket[0]);
+    // props.addToCart(props.ticket[0]);
+  }
+
+  const [regTickets, setRegTickets] = useState();
+
+  function setQuantities() {
+    const quantityReg = displayQuantityTicketsRegular;
+    setRegTickets(quantityReg);
+    props.addToCart(regTickets);
   }
 
   return (
@@ -27,16 +37,7 @@ export default function Regtickets(props) {
         <div className="flex-row-space-around quantity-container">
           <form className="flex-row-space-around">
             <label htmlFor="ticket-regular-quantity"></label>
-            <input
-              id="ticket-regular-quantity"
-              type="number"
-              name="tickets-quantity"
-              min="0"
-              max="9"
-              placeholder="0"
-              className="input-number-tickets"
-              onChange={displayQuantityTicketsRegular}
-            ></input>
+            <input id="ticket-regular-quantity" type="number" name="tickets-quantity" min="0" max="9" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsRegular}></input>
           </form>
           <div className="flex-row-space-around">
             <h3 className="regular-quantity">0X</h3>
@@ -47,7 +48,7 @@ export default function Regtickets(props) {
             <h3 className="totalTicketsRegular">0</h3>
           </div>
         </div>
-        <button value="Add to cart" onClick={add} className="btn-add">
+        <button value="Add to cart" onClick={setQuantities} className="btn-add">
           Add to cart
         </button>
       </div>
@@ -62,6 +63,7 @@ function displayQuantityTicketsRegular() {
   // Calculating the total
   const total = tickets.value * 799;
   document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;
+  return tickets.value;
 }
 function openRegular() {
   const regular = document.querySelector(".open-ticket-regular");
