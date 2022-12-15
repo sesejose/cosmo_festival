@@ -45,10 +45,8 @@ export default function TicketsPage(props) {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
       const headers = {
         "Content-Type": "application/jsonS",
-        apikey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
         Prefer: "return-representation",
       };
       const options = {
@@ -70,7 +68,7 @@ export default function TicketsPage(props) {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("http://localhost:8080/available-spots");
+      const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
       const data = await res.json();
       setProducts(data);
       console.log(data);
@@ -91,7 +89,7 @@ export async function getStaticProps() {
     - once we have the data, it put into the component
     - so the component can render with that data inside it  */
 
-  const res = await fetch("http://localhost:8080/available-spots");
+  const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
   const data = await res.json();
 
   /* - we return a value for this function 
