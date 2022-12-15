@@ -1,5 +1,5 @@
 import React from "react";
-import Lineup from "../components/Lineup";
+import Lineup from "../components/elements/Lineup";
 
 function lineup() {
   return (
