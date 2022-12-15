@@ -14,7 +14,7 @@ export default function Ticketsmain() {
           </div>
           <div className="desc">
             <h2 className="turquoise">Tickets</h2>
-            <h3 className="turquoise">WHAT YOU NEED TO KNOW</h3>
+            <h3 className="turquoise">WHAT YOU NEED TO KNOW !</h3>
             <p>
               Cosmo Festival is one of the most popular music festivals in Europe. Every year the event gathers the best artists and biggest DJs in electronic music. This in an event that never ends, with music 24/7 and vibes of the greatests faces
               with the best electronic music in our 3 stages.<br></br>
