@@ -58,9 +58,9 @@ export default function Band({ bands }) {
 // {/*     <Image alt={band.name} src={band.logo} width={200} height={200} />
 //  */}
 export async function getStaticPaths() {
-  const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
-  /*   const res = await fetch("https://rough-snowflake-4981.fly.dev/bands"); //karina URL:  (just in case)
-   */
+  // const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
+  const res = await fetch("http://localhost:8080/bands"); //karina URL:  (just in case)
+
   const dataBands = await res.json();
   const paths = dataBands.map((band) => {
     return {
@@ -83,7 +83,8 @@ export async function getStaticProps() {
   - once we have the data, it put into the component
   - so the component can render with that data inside it  */
 
-  const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
+  // const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
+  const res = await fetch("http://localhost:8080/bands");
   const data = await res.json();
 
   /* - we return a value for this function 

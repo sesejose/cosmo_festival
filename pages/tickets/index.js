@@ -68,7 +68,8 @@ export default function TicketsPage(props) {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+      const res = await fetch("http://localhost:8080/available-spots");
       const data = await res.json();
       setProducts(data);
       console.log(data);
@@ -89,7 +90,8 @@ export async function getStaticProps() {
     - once we have the data, it put into the component
     - so the component can render with that data inside it  */
 
-  const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+  // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+  const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();
 
   /* - we return a value for this function 
