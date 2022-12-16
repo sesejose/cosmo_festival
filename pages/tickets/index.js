@@ -8,14 +8,38 @@ import Pages from "../../components/Booking/Pages";
 // 3.  step
 //
 export default function TicketsPage(props) {
+  const [cart, setCart] = useState([]);
   const [tickets, setTickets] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([
-    ,//{tickettype:"x",
-    //ticketprice:1111, amount:2}
-  ]);
   const [totalVip, setTotalVip] = useState();
   const [totalReg, setTotalReg] = useState();
+  const [products, setProducts] = useState([]);
+
+  // Fetching tickets from Supabase (Tickets table)
+  useEffect(() => {
+    async function getData() {
+      const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
+      const headers = {
+        "Content-Type": "application/jsonS",
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Prefer: "return-representation",
+      };
+      const options = {
+        method: "GET",
+        headers: headers,
+      };
+      const body = {
+        body: "false",
+      };
+      // Await then execute the code.
+      const res = await fetch(url, options, body); // Fetchs the data (await)
+      const tickets = await res.json(); //When it's done getting it
+      // return data; // This returned "data/array" used in the showData();
+      setTickets(tickets);
+      // console.log(tickets);
+    }
+    getData();
+  }, []);
 
   function defineRegTotal(regTickets) {
     setTotalReg(regTickets);
@@ -60,6 +84,37 @@ export default function TicketsPage(props) {
     // }
     // data.return;
   }
+
+  function getTotal(totalTickets) {
+    console.log(totalTickets);
+  }
+
+  // Fetching areas from Available spots
+  useEffect(() => {
+    async function getData() {
+      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+      const res = await fetch("http://localhost:8080/available-spots");
+      const data = await res.json();
+      setProducts(data);
+      console.log(data);
+    }
+    getData();
+  }, []);
+
+  // Areas
+
+  // Fetching areas from Available spots
+  useEffect(() => {
+    async function getData() {
+      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+      const res = await fetch("http://localhost:8080/available-spots");
+      const data = await res.json();
+      setProducts(data);
+      console.log(data);
+    }
+    getData();
+  }, []);
+
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   // console.log(areas);
   // const {
@@ -77,49 +132,10 @@ export default function TicketsPage(props) {
   // const area5 = areas[4].available;
   // console.log(area5);
 
-  // Fetching tickets from Supabase (Tickets table)
-  useEffect(() => {
-    async function getData() {
-      const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
-      const headers = {
-        "Content-Type": "application/jsonS",
-        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Prefer: "return-representation",
-      };
-      const options = {
-        method: "GET",
-        headers: headers,
-      };
-      const body = {
-        body: "false",
-      };
-      // Await then execute the code.
-      const res = await fetch(url, options, body); // Fetchs the data (await)
-      const tickets = await res.json(); //When it's done getting it
-      // return data; // This returned "data/array" used in the showData();
-      setTickets(tickets);
-      // console.log(tickets);
-    }
-    getData();
-  }, []);
-
-  // Fetching areas from Available spots
-  useEffect(() => {
-    async function getData() {
-      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-      const res = await fetch("http://localhost:8080/available-spots");
-      const data = await res.json();
-      setProducts(data);
-      console.log(data);
-    }
-    getData();
-  }, []);
-
   return (
     <>
       <Pages areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal}></Pages>
-      <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} cart={cart} />
+      <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} cart={cart} getTotal={getTotal} />
     </>
   );
 }

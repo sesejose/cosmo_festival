@@ -1,6 +1,6 @@
 import React from "react";
 import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
-import Basket from "../../components/Booking/Basket";
+// import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
 
 function personal() {
@@ -21,28 +21,28 @@ function personal() {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   <div className="form-group">
-                    <div class="field-group">
+                    <div className="field-group">
                       <div className="field">
-                        <label forHtml="name">Full name</label>
-                        <input type="text" name="name" id="name" placeholder="Insert your full name" minlength="2" className="input-text" required />
-                        <span class="error-message">Enter a valid value</span>
+                        <label forhtml="name">Full name</label>
+                        <input type="text" name="name" id="name" placeholder="Insert your full name" minLength="2" className="input-text" required />
+                        <span className="error-message">Enter a valid value</span>
                       </div>
                       <div className="field">
-                        <label forHtml="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Insert your email" minlength="2" className="input-text" required />
-                        <span class="error-message">Enter a valid value</span>
+                        <label forhtml="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="Insert your email" minLength="2" className="input-text" required />
+                        <span className="error-message">Enter a valid value</span>
                       </div>
                     </div>
-                    <div class="field-group">
+                    <div className="field-group">
                       <div className="field">
-                        <label forHtml="age">Age</label>
-                        <input type="text" name="age" id="age" placeholder="Insert your age" minlength="2" className="input-text" required />
-                        <span class="error-message">Enter a valid value</span>
+                        <label forhtml="age">Age</label>
+                        <input type="text" name="age" id="age" placeholder="Insert your age" minLength="2" className="input-text" required />
+                        <span className="error-message">Enter a valid value</span>
                       </div>
                       <div className="field">
-                        <label forHtml="id">ID</label>
-                        <input type="text" name="id" id="id" placeholder="Insert your ID" minlength="2" className="input-text" required />
-                        <span class="error-message">Enter a valid value</span>
+                        <label forhtml="id">ID</label>
+                        <input type="text" name="id" id="id" placeholder="Insert your ID" minLength="2" className="input-text" required />
+                        <span className="error-message">Enter a valid value</span>
                       </div>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ function personal() {
         </div>
         {/* </div> */}
       </section>
-      <Basket></Basket>
+      {/* <Basket></Basket> */}
     </>
   );
 }

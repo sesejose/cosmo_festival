@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Basket from "../../components/Booking/Basket";
+// import Basket from "../../components/Booking/Basket";
 import ModalAcommodation from "../../components/elements/ModalAcommodation";
 import { useEffect } from "react";
 
@@ -34,17 +34,6 @@ export default function Acommodation({ areas }) {
   const [disabled, setDisabled] = useState(false);
   const [totalTickets, setTotalTickets] = useState();
 
-  // const quaReg = parseInt(props.totalReg, 10);
-  // const quaVip = parseInt(props.totalVip, 10);
-
-  function getTotal(arg) {
-    console.log(arg);
-    // setTotalTickets(arg);
-    // const total = parseInt(totalTickets, 10);
-    // console.log(total);
-    // return total;
-  }
-
   // const area1 = areas[0].available;
   // console.log(area1);
   // const area2 = areas[1].available;
@@ -75,9 +64,6 @@ export default function Acommodation({ areas }) {
             <p className="text-center">Select the area in the camping where you wanna set your tent/s.</p>
             <button className="btn-acommodation" onClick={displayAcommodation}>
               Learn more here
-            </button>
-            <button className="btn-acommodation" onClick={getTotal}>
-              {" "}
             </button>
           </div>
           <div className="map-container">

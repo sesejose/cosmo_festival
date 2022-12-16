@@ -18,9 +18,9 @@ export default function Tickets(props) {
             <Regtickets ticket={props.tickets[0]} addRegToCart={props.addRegToCart} defineRegTotal={props.defineRegTotal} />
             <Viptickets ticket={props.tickets[1]} addVipToCart={props.addVipToCart} defineVipTotal={props.defineVipTotal} />
           </div>
-          <Anchor className="btn-main" href={"tickets/acommodation"}>
+          {/* <Anchor className="btn-main" href={"tickets/acommodation"}>
             Acomodation
-          </Anchor>
+          </Anchor> */}
         </div>
         {/* </div> */}
       </section>

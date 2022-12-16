@@ -431,13 +431,10 @@ p {
 
 /* About */
 
-#about,
-#tickets,
-#acommodation,
-#personal,
-#payment,
-#thanks {
+#pages {
   width: 100%;
+  overflow: scroll;
+  height: 100vh;
 }
 
 .container-about {
@@ -782,6 +779,7 @@ footer svg {
   min-width: fit-content;
   display: none;
   border-left: 1px solid var(--pink);
+  overflow: scroll;
 }
 
 .tab-basket {

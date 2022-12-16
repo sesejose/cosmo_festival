@@ -1,5 +1,5 @@
 import React from "react";
-import Basket from "../../components/Booking/Basket";
+// import Basket from "../../components/Booking/Basket";
 
 function payment() {
   return (
@@ -52,7 +52,7 @@ function payment() {
         </div>
         {/* </div> */}
       </section>
-      <Basket></Basket>
+      {/* <Basket></Basket> */}
     </>
   );
 }
