@@ -5,15 +5,16 @@ export default function Basket(props) {
   const [data, setData] = useState();
   const quaReg = parseInt(props.totalReg, 10);
   const quaVip = parseInt(props.totalVip, 10);
-  const [totalTickets, setTotakTickets] = useState();
+  const [totalTickets, setTotalTickets] = useState([]);
 
   useEffect(() => {
-    async function setTotal(totalTickets) {
-      const totalTickets = await setTotakTickets({ quaReg } + { quaVip });
-      return totalTickets;
+    function getTotal() {
+      setTotalTickets(quaReg + quaVip);
+      // return totalTickets
     }
-    setTotal();
-  }, []);
+    getTotal(totalTickets);
+    console.log(totalTickets);
+  });
 
   // Fetching the data
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Basket(props) {
       const data = await res.json(); //When it's done getting it
       // return data; // This returned "data/array" used in the showData();
       setData(data);
-      console.log(data);
+      // console.log(data);
     }
     getData();
   }, []);
@@ -92,7 +93,7 @@ export default function Basket(props) {
             </template> */}
           {/* Template ends */}
 
-          <div className="posts">
+          {/* <div className="posts">
             <div className="post-text-container">
               <h3 className="turquoise">Regular Pass</h3>
               <h4 className="white">Ticket price: DKK 799</h4>
@@ -126,7 +127,7 @@ export default function Basket(props) {
               <h4 className="white">Ticket price: DKK 799</h4>
             </div>
             <button className="btn-remove">Remove</button>
-          </div>
+          </div> */}
           <hr></hr>
           <div className="posts">
             <div className="post-text-container">

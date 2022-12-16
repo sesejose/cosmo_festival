@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Basket from "../../components/Booking/Basket";
 import ModalAcommodation from "../../components/elements/ModalAcommodation";
+import { useEffect } from "react";
 
 // let setUpPrice
 // let tentSize = ""
@@ -29,16 +30,19 @@ import ModalAcommodation from "../../components/elements/ModalAcommodation";
 //   tentSize = "2-person tent"
 // }
 
-function Acommodation({ props }) {
+export default function Acommodation({ areas }) {
   const [disabled, setDisabled] = useState(false);
-  // const [totalTickets, setTotalTickets] = useState();
+  const [totalTickets, setTotalTickets] = useState();
 
   // const quaReg = parseInt(props.totalReg, 10);
   // const quaVip = parseInt(props.totalVip, 10);
 
-  function setTotal(totalTickets) {
-    // totalTickets
-    console.log(totalTickets);
+  function getTotal(arg) {
+    console.log(arg);
+    // setTotalTickets(arg);
+    // const total = parseInt(totalTickets, 10);
+    // console.log(total);
+    // return total;
   }
 
   // const area1 = areas[0].available;
@@ -72,6 +76,9 @@ function Acommodation({ props }) {
               <button className="btn-acommodation" onClick={displayAcommodation}>
                 Learn more here
               </button>
+              <button className="btn-acommodation" onClick={getTotal}>
+                {" "}
+              </button>
             </div>
             <div className="map-container">
               <div className="camping-areas-row">
@@ -102,7 +109,7 @@ function Acommodation({ props }) {
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Nilfheim</div>
                     </label>
-                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input" onClick={() => setDisabled(!false)}></input>
+                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
                   </div>
                 </div>
 
@@ -146,7 +153,7 @@ function Acommodation({ props }) {
           </div>
         </div>
       </section>
-      <Basket setTotal={setTotal}></Basket>
+      <Basket getTotal={getTotal}></Basket>
 
       {/* <!-- Modal acommodation  --> */}
 
@@ -167,7 +174,7 @@ function Acommodation({ props }) {
   );
 }
 
-export default Acommodation;
+///////////////////////////////////////
 
 function displayAcommodation() {
   document.querySelector("#modal-acommodation").classList.remove("hiden");

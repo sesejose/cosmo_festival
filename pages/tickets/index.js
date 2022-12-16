@@ -28,6 +28,7 @@ export default function TicketsPage(props) {
     // console.log(typeof totalReg);
     // const totalR = parseInt(totalReg, 10);
     setCart((i) => i.concat({ ...item, amount: totalReg }));
+
     // console.log(typeof totalR);
 
     // console.log("addToCart", data);
@@ -118,8 +119,8 @@ export default function TicketsPage(props) {
 
   return (
     <>
-      <Ticket areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal} totalVip={totalVip} totalReg={totalReg} />
-      <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} />
+      <Ticket areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal} />
+      <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} cart={cart} />
     </>
   );
 }
