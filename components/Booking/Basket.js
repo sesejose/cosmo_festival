@@ -9,14 +9,15 @@ export default function Basket(props) {
 
   useEffect(() => {
     function getTotal() {
-      setTotalTickets(quaReg + quaVip);
+      const total = 10;
+      setTotalTickets(total);
       // return totalTickets
     }
     getTotal(totalTickets);
-    console.log(totalTickets);
+    // console.log(totalTickets);
   });
 
-  // Fetching the data
+  // Fetching the cosmo_festival table from Supabase
   useEffect(() => {
     async function getData() {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/cosmo_festival";
@@ -49,25 +50,30 @@ export default function Basket(props) {
   // function addTickets(data) {
   // }
 
-  showTickets();
+  // showTickets();
 
-  async function showTickets() {
-    // console.log(quaReg);
-    // const data = await getTickets();
-    // Await: It makes the code wait until the promise returns a result.
-    // console.log(data);
-    // data.forEach((element) => {
-    //   const template = document.querySelector("#ticket-template").content;
-    //   const copy = template.cloneNode(true);
-    //   copy.querySelector(".type").textContent = element.type;
-    //   copy.querySelector(".price").textContent = element.price;
-    //   const button = copy.querySelector("btn-remove");
-    //   button.addEventListener("click", () => {
-    //     deleteTickets(element.id);
-    //   });
-    //   document.querySelector(".post-text-container").appendChild(copy);
-    // });
-  }
+  // async function showTickets() {
+  // console.log(quaReg);
+  // const data = await getTickets();
+  // Await: It makes the code wait until the promise returns a result.
+  // console.log(data);
+  // data.forEach((element) => {
+  //   const template = document.querySelector("#ticket-template").content;
+  //   const copy = template.cloneNode(true);
+  //   copy.querySelector(".type").textContent = element.type;
+  //   copy.querySelector(".price").textContent = element.price;
+  //   const button = copy.querySelector("btn-remove");
+  //   button.addEventListener("click", () => {
+  //     deleteTickets(element.id);
+  //   });
+  //   document.querySelector(".post-text-container").appendChild(copy);
+  // });
+  // }
+
+  // function deleteTickets() {
+  //   console.log(props.id);
+  // }
+
   return (
     <>
       <section id="basket">
@@ -93,41 +99,6 @@ export default function Basket(props) {
             </template> */}
           {/* Template ends */}
 
-          {/* <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Regular Pass</h3>
-              <h4 className="white">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Regular Pass</h3>
-              <h4 className="white">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Regular Pass</h3>
-              <h4 className="white">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Regular Pass</h3>
-              <h4 className="white">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">VIP Pass</h3>
-              <h4 className="white">Ticket price: DKK 799</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div> */}
           <hr></hr>
           <div className="posts">
             <div className="post-text-container">
@@ -184,18 +155,14 @@ export default function Basket(props) {
   );
 }
 
-// function deleteTickets() {
-//   console.log(props.id);
+// function totalTicketsSum() {
+//   const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
+//   // console.log(regTicketCount);
+//   const notstring = parseInt(regTicketCount, 10);
+//   const vipTicketCount = document.querySelector("#ticket-vip-quantity").value;
+//   // console.log(vipTicketCount);
+//   const notstring1 = parseInt(vipTicketCount, 10);
+//   const totalTickets = notstring + notstring1;
+//   // console.log(notstring1);
+//   console.log(totalTickets);
 // }
-
-function totalTicketsSum() {
-  const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
-  // console.log(regTicketCount);
-  const notstring = parseInt(regTicketCount, 10);
-  const vipTicketCount = document.querySelector("#ticket-vip-quantity").value;
-  // console.log(vipTicketCount);
-  const notstring1 = parseInt(vipTicketCount, 10);
-  const totalTickets = notstring + notstring1;
-  // console.log(notstring1);
-  console.log(totalTickets);
-}

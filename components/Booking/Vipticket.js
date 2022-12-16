@@ -1,14 +1,33 @@
 import { useState } from "react";
 
 export default function Viptickets(props) {
-  // function add() {
-  //   props.addToCart(props.ticket[1]);
-  // }
+  const [totalVip, setTotalVip] = useState();
 
+  // Sending the state to defineVipTotal
   function setQuantities() {
-    const quantityVip = displayQuantityTicketsVip;
-    props.defineVipTotal(quantityVip);
+    props.defineVipTotal(totalVip);
     props.addVipToCart(props.ticket);
+    console.log(totalVip);
+  }
+
+  function displayQuantityTicketsVip() {
+    const quantity = document.querySelector(".vip-quantity");
+    const tickets = document.querySelector("#ticket-vip-quantity");
+    quantity.textContent = tickets.value + "x";
+    // console.log(tickets.value);
+    // Calculating the total
+    const total = tickets.value * 1299;
+    document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
+    setTotalVip(tickets.value);
+    return totalVip;
+  }
+  function openVip() {
+    const vip = document.querySelector(".open-ticket-vip");
+    if ((vip.style.display = "none")) {
+      vip.style.display = "flex";
+    } else {
+      vip.style.display = "none";
+    }
   }
 
   return (
@@ -22,6 +41,8 @@ export default function Viptickets(props) {
           <div className="flex-row-space-around">
             {/* <h2>{props.ticket.name}</h2> */}
             {/* <h2>DKK {props.ticket.price}</h2> */}
+            <h2>Regular Pass</h2>
+            <h2>DKK 1299</h2>
           </div>
           <div className="flex-row-space-around">
             <button className="read-more">Read more</button>
@@ -52,22 +73,4 @@ export default function Viptickets(props) {
       </div>
     </>
   );
-}
-function displayQuantityTicketsVip() {
-  const quantity = document.querySelector(".vip-quantity");
-  const tickets = document.querySelector("#ticket-vip-quantity");
-  quantity.textContent = tickets.value + "x";
-  // console.log(tickets.value);
-  // Calculating the total
-  const total = tickets.value * 1299;
-  document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
-  return tickets.value;
-}
-function openVip() {
-  const vip = document.querySelector(".open-ticket-vip");
-  if ((vip.style.display = "none")) {
-    vip.style.display = "flex";
-  } else {
-    vip.style.display = "none";
-  }
 }

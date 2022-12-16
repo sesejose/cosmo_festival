@@ -2,17 +2,53 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Basket from "../../components/Booking/Basket";
 import Pages from "../../components/Booking/Pages";
+import Regtickets from "../../components/Booking/Regticket";
 
 // 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
 // 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
 // 3.  step
 //
 export default function TicketsPage(props) {
-  const [cart, setCart] = useState([]);
+  const [cartReg, setCartReg] = useState([]);
+  const [cartVip, setCartVip] = useState([]);
   const [tickets, setTickets] = useState([]);
-  const [totalVip, setTotalVip] = useState();
   const [totalReg, setTotalReg] = useState();
+  const [totalVip, setTotalVip] = useState();
   const [products, setProducts] = useState([]);
+  // Products are the areas
+
+  // arg comes as argument from the callback function in RegTicket component
+  function defineRegTotal(arg) {
+    setTotalReg(arg);
+    console.log(arg);
+  }
+  function addRegToCart(item) {
+    console.log(typeof totalReg);
+    setCartReg((i) => i.concat({ ...item, amount: totalReg }));
+
+    // console.log("addToCart", data);
+    // there are 2 options
+    // we already have the ticket
+    // we don't have the ticket yet
+    // so 1. step is to figure out if we have IF we have the ticket
+    // if (cart.find((entry) => entry.id == data.id)) {
+    // }
+    // data.return;
+  }
+
+  // arg comes as argument from the callback function in VipTicket component
+  function defineVipTotal(arg) {
+    setTotalVip(arg);
+    console.log(arg);
+  }
+  function addVipToCart(item) {
+    console.log(item);
+    setCartVip((i) => i.concat({ ...item, amount: totalVip }));
+  }
+
+  function getTotal(totalTickets) {
+    console.log(totalTickets);
+  }
 
   // Fetching tickets from Supabase (Tickets table)
   useEffect(() => {
@@ -41,54 +77,6 @@ export default function TicketsPage(props) {
     getData();
   }, []);
 
-  function defineRegTotal(regTickets) {
-    setTotalReg(regTickets);
-    addRegToCart();
-    // console.log(totalReg);
-  }
-  function addRegToCart(item) {
-    console.log(item);
-    // console.log(typeof totalReg);
-    // const totalR = parseInt(totalReg, 10);
-    setCart((i) => i.concat({ ...item, amount: totalReg }));
-
-    // console.log(typeof totalR);
-
-    // console.log("addToCart", data);
-    // there are 2 options
-    // we already have the ticket
-    // we don't have the ticket yet
-    // so 1. step is to figure out if we have IF we have the ticket
-    // if (cart.find((entry) => entry.id == data.id)) {
-    // }
-    // data.return;
-  }
-
-  function defineVipTotal(vipTickets) {
-    setTotalVip(vipTickets);
-    addVipToCart();
-    // console.log(totalVip);
-  }
-  function addVipToCart(item) {
-    console.log(item);
-    // const totalV = parseInt(totalVip, 10);
-    setCart((i) => i.concat({ ...item, amount: totalVip }));
-    // console.log(typeof totalV);
-
-    // console.log("addToCart", data);
-    // there are 2 options
-    // we already have the ticket
-    // we don't have the ticket yet
-    // so 1. step is to figure out if we have IF we have the ticket
-    // if (cart.find((entry) => entry.id == data.id)) {
-    // }
-    // data.return;
-  }
-
-  function getTotal(totalTickets) {
-    console.log(totalTickets);
-  }
-
   // Fetching areas from Available spots
   useEffect(() => {
     async function getData() {
@@ -102,18 +90,6 @@ export default function TicketsPage(props) {
   }, []);
 
   // Areas
-
-  // Fetching areas from Available spots
-  useEffect(() => {
-    async function getData() {
-      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-      const res = await fetch("http://localhost:8080/available-spots");
-      const data = await res.json();
-      setProducts(data);
-      console.log(data);
-    }
-    getData();
-  }, []);
 
   // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
   // console.log(areas);
@@ -135,7 +111,7 @@ export default function TicketsPage(props) {
   return (
     <>
       <Pages areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal}></Pages>
-      <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} cart={cart} getTotal={getTotal} />
+      <Basket areas={props.areas} cartReg={cartReg} cartVip={cartVip} getTotal={getTotal} />
     </>
   );
 }

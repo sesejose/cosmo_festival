@@ -1,14 +1,34 @@
 import { useState } from "react";
 
 export default function Regtickets(props) {
-  // function add() {
-  //   props.addToCart(props.ticket[0]);
-  // }
+  const [totalReg, setTotalReg] = useState();
 
+  // Sending the state to defineRegTotal
   function setQuantities() {
-    const quantityReg = displayQuantityTicketsRegular;
-    props.defineRegTotal(quantityReg);
+    props.defineRegTotal(totalReg);
     props.addRegToCart(props.ticket);
+    console.log(totalReg);
+    // props.addRegToCart(props.ticket);
+  }
+
+  function displayQuantityTicketsRegular() {
+    const quantity = document.querySelector(".regular-quantity");
+    const tickets = document.querySelector("#ticket-regular-quantity");
+    quantity.textContent = tickets.value + "x";
+    // console.log(tickets.value);
+    // Calculating the total
+    const total = tickets.value * 799;
+    document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;
+    setTotalReg(tickets.value);
+    return totalReg;
+  }
+  function openRegular() {
+    const regular = document.querySelector(".open-ticket-regular");
+    if ((regular.style.display = "none")) {
+      regular.style.display = "flex";
+    } else {
+      regular.style.display = "none";
+    }
   }
 
   return (
@@ -22,6 +42,8 @@ export default function Regtickets(props) {
           <div className="flex-row-space-around">
             {/* <h2>{props.ticket.name}</h2> */}
             {/* <h2>DKK {props.ticket.price}</h2> */}
+            <h2>VIP Pass</h2>
+            <h2>DKK 799</h2>
           </div>
           <div className="flex-row-space-around">
             <button className="read-more">Read more</button>
@@ -52,22 +74,4 @@ export default function Regtickets(props) {
       </div>
     </>
   );
-}
-function displayQuantityTicketsRegular() {
-  const quantity = document.querySelector(".regular-quantity");
-  const tickets = document.querySelector("#ticket-regular-quantity");
-  quantity.textContent = tickets.value + "x";
-  // console.log(tickets.value);
-  // Calculating the total
-  const total = tickets.value * 799;
-  document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;
-  return tickets.value;
-}
-function openRegular() {
-  const regular = document.querySelector(".open-ticket-regular");
-  if ((regular.style.display = "none")) {
-    regular.style.display = "flex";
-  } else {
-    regular.style.display = "none";
-  }
 }
