@@ -1,8 +1,7 @@
 import React from "react";
-import Basket from "../../components/Booking/Basket";
 import { useState, useEffect } from "react";
-import Ticket from "../../components/Booking/Ticket";
-import Regtickets from "../../components/Booking/Regticket";
+import Basket from "../../components/Booking/Basket";
+import Pages from "../../components/Booking/Pages";
 
 // 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
 // 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
@@ -119,7 +118,7 @@ export default function TicketsPage(props) {
 
   return (
     <>
-      <Ticket areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal} />
+      <Pages areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal}></Pages>
       <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} cart={cart} />
     </>
   );
