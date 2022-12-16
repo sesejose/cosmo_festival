@@ -111,7 +111,7 @@ export default function TicketsPage(props) {
   return (
     <>
       <Pages areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal}></Pages>
-      <Basket areas={props.areas} cartReg={cartReg} cartVip={cartVip} getTotal={getTotal} />
+      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} getTotal={getTotal} />
     </>
   );
 }
