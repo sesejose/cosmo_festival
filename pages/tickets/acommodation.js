@@ -29,29 +29,38 @@ import ModalAcommodation from "../../components/elements/ModalAcommodation";
 //   tentSize = "2-person tent"
 // }
 
-function Acommodation({ areas }) {
+function Acommodation({ props }) {
   const [disabled, setDisabled] = useState(false);
+  // const [totalTickets, setTotalTickets] = useState();
 
-  const area1 = areas[0].available;
-  console.log(area1);
-  const area2 = areas[1].available;
-  console.log(area2);
-  const area3 = areas[2].available;
-  console.log(area3);
-  const area4 = areas[3].available;
-  console.log(area4);
-  const area5 = areas[4].available;
-  console.log(area5);
+  // const quaReg = parseInt(props.totalReg, 10);
+  // const quaVip = parseInt(props.totalVip, 10);
 
-  function disablebutton(e) {
-    const totalTickets = 100;
-    if (totalTickets > area1) {
-      return setDisabled(true);
-
-      //   // document.querySelector("#svartheim").disabled = true;
-      //   // console.log("area1 disabled");
-    }
+  function setTotal(totalTickets) {
+    // totalTickets
+    console.log(totalTickets);
   }
+
+  // const area1 = areas[0].available;
+  // console.log(area1);
+  // const area2 = areas[1].available;
+  // console.log(area2);
+  // const area3 = areas[2].available;
+  // console.log(area3);
+  // const area4 = areas[3].available;
+  // console.log(area4);
+  // const area5 = areas[4].available;
+  // console.log(area5);
+
+  // function disablebutton(e) {
+  //   const totalTickets = 100;
+  //   if (totalTickets > area1) {
+  //     return setDisabled(true);
+
+  //     //   // document.querySelector("#svartheim").disabled = true;
+  //     //   // console.log("area1 disabled");
+  //   }
+  // }
   return (
     <>
       <section id="acommodation">
@@ -86,7 +95,7 @@ function Acommodation({ areas }) {
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Svartheim</div>
                     </label>
-                    <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input" onChange={disablebutton}></input>
+                    <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input"></input>
                   </div>
 
                   <div className="camping-area">
@@ -137,7 +146,7 @@ function Acommodation({ areas }) {
           </div>
         </div>
       </section>
-      <Basket></Basket>
+      <Basket setTotal={setTotal}></Basket>
 
       {/* <!-- Modal acommodation  --> */}
 

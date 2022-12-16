@@ -1,16 +1,14 @@
 import { useState } from "react";
 
 export default function Regtickets(props) {
-  function add() {
-    // props.addToCart(props.ticket[0]);
-  }
-
-  const [regTickets, setRegTickets] = useState();
+  // function add() {
+  //   props.addToCart(props.ticket[0]);
+  // }
 
   function setQuantities() {
     const quantityReg = displayQuantityTicketsRegular;
-    setRegTickets(quantityReg);
-    props.addToCart(regTickets);
+    props.defineRegTotal(quantityReg);
+    props.addRegToCart(props.ticket);
   }
 
   return (
@@ -22,8 +20,8 @@ export default function Regtickets(props) {
         </div>
         <div className="flex-column">
           <div className="flex-row-space-around">
-            <h2>Regular Pass</h2>
-            <h2>DKK 799</h2>
+            {/* <h2>{props.ticket.name}</h2> */}
+            {/* <h2>DKK {props.ticket.price}</h2> */}
           </div>
           <div className="flex-row-space-around">
             <button className="read-more">Read more</button>
@@ -59,7 +57,7 @@ function displayQuantityTicketsRegular() {
   const quantity = document.querySelector(".regular-quantity");
   const tickets = document.querySelector("#ticket-regular-quantity");
   quantity.textContent = tickets.value + "x";
-  console.log(tickets.value);
+  // console.log(tickets.value);
   // Calculating the total
   const total = tickets.value * 799;
   document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;

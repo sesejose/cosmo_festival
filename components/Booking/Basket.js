@@ -1,10 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-export default function Basket(regTickets, vipTickets) {
+export default function Basket(props) {
   const [data, setData] = useState();
-  const quaReg = regTickets;
-  const quaVip = vipTickets;
+  const quaReg = parseInt(props.totalReg, 10);
+  const quaVip = parseInt(props.totalVip, 10);
+  const [totalTickets, setTotakTickets] = useState();
+
+  useEffect(() => {
+    async function setTotal(totalTickets) {
+      const totalTickets = await setTotakTickets({ quaReg } + { quaVip });
+      return totalTickets;
+    }
+    setTotal();
+  }, []);
 
   // Fetching the data
   useEffect(() => {
@@ -12,10 +21,8 @@ export default function Basket(regTickets, vipTickets) {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/cosmo_festival";
       const headers = {
         "Content-Type": "application/json",
-        apikey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
         Prefer: "return-representation",
       };
       const options = {
@@ -44,7 +51,7 @@ export default function Basket(regTickets, vipTickets) {
   showTickets();
 
   async function showTickets() {
-    console.log(quaReg);
+    // console.log(quaReg);
     // const data = await getTickets();
     // Await: It makes the code wait until the promise returns a result.
     // console.log(data);
@@ -71,11 +78,8 @@ export default function Basket(regTickets, vipTickets) {
             <p className="turuoise">0</p>
           </div>
           <div>
-            <h4 className="white">Amount of tickets:</h4>
-            <p className="turquoise">{{ regTickets } + { vipTickets }}</p>
-            <p className="turquoise"></p>
-            <h5 className="turquoise">Total number of tickets</h5>
-            <p>0</p>
+            <h4 className="white">Total of tickets:</h4>
+            <p className="turquoise">{quaReg + quaVip}</p>
           </div>
 
           {/* Template */}

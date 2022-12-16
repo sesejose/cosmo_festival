@@ -15,13 +15,43 @@ export default function TicketsPage(props) {
     ,//{tickettype:"x",
     //ticketprice:1111, amount:2}
   ]);
+  const [totalVip, setTotalVip] = useState();
+  const [totalReg, setTotalReg] = useState();
 
-  function addToCart(data) {
-    const vipTickets = data;
-    console.log("addToCart", vipTickets);
-    const regTickets = data;
-    console.log("addToCart", regTickets);
+  function defineRegTotal(regTickets) {
+    setTotalReg(regTickets);
+    addRegToCart();
+    // console.log(totalReg);
+  }
+  function addRegToCart(item) {
+    console.log(item);
+    // console.log(typeof totalReg);
+    // const totalR = parseInt(totalReg, 10);
+    setCart((i) => i.concat({ ...item, amount: totalReg }));
+    // console.log(typeof totalR);
 
+    // console.log("addToCart", data);
+    // there are 2 options
+    // we already have the ticket
+    // we don't have the ticket yet
+    // so 1. step is to figure out if we have IF we have the ticket
+    // if (cart.find((entry) => entry.id == data.id)) {
+    // }
+    // data.return;
+  }
+
+  function defineVipTotal(vipTickets) {
+    setTotalVip(vipTickets);
+    addVipToCart();
+    // console.log(totalVip);
+  }
+  function addVipToCart(item) {
+    console.log(item);
+    // const totalV = parseInt(totalVip, 10);
+    setCart((i) => i.concat({ ...item, amount: totalVip }));
+    // console.log(typeof totalV);
+
+    // console.log("addToCart", data);
     // there are 2 options
     // we already have the ticket
     // we don't have the ticket yet
@@ -69,7 +99,7 @@ export default function TicketsPage(props) {
       const tickets = await res.json(); //When it's done getting it
       // return data; // This returned "data/array" used in the showData();
       setTickets(tickets);
-      console.log(tickets);
+      // console.log(tickets);
     }
     getData();
   }, []);
@@ -85,10 +115,11 @@ export default function TicketsPage(props) {
     }
     getData();
   }, []);
+
   return (
     <>
-      <Ticket areas={props.areas} tickets={tickets} addToCart={addToCart} />
-      <Basket areas={props.areas} />
+      <Ticket areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal} totalVip={totalVip} totalReg={totalReg} />
+      <Basket areas={props.areas} totalVip={totalVip} totalReg={totalReg} />
     </>
   );
 }

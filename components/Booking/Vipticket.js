@@ -1,16 +1,14 @@
 import { useState } from "react";
 
 export default function Viptickets(props) {
-  function add() {
-    // props.addToCart(props.ticket[1]);
-  }
-
-  const [vipTickets, setVipTickets] = useState();
+  // function add() {
+  //   props.addToCart(props.ticket[1]);
+  // }
 
   function setQuantities() {
     const quantityVip = displayQuantityTicketsVip;
-    setVipTickets(quantityVip);
-    props.addToCart(vipTickets);
+    props.defineVipTotal(quantityVip);
+    props.addVipToCart(props.ticket);
   }
 
   return (
@@ -22,8 +20,8 @@ export default function Viptickets(props) {
         </div>
         <div className="flex-column">
           <div className="flex-row-space-around">
-            <h2>VIP Pass</h2>
-            <h2>DKK 1299</h2>
+            {/* <h2>{props.ticket.name}</h2> */}
+            {/* <h2>DKK {props.ticket.price}</h2> */}
           </div>
           <div className="flex-row-space-around">
             <button className="read-more">Read more</button>
@@ -59,7 +57,7 @@ function displayQuantityTicketsVip() {
   const quantity = document.querySelector(".vip-quantity");
   const tickets = document.querySelector("#ticket-vip-quantity");
   quantity.textContent = tickets.value + "x";
-  console.log(tickets.value);
+  // console.log(tickets.value);
   // Calculating the total
   const total = tickets.value * 1299;
   document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
