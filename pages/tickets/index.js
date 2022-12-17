@@ -23,8 +23,11 @@ export default function TicketsPage(props) {
     console.log(arg);
   }
   function addRegToCart(item) {
-    console.log(typeof totalReg);
-    setCartReg((i) => i.concat({ ...item, amount: totalReg }));
+    console.log(item);
+    setCartReg((i) => i.concat({ ...item, amount: parseInt(totalReg, 10) }));
+    console.log(typeof item.amount);
+    console.log(totalReg);
+    // }
 
     // console.log("addToCart", data);
     // there are 2 options
@@ -43,7 +46,9 @@ export default function TicketsPage(props) {
   }
   function addVipToCart(item) {
     console.log(item);
-    setCartVip((i) => i.concat({ ...item, amount: totalVip }));
+    setCartVip((i) => i.concat({ ...item, amount: parseInt(totalVip, 10) }));
+    console.log(typeof item.amount);
+    console.log(totalVip);
   }
 
   function getTotal(totalTickets) {

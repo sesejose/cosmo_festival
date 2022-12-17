@@ -3,12 +3,11 @@ import { useState } from "react";
 export default function Regtickets(props) {
   const [totalReg, setTotalReg] = useState();
 
-  // Sending the state to defineRegTotal
+  // Sending the state to defineRegTotal (note that this is an string yet)
   function setQuantities() {
     props.defineRegTotal(totalReg);
     props.addRegToCart(props.ticket);
-    console.log(totalReg);
-    // props.addRegToCart(props.ticket);
+    console.log(typeof totalReg);
   }
 
   function displayQuantityTicketsRegular() {
