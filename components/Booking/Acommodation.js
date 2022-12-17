@@ -31,9 +31,11 @@ import { useEffect } from "react";
 // }
 
 export default function Acommodation(props) {
-  const [disabled, setDisabled] = useState(false);
-
-  const [status, setStatus] = useState(false);
+  const [status1, setStatus1] = useState(false);
+  const [status2, setStatus2] = useState(false);
+  const [status3, setStatus3] = useState(false);
+  const [status4, setStatus4] = useState(false);
+  const [status5, setStatus5] = useState(false);
   // And then onChange I run this code:
   // setIsChecked(!isDisbaled);
   // So as I understand it on the first change it should already update the state to true but instead it stays false on the first check and only on the second one it switches to true and then to false etc.
@@ -48,13 +50,39 @@ export default function Acommodation(props) {
   // console.log(area4);
   const area5 = props.areas[4].available;
   // console.log(area5);
+  const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
+  console.log("Tickets", ticketsQuantity);
+  console.log("Area1:", area1);
+  console.log("Area2:", area2);
+  console.log("Area3:", area3);
+  console.log("Area4:", area4);
+  console.log("Area5:", area5);
 
-  function evaluate() {
-    if (props.cartReg.amount > area4) {
+  function checkAvailability() {
+    if (ticketsQuantity > area1) {
       const svartheim = document.querySelector("#svartheim");
-      svartheim.disabled = { status };
-      setStatus(true);
-      console.log(status);
+      svartheim.disabled = { status1 };
+      setStatus1(true);
+    }
+    if (ticketsQuantity > area2) {
+      const nilfheim = document.querySelector("#nilfheim");
+      nilfheim.disabled = { status2 };
+      setStatus2(true);
+    }
+    if (ticketsQuantity > area3) {
+      const helheim = document.querySelector("#helheim");
+      helheim.disabled = { status3 };
+      setStatus3(true);
+    }
+    if (ticketsQuantity > area4) {
+      const muspelheim = document.querySelector("#muspelheim");
+      muspelheim.disabled = { status4 };
+      setStatus4(true);
+    }
+    if (ticketsQuantity > area5) {
+      const alfheim = document.querySelector("#alfheim");
+      alfheim.disabled = { status5 };
+      setStatus5(true);
     }
   }
 
@@ -101,14 +129,14 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Svartheim</div>
                   </label>
-                  <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input" defaultChecked onChange={evaluate}></input>
+                  <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input" defaultChecked onChange={checkAvailability}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Nilfheim</div>
                   </label>
-                  <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
+                  <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input" onChange={checkAvailability}></input>
                 </div>
               </div>
 
@@ -121,21 +149,21 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Helheim</div>
                   </label>
-                  <input type="radio" id="helheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
+                  <input type="radio" id="helheim" name="camping-area" value="2" className="radio-input" onChange={checkAvailability}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Muspelheim</div>
                   </label>
-                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
+                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onChange={checkAvailability}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Alfheim</div>
                   </label>
-                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
+                  <input type="radio" id="alfheim" name="camping-area" value="2" className="radio-input" onChange={checkAvailability}></input>
                 </div>
               </div>
             </div>
