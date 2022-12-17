@@ -12,10 +12,10 @@ function Pages(props) {
         <div className="container-page">
           <ul>
             <li>
-              <Ticket areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} defineVipTotal={props.defineVipTotal} defineRegTotal={props.defineRegTotal} />
+              <Ticket areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} />
             </li>
             <li>
-              <Acommodation />
+              <Acommodation areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} />
             </li>
             <li>
               <Personal />

@@ -90,20 +90,31 @@ export default function Basket(props) {
             <p className="turquoise">{props.totalReg + props.totalVip}</p>
           </div>
 
-          {/* Template REGULAR */}
-          {/* {props.cartReg.map((item) => ( */}
           <div id="ticket-template">
-            <div className="post-text-container">
-              {/* <h3 className="turquoise type">{cartReg.displayname}</h3> */}
-              {/* <h4 className="white price">Ticket price: DKK {cartReg.price}</h4> */}
-            </div>
-            <div className="post-text-container">
-              {/* <p>x{cartReg.amount}</p> */}
-              <button className="btn-remove">Remove</button>
+            <div className="posts">
+              <div className="post-quantity-remove">
+                <h3 className="turquoise type">{props.cartReg.displayname}</h3>
+                <h4 className="white price">Ticket price: DKK {props.cartReg.price}</h4>
+              </div>
+              <div className="post-type-price">
+                <h3 className="turquoise type">x{props.cartReg.amount}</h3>
+                <button className="btn-remove">Remove</button>
+              </div>
             </div>
           </div>
-          {/* ))} */}
-          {/* Template ends */}
+
+          <div id="ticket-template">
+            <div className="posts">
+              <div className="post-quantity-remove">
+                <h3 className="turquoise type">{props.cartVip.displayname}</h3>
+                <h4 className="white price">Ticket price: DKK {props.cartVip.price}</h4>
+              </div>
+              <div className="post-type-price">
+                <h3 className="turquoise type">x{props.cartVip.amount}</h3>
+                <button className="btn-remove">Remove</button>
+              </div>
+            </div>
+          </div>
 
           {/* Template VIP */}
           {/* <div id="ticket-template">

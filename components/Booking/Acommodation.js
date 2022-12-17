@@ -30,20 +30,33 @@ import { useEffect } from "react";
 //   tentSize = "2-person tent"
 // }
 
-export default function Acommodation({ areas }) {
+export default function Acommodation(props) {
   const [disabled, setDisabled] = useState(false);
-  const [totalTickets, setTotalTickets] = useState();
 
-  // const area1 = areas[0].available;
+  const [status, setStatus] = useState(false);
+  // And then onChange I run this code:
+  // setIsChecked(!isDisbaled);
+  // So as I understand it on the first change it should already update the state to true but instead it stays false on the first check and only on the second one it switches to true and then to false etc.
+
+  const area1 = props.areas[0].available;
   // console.log(area1);
-  // const area2 = areas[1].available;
+  const area2 = props.areas[1].available;
   // console.log(area2);
-  // const area3 = areas[2].available;
+  const area3 = props.areas[2].available;
   // console.log(area3);
-  // const area4 = areas[3].available;
+  const area4 = props.areas[3].available;
   // console.log(area4);
-  // const area5 = areas[4].available;
+  const area5 = props.areas[4].available;
   // console.log(area5);
+
+  function evaluate() {
+    if (props.cartReg.amount > area4) {
+      const svartheim = document.querySelector("#svartheim");
+      svartheim.disabled = { status };
+      setStatus(true);
+      console.log(status);
+    }
+  }
 
   // function disablebutton(e) {
   //   const totalTickets = 100;
@@ -88,14 +101,14 @@ export default function Acommodation({ areas }) {
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Svartheim</div>
                   </label>
-                  <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input"></input>
+                  <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input" defaultChecked onChange={evaluate}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Nilfheim</div>
                   </label>
-                  <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
+                  <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
                 </div>
               </div>
 
@@ -108,21 +121,21 @@ export default function Acommodation({ areas }) {
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Helheim</div>
                   </label>
-                  <input type="radio" id="helheim" name="camping-area" value="2" className="radio-input" onClick={() => setDisabled(!false)}></input>
+                  <input type="radio" id="helheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Muspelheim</div>
                   </label>
-                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onClick={() => setDisabled(!false)}></input>
+                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Alfheim</div>
                   </label>
-                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onClick={() => setDisabled(!false)}></input>
+                  <input type="radio" id="muspelheim" name="camping-area" value="2" className="radio-input" onChange={evaluate}></input>
                 </div>
               </div>
             </div>

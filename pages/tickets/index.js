@@ -2,12 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Basket from "../../components/Booking/Basket";
 import Pages from "../../components/Booking/Pages";
-import Regtickets from "../../components/Booking/Regticket";
+// import Regtickets from "../../components/Booking/Regticket";
 
-// 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
-// 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
-// 3.  step
-//
 export default function TicketsPage(props) {
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
@@ -15,8 +11,7 @@ export default function TicketsPage(props) {
   // const [tickets, setTickets] = useState([]);
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
-  const [products, setProducts] = useState([]);
-  // Products are the areas
+  const [availables, setAvailables] = useState([]);
 
   // 2 Parameters come from the callback function in RegTicket component
   function addRegToCart(cartReg, totalReg) {
@@ -25,6 +20,7 @@ export default function TicketsPage(props) {
     if (cartReg.amount === 0) {
       setCartReg({ ...cartReg, amount: amount });
     }
+    console.log(availables);
   }
 
   // 2 Parameters come from the callback function in VipTicket component
@@ -34,10 +30,6 @@ export default function TicketsPage(props) {
     if (cartVip.amount === 0) {
       setCartVip({ ...cartVip, amount: amount });
     }
-  }
-
-  function getTotal(totalTickets) {
-    console.log(totalTickets);
   }
 
   // Fetching tickets from Supabase (Tickets table)
@@ -73,8 +65,8 @@ export default function TicketsPage(props) {
       // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
       const res = await fetch("http://localhost:8080/available-spots");
       const data = await res.json();
-      setProducts(data);
-      console.log(data);
+      setAvailables(data);
+      // console.log(data);
     }
     getData();
   }, []);
@@ -101,7 +93,7 @@ export default function TicketsPage(props) {
   return (
     <>
       <Pages areas={props.areas} cartReg={cartReg} cartVip={cartVip} addRegToCart={addRegToCart} addVipToCart={addVipToCart} />
-      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} getTotal={getTotal} />
+      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} />
     </>
   );
 }
@@ -109,11 +101,10 @@ export default function TicketsPage(props) {
 // Fetching areas from Available spots
 export async function getStaticProps() {
   /* This function runs before the component bands is render
-    - fetch the data
-    - wait for that data
-    - once we have the data, it put into the component
-    - so the component can render with that data inside it  */
-
+  - fetch the data
+  - wait for that data
+  - once we have the data, it put into the component
+  - so the component can render with that data inside it  */
   // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
   const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();

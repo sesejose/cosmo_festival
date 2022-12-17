@@ -1083,6 +1083,20 @@ footer svg {
   /* padding: var(--p); */
 }
 
+.post-quantity-remove {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.post-type-price {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
 /* Acommodation Page */
 
 .map-container {
