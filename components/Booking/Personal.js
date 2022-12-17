@@ -3,6 +3,33 @@ import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, Ac
 // import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
 
+// let setUpPrice
+// let tentSize = ""
+
+// function step2(props) {
+//   // const ticketAmount = amount of requested tickets from previous step
+//   const tickets = props.totalTickets;
+//   // Optional, pay to have the crew set up X tents for you.
+// // 2 person tent (including the tent) 299,-
+// // 3 person tent (including the tent) 399,-
+// // The number of tents must match the number of people in the group (number of tickets).
+// if (tickets <= 2) {
+//   setUpPrice = 299
+//   tentSize = "2-person tent"
+// } else if (tickets === 3) {
+//   setUpPrice = 399
+//   tentSize = "3-person tent"
+// } else if (tickets === 4) {
+//   setUpPrice = 598
+//   tentSize = "2 x 2-person tents"
+// } else if (tickets === 5) {
+//   setUpPrice = 798;
+//   tentSize = "1 x 2 person tent & 1 x 3 person tent"
+// } else {
+//   setUpPrice = 299;
+//   tentSize = "2-person tent"
+// }
+
 function personal() {
   return (
     <>
