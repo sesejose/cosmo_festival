@@ -15,8 +15,8 @@ export default function Tickets(props) {
             <p className="text-center">Note! The limit per purchase is 9 tickets!</p>
           </div>
           <div className="tickets-container">
-            <Regtickets ticket={props.tickets[0]} addRegToCart={props.addRegToCart} defineRegTotal={props.defineRegTotal} />
-            <Viptickets ticket={props.tickets[1]} addVipToCart={props.addVipToCart} defineVipTotal={props.defineVipTotal} />
+            <Regtickets key={props.cartReg.id} cartReg={props.cartReg} addRegToCart={props.addRegToCart} />
+            <Viptickets key={props.cartVip.id} cartVip={props.cartVip} addVipToCart={props.addVipToCart} />
           </div>
           {/* <Anchor className="btn-main" href={"tickets/acommodation"}>
             Acomodation

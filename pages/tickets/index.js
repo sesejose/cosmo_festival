@@ -11,44 +11,29 @@ import Regtickets from "../../components/Booking/Regticket";
 export default function TicketsPage(props) {
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
-  const [tickets, setTickets] = useState([]);
+  // const [cart, setCart] = useState([]);
+  // const [tickets, setTickets] = useState([]);
   const [totalReg, setTotalReg] = useState();
-  const [totalVip, setTotalVip] = useState();
+  const [totalVip, setTotalVip] = useState([]);
   const [products, setProducts] = useState([]);
   // Products are the areas
 
-  // arg comes as argument from the callback function in RegTicket component
-  function defineRegTotal(arg) {
-    setTotalReg(arg);
-    console.log(arg);
-  }
-  function addRegToCart(item) {
-    console.log(item);
-    setCartReg((i) => i.concat({ ...item, amount: parseInt(totalReg, 10) }));
-    console.log(typeof item.amount);
-    console.log(totalReg);
-    // }
-
-    // console.log("addToCart", data);
-    // there are 2 options
-    // we already have the ticket
-    // we don't have the ticket yet
-    // so 1. step is to figure out if we have IF we have the ticket
-    // if (cart.find((entry) => entry.id == data.id)) {
-    // }
-    // data.return;
+  // 2 Parameters come from the callback function in RegTicket component
+  function addRegToCart(cartReg, totalReg) {
+    setTotalReg(totalReg);
+    const amount = totalReg;
+    if (cartReg.amount === 0) {
+      setCartReg({ ...cartReg, amount: amount });
+    }
   }
 
-  // arg comes as argument from the callback function in VipTicket component
-  function defineVipTotal(arg) {
-    setTotalVip(arg);
-    console.log(arg);
-  }
-  function addVipToCart(item) {
-    console.log(item);
-    setCartVip((i) => i.concat({ ...item, amount: parseInt(totalVip, 10) }));
-    console.log(typeof item.amount);
-    console.log(totalVip);
+  // 2 Parameters come from the callback function in VipTicket component
+  function addVipToCart(cartVip, totalVip) {
+    setTotalVip(totalVip);
+    const amount = totalVip;
+    if (cartVip.amount === 0) {
+      setCartVip({ ...cartVip, amount: amount });
+    }
   }
 
   function getTotal(totalTickets) {
@@ -76,8 +61,8 @@ export default function TicketsPage(props) {
       const res = await fetch(url, options, body); // Fetchs the data (await)
       const tickets = await res.json(); //When it's done getting it
       // return data; // This returned "data/array" used in the showData();
-      setTickets(tickets);
-      // console.log(tickets);
+      setCartReg(tickets[0]);
+      setCartVip(tickets[1]);
     }
     getData();
   }, []);
@@ -115,7 +100,7 @@ export default function TicketsPage(props) {
 
   return (
     <>
-      <Pages areas={props.areas} tickets={tickets} addRegToCart={addRegToCart} addVipToCart={addVipToCart} defineVipTotal={defineVipTotal} defineRegTotal={defineRegTotal}></Pages>
+      <Pages areas={props.areas} cartReg={cartReg} cartVip={cartVip} addRegToCart={addRegToCart} addVipToCart={addVipToCart} />
       <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} getTotal={getTotal} />
     </>
   );

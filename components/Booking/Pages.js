@@ -12,7 +12,7 @@ function Pages(props) {
         <div className="container-page">
           <ul>
             <li>
-              <Ticket areas={props.areas} tickets={props.tickets} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} defineVipTotal={props.defineVipTotal} defineRegTotal={props.defineRegTotal} />
+              <Ticket areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} defineVipTotal={props.defineVipTotal} defineRegTotal={props.defineRegTotal} />
             </li>
             <li>
               <Acommodation />

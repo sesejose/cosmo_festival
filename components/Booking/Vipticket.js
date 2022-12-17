@@ -3,10 +3,9 @@ import { useState } from "react";
 export default function Viptickets(props) {
   const [totalVip, setTotalVip] = useState();
 
-  // Sending the state to defineVipTotal
+  // Sending 2 parameters to addVipToCart
   function setQuantities() {
-    props.defineVipTotal(totalVip);
-    props.addVipToCart(props.ticket);
+    props.addVipToCart(props.cartVip, totalVip);
     console.log(typeof totalVip);
   }
 
@@ -18,7 +17,7 @@ export default function Viptickets(props) {
     // Calculating the total
     const total = tickets.value * 1299;
     document.querySelector(".totalTicketsVip").textContent = "DKK " + total;
-    setTotalVip(tickets.value);
+    setTotalVip(parseInt(tickets.value, 10));
     return totalVip;
   }
   function openVip() {

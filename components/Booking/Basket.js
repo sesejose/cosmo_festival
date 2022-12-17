@@ -15,6 +15,7 @@ export default function Basket(props) {
     }
     getTotal(totalTickets);
     // console.log(totalTickets);
+    // console.log(props.cartReg.displayname);
   });
 
   // Fetching the cosmo_festival table from Supabase
@@ -89,14 +90,32 @@ export default function Basket(props) {
             <p className="turquoise">{quaReg + quaVip}</p>
           </div>
 
-          {/* Template */}
-          {/* <template id="ticket-template">
-              <div className="post-text-container">
-                <h3 className="turquoise type">Regular Pass</h3>
-                <h4 className="white price">Ticket price: DKK 799</h4>
-              </div>
+          {/* Template REGULAR */}
+          {/* {props.cartReg.map((item) => ( */}
+          <div id="ticket-template">
+            <div className="post-text-container">
+              {/* <h3 className="turquoise type">{cartReg.displayname}</h3> */}
+              {/* <h4 className="white price">Ticket price: DKK {cartReg.price}</h4> */}
+            </div>
+            <div className="post-text-container">
+              {/* <p>x{cartReg.amount}</p> */}
               <button className="btn-remove">Remove</button>
-            </template> */}
+            </div>
+          </div>
+          {/* ))} */}
+          {/* Template ends */}
+
+          {/* Template VIP */}
+          {/* <div id="ticket-template">
+            <div className="post-text-container">
+              <h3 className="turquoise type">VIP Pass</h3>
+              <h4 className="white price">Ticket price: DKK 799</h4>
+            </div>
+            <div className="post-text-container">
+              <p>Amount</p>
+              <button className="btn-remove">Remove</button>
+            </div>
+          </div> */}
           {/* Template ends */}
 
           <hr></hr>

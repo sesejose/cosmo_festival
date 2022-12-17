@@ -3,10 +3,9 @@ import { useState } from "react";
 export default function Regtickets(props) {
   const [totalReg, setTotalReg] = useState();
 
-  // Sending the state to defineRegTotal (note that this is an string yet)
+  // Sending 2 parameters to addRegToCart
   function setQuantities() {
-    props.defineRegTotal(totalReg);
-    props.addRegToCart(props.ticket);
+    props.addRegToCart(props.cartReg, totalReg);
     console.log(typeof totalReg);
   }
 
@@ -18,7 +17,7 @@ export default function Regtickets(props) {
     // Calculating the total
     const total = tickets.value * 799;
     document.querySelector(".totalTicketsRegular").textContent = "DKK " + total;
-    setTotalReg(tickets.value);
+    setTotalReg(parseInt(tickets.value, 10));
     return totalReg;
   }
   function openRegular() {
