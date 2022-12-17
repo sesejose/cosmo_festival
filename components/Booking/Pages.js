@@ -15,7 +15,7 @@ function Pages(props) {
               <Ticket areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} />
             </li>
             <li>
-              <Acommodation areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} />
+              <Acommodation areas={props.areas} cartReg={props.cartReg} cartVip={props.cartVip} addRegToCart={props.addRegToCart} addVipToCart={props.addVipToCart} chosenArea={props.chosenArea} />
             </li>
             <li>
               <Personal />

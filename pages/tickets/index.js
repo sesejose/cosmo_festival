@@ -12,6 +12,7 @@ export default function TicketsPage(props) {
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
   const [availables, setAvailables] = useState([]);
+  const [spot, setSpot] = useState();
 
   // 2 Parameters come from the callback function in RegTicket component
   function addRegToCart(cartReg, totalReg) {
@@ -71,29 +72,16 @@ export default function TicketsPage(props) {
     getData();
   }, []);
 
-  // Areas
-
-  // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
-  // console.log(areas);
-  // const {
-  //   0: { area, spots, available },
-  // } = areas;
-  // console.log(areas[0]);
-  // const area1 = areas[0].available;
-  // console.log(area1);
-  // const area2 = areas[1].available;
-  // console.log(area2);
-  // const area3 = areas[2].available;
-  // console.log(area3);
-  // const area4 = areas[3].available;
-  // console.log(area4);
-  // const area5 = areas[4].available;
-  // console.log(area5);
+  // Acommodation
+  // This function returns with a parameter (the area selected)
+  function chosenArea(acommodation) {
+    setSpot(acommodation);
+  }
 
   return (
     <>
-      <Pages areas={props.areas} cartReg={cartReg} cartVip={cartVip} addRegToCart={addRegToCart} addVipToCart={addVipToCart} />
-      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} />
+      <Pages areas={props.areas} cartReg={cartReg} cartVip={cartVip} addRegToCart={addRegToCart} addVipToCart={addVipToCart} chosenArea={chosenArea} />
+      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} spot={spot} />
     </>
   );
 }

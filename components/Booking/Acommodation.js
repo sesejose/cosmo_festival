@@ -5,11 +5,12 @@ import { useEffect } from "react";
 
 export default function Acommodation(props) {
   // First define the state
-  const [acommodation, setAcommodation] = useState("first");
+  const [acommodation, setAcommodation] = useState();
   // Then achange the state according to event
   function defineAcommodation(event) {
     setAcommodation(event.target.value);
     console.log(acommodation);
+    props.chosenArea(acommodation);
   }
   // Then update / add it to the cart
 

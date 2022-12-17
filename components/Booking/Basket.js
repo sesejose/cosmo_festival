@@ -115,25 +115,12 @@ export default function Basket(props) {
               </div>
             </div>
           </div>
-
-          {/* Template VIP */}
-          {/* <div id="ticket-template">
-            <div className="post-text-container">
-              <h3 className="turquoise type">VIP Pass</h3>
-              <h4 className="white price">Ticket price: DKK 799</h4>
-            </div>
-            <div className="post-text-container">
-              <p>Amount</p>
-              <button className="btn-remove">Remove</button>
-            </div>
-          </div> */}
-          {/* Template ends */}
-
           <hr></hr>
           <div className="posts">
             <div className="post-text-container">
               <h3 className="turquoise">Acommodation</h3>
-              <h4 className="white">Nilfheim</h4>
+              <h4 className="white">{props.spot}</h4>
+              {/* <h4 className="white">Fuck!</h4> */}
             </div>
           </div>
           <hr></hr>
