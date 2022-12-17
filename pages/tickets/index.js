@@ -13,8 +13,8 @@ export default function TicketsPage(props) {
   const [cartVip, setCartVip] = useState([]);
   // const [cart, setCart] = useState([]);
   // const [tickets, setTickets] = useState([]);
-  const [totalReg, setTotalReg] = useState();
-  const [totalVip, setTotalVip] = useState([]);
+  const [totalReg, setTotalReg] = useState(0);
+  const [totalVip, setTotalVip] = useState(0);
   const [products, setProducts] = useState([]);
   // Products are the areas
 

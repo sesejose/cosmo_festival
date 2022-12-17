@@ -3,20 +3,20 @@ import { useEffect, useState } from "react";
 
 export default function Basket(props) {
   const [data, setData] = useState();
-  const quaReg = parseInt(props.totalReg, 10);
-  const quaVip = parseInt(props.totalVip, 10);
-  const [totalTickets, setTotalTickets] = useState([]);
+  // const quaReg = parseInt(props.totalReg, 10);
+  // const quaVip = parseInt(props.totalVip, 10);
+  // const [totalTickets, setTotalTickets] = useState([]);
 
-  useEffect(() => {
-    function getTotal() {
-      const total = 10;
-      setTotalTickets(total);
-      // return totalTickets
-    }
-    getTotal(totalTickets);
-    // console.log(totalTickets);
-    // console.log(props.cartReg.displayname);
-  });
+  // useEffect(() => {
+  //   function getTotal() {
+  //     const total = 10;
+  //     setTotalTickets(total);
+  //     // return totalTickets
+  //   }
+  //   getTotal(totalTickets);
+  //   // console.log(totalTickets);
+  //   // console.log(props.cartReg.displayname);
+  // });
 
   // Fetching the cosmo_festival table from Supabase
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function Basket(props) {
           </div>
           <div>
             <h4 className="white">Total of tickets:</h4>
-            <p className="turquoise">{quaReg + quaVip}</p>
+            <p className="turquoise">{props.totalReg + props.totalVip}</p>
           </div>
 
           {/* Template REGULAR */}
