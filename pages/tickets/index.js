@@ -2,7 +2,7 @@ import React from "react";
 import Basket from "../../components/Booking/Basket";
 import { useState, useEffect } from "react";
 import Ticket from "../../components/Booking/Ticket";
-
+import acommodation from "./acommodation";
 // 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
 // 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
 // 3.  step
@@ -81,6 +81,7 @@ export default function TicketsPage(props) {
     <>
       <Ticket areas={props.areas} tickets={tickets} addToCart={addToCart} />
       <Basket areas={props.areas} />
+      <acommodation />
     </>
   );
 }

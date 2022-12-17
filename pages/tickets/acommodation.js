@@ -31,25 +31,22 @@ import ModalAcommodation from "../../components/Elements/ModalAcommodation";
 
 function Acommodation({ areas }) {
   const [disabled, setDisabled] = useState(false);
-
   const area1 = areas[0].available;
-  console.log(area1);
+  // console.log(area1);
   const area2 = areas[1].available;
-  console.log(area2);
+  // console.log(area2);
   const area3 = areas[2].available;
-  console.log(area3);
+  // console.log(area3);
   const area4 = areas[3].available;
-  console.log(area4);
+  // console.log(area4);
   const area5 = areas[4].available;
-  console.log(area5);
+  // console.log(area5);
 
-  function disablebutton(e) {
-    const totalTickets = 100;
+  function disablebutton() {
+    const totalTickets = 44;
     if (totalTickets > area1) {
-      return setDisabled(true);
-
-      //   // document.querySelector("#svartheim").disabled = true;
-      //   // console.log("area1 disabled");
+      setDisabled(true);
+      console.log("setDisabled");
     }
   }
   return (
@@ -92,7 +89,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="1"
                       className="radio-input"
-                      onChange={disablebutton}
+                      onClick={disablebutton}
                     ></input>
                   </div>
 
@@ -106,7 +103,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={() => setDisabled(!false)}
+                      onClick={disablebutton}
                     ></input>
                   </div>
                 </div>
@@ -126,7 +123,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={() => setDisabled(!false)}
+                      onClick={disablebutton}
                     ></input>
                   </div>
 
@@ -140,7 +137,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={() => setDisabled(!false)}
+                      onClick={disablebutton}
                     ></input>
                   </div>
 
@@ -150,11 +147,11 @@ function Acommodation({ areas }) {
                     </label>
                     <input
                       type="radio"
-                      id="muspelheim"
+                      id="alfheim"
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={() => setDisabled(!false)}
+                      onClick={disablebutton}
                     ></input>
                   </div>
                 </div>
