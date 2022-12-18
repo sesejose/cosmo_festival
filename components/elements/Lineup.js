@@ -1,38 +1,51 @@
 import Link from "next/link";
 // import styles from "../styles/Home.module.css";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+// import "react-tabs/style/react-tabs.css";
 
 export default function Lineup({ bands }) {
   return (
     <>
       <section id="lineup">
-        <div className="container">
-          <div>
-            <h1>Lineup</h1>
-            <ol>
-              <li>
-                <button className="btn-days">Monday</button>
-              </li>
-              <li>
-                <button className="btn-days">Tuesday</button>
-              </li>
-              <li>
-                <button className="btn-days">Wednesday</button>
-              </li>
-              <li>
-                <button className="btn-days">Thursday</button>
-              </li>
-              <li>
-                <button className="btn-days">Friday</button>
-              </li>
-              <li>
-                <button className="btn-days">Saturday</button>
-              </li>
-              <li>
-                <button className="btn-days">Sunday</button>
-              </li>
-            </ol>
-          </div>
-          <div>{bands}</div>
+        <div className="">
+          <Tabs>
+            <TabList className="flex-row-space-around container">
+              <Tab>Monday</Tab>
+              <Tab>Tuesday</Tab>
+              <Tab>Wednesday</Tab>
+              <Tab>Thursday</Tab>
+              <Tab>Friday</Tab>
+              <Tab>Saturday</Tab>
+              <Tab>Sunday</Tab>
+            </TabList>
+
+            <TabPanel>
+              <div>
+                <h2>{bands}</h2>
+              </div>
+              <p>Something</p>
+            </TabPanel>
+            <TabPanel>
+              <h2>{bands}</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>{bands}</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>{bands}</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>{bands}</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>{bands}</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>{bands}</h2>
+            </TabPanel>
+          </Tabs>
+
+          {/* <div>{bands}</div> */}
         </div>
       </section>
 
@@ -49,17 +62,19 @@ export default function Lineup({ bands }) {
 
 export async function getStaticProps() {
   /* This function runs before the component bands is render
-       - fetch the data
-       - wait for that data
-       - once we have the data, it put into the component
-       - so the component can render with that data inside it  */
+    - fetch the data
+    - wait for that data
+    - once we have the data, it put into the component
+    - so the component can render with that data inside it  */
 
+  // const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
   const res = await fetch("http://localhost:8080/bands");
   const data = await res.json();
-  /* - we return a value for this function
-   - that value is got we have a props property we give the property a value
-   - that value is going to be an object
-   - inside the objecint to be an object so we can past all the properties that we need*/
+
+  /* - we return a value for this function 
+- that value is got we have a props property we give the property a value
+- that value is going to be an object 
+- inside the objecint to be an object so we can past all the properties that we need*/
   return {
     props: { bands: data },
   };

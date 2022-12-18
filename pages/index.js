@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Herosection from "../components/elements/Herosection";
 import Lineup from "../components/elements/Lineup";
-import Ticketsmain from "../components/elements/Ticketsmain";
+import TIcketsmain from "../components/elements/TIcketsmain";
 import Accomodation from "../components/elements/Accomodation";
 import Basket from "../components/Booking/Basket";
 
@@ -28,7 +28,7 @@ export default function Home({ areas, schedule, bands }) {
       <div className="container-page">
         <Herosection />
         <Lineup />
-        <Ticketsmain />
+        <TIcketsmain />
         <Accomodation />
       </div>
       <Basket areas={areas}></Basket>
@@ -37,14 +37,14 @@ export default function Home({ areas, schedule, bands }) {
 }
 export async function getServerSideProps() {
   const [scheduleRes, bandsRes, areasRes] = await Promise.all([
-    fetch(`http://localhost:8080/schedule`),
+    // fetch(`https://bitter-moon-5524.fly.dev/schedule`),
+    fetch("http://localhost:8080/schedule"),
 
-    //fetch("https://rough-snowflake-4981.fly.dev/schedule"), //karina URL:  (just in case)
+    // fetch(`https://bitter-moon-5524.fly.dev/bands`),
+    fetch("http://localhost:8080/bands"),
 
-    fetch(`http://localhost:8080/bands#`),
-
-    //fetch("https://rough-snowflake-4981.fly.dev/bands") //karina URL:  (just in case)
-    fetch(`http://localhost:8080/available-spots`),
+    // fetch(`https://bitter-moon-5524.fly.dev/available-spots`),
+    fetch("http://localhost:8080/bands"),
   ]);
 
   const [schedule, bands, areas] = await Promise.all([scheduleRes.json(), bandsRes.json(), areasRes.json()]);

@@ -1,45 +1,41 @@
 import React from "react";
-import Basket from "../../components/Booking/Basket";
 import { useState, useEffect } from "react";
-import Ticket from "../../components/Booking/Ticket";
-import acommodation from "./acommodation";
-// 1.  step we need to fetch the data for the areas ( how many available spaces are there in each individual areas)
-// 2.  step check which area has enough space, by comparing it it total tickets in basket - what if there is none? => show sold out
-// 3.  step
-//
-export default function TicketsPage(props) {
-  const [tickets, setData] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([
-    ,//{tickettype:"x",
-    //ticketprice:1111, amount:2}
-  ]);
-  function addToCart(data) {
-    console.log("addToCart", data);
-    // there are 2 options
-    // we already have the ticket
-    // we don't have the ticket yet
-    // so 1. step is to figure out if we have IF we have the ticket
-    // if (cart.find((entry) => entry.id == data.id)) {
-    // }
-  }
-  // const  {Midgard: {mon,tue, wen, thu,fri,sat,sun}} = schedule
-  // console.log(areas);
-  // const {
-  //   0: { area, spots, available },
-  // } = areas;
-  // console.log(areas[0]);
-  // const area1 = areas[0].available;
-  // console.log(area1);
-  // const area2 = areas[1].available;
-  // console.log(area2);
-  // const area3 = areas[2].available;
-  // console.log(area3);
-  // const area4 = areas[3].available;
-  // console.log(area4);
-  // const area5 = areas[4].available;
-  // console.log(area5);
+import Basket from "../../components/Booking/Basket";
+import Pages from "../../components/Booking/Pages";
+// import Regtickets from "../../components/Booking/Regticket";
 
+export default function TicketsPage(props) {
+  const [cartReg, setCartReg] = useState([]);
+  const [cartVip, setCartVip] = useState([]);
+  // const [cart, setCart] = useState([]);
+  // const [tickets, setTickets] = useState([]);
+  const [totalReg, setTotalReg] = useState(0);
+  const [totalVip, setTotalVip] = useState(0);
+  const [totalPrice, setTotalPrice] = useState();
+  const [availables, setAvailables] = useState([]);
+  const [spot, setSpot] = useState();
+
+  // 2 Parameters come from the callback function in RegTicket component
+  function addRegToCart(cartReg, totalReg) {
+    setTotalReg(totalReg);
+    const amount = totalReg;
+    if (cartReg.amount === 0) {
+      setCartReg({ ...cartReg, amount: amount });
+    }
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
+  }
+
+  // 2 Parameters come from the callback function in VipTicket component
+  function addVipToCart(cartVip, totalVip) {
+    setTotalVip(totalVip);
+    const amount = totalVip;
+    if (cartVip.amount === 0) {
+      setCartVip({ ...cartVip, amount: amount });
+    }
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
+  }
+
+  // Fetching tickets from Supabase (Tickets table)
   useEffect(() => {
     async function getData() {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
@@ -62,36 +58,61 @@ export default function TicketsPage(props) {
       const res = await fetch(url, options, body); // Fetchs the data (await)
       const tickets = await res.json(); //When it's done getting it
       // return data; // This returned "data/array" used in the showData();
-      setData(tickets);
-      console.log(tickets);
+      setCartReg(tickets[0]);
+      setCartVip(tickets[1]);
     }
     getData();
   }, []);
 
+  // Fetching areas from Available spots
   useEffect(() => {
     async function getData() {
+      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
       const res = await fetch("http://localhost:8080/available-spots");
       const data = await res.json();
-      setProducts(data);
-      console.log(data);
+      setAvailables(data);
+      // console.log(data);
     }
     getData();
   }, []);
+
+  // Acommodation
+  // This function returns with a parameter (the area selected)
+  function chosenArea(acommodation) {
+    setSpot(acommodation);
+  }
+
   return (
     <>
-      <Ticket areas={props.areas} tickets={tickets} addToCart={addToCart} />
-      <Basket areas={props.areas} />
-      <acommodation />
+      <Pages
+        areas={props.areas}
+        cartReg={cartReg}
+        cartVip={cartVip}
+        addRegToCart={addRegToCart}
+        addVipToCart={addVipToCart}
+        chosenArea={chosenArea}
+      />
+      <Basket
+        areas={props.areas}
+        totalReg={totalReg}
+        totalVip={totalVip}
+        cartReg={cartReg}
+        cartVip={cartVip}
+        spot={spot}
+        totalPrice={totalPrice}
+      />
     </>
   );
 }
+
+// Fetching areas from Available spots
 export async function getStaticProps() {
   /* This function runs before the component bands is render
-    - fetch the data
-    - wait for that data
-    - once we have the data, it put into the component
-    - so the component can render with that data inside it  */
-
+  - fetch the data
+  - wait for that data
+  - once we have the data, it put into the component
+  - so the component can render with that data inside it  */
+  // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
   const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Basket from "../../components/Booking/Basket";
-import ModalAcommodation from "../../components/Elements/ModalAcommodation";
+import ModalAcommodation from "../../components/elements/ModalAcommodation";
+import { useEffect } from "react";
 
 // let setUpPrice
 // let tentSize = ""
@@ -29,26 +30,41 @@ import ModalAcommodation from "../../components/Elements/ModalAcommodation";
 //   tentSize = "2-person tent"
 // }
 
-function Acommodation({ areas }) {
+export default function Acommodation({ areas }) {
   const [disabled, setDisabled] = useState(false);
-  const area1 = areas[0].available;
+  const [totalTickets, setTotalTickets] = useState();
+
+  // const quaReg = parseInt(props.totalReg, 10);
+  // const quaVip = parseInt(props.totalVip, 10);
+
+  function getTotal(arg) {
+    console.log(arg);
+    // setTotalTickets(arg);
+    // const total = parseInt(totalTickets, 10);
+    // console.log(total);
+    // return total;
+  }
+
+  // const area1 = areas[0].available;
   // console.log(area1);
-  const area2 = areas[1].available;
+  // const area2 = areas[1].available;
   // console.log(area2);
-  const area3 = areas[2].available;
+  // const area3 = areas[2].available;
   // console.log(area3);
-  const area4 = areas[3].available;
+  // const area4 = areas[3].available;
   // console.log(area4);
-  const area5 = areas[4].available;
+  // const area5 = areas[4].available;
   // console.log(area5);
 
-  function disablebutton() {
-    const totalTickets = 44;
-    if (totalTickets > area1) {
-      setDisabled(true);
-      console.log("setDisabled");
-    }
-  }
+  // function disablebutton(e) {
+  //   const totalTickets = 100;
+  //   if (totalTickets > area1) {
+  //     return setDisabled(true);
+
+  //     //   // document.querySelector("#svartheim").disabled = true;
+  //     //   // console.log("area1 disabled");
+  //   }
+  // }
   return (
     <>
       <section id="acommodation">
@@ -59,6 +75,9 @@ function Acommodation({ areas }) {
               <p className="text-center">Select the area in the camping where you wanna set your tent/s.</p>
               <button className="btn-acommodation" onClick={displayAcommodation}>
                 Learn more here
+              </button>
+              <button className="btn-acommodation" onClick={getTotal}>
+                {" "}
               </button>
             </div>
             <div className="map-container">
@@ -83,28 +102,14 @@ function Acommodation({ areas }) {
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Svartheim</div>
                     </label>
-                    <input
-                      type="radio"
-                      id="svartheim"
-                      name="camping-area"
-                      value="1"
-                      className="radio-input"
-                      onClick={disablebutton}
-                    ></input>
+                    <input type="radio" id="svartheim" name="camping-area" value="1" className="radio-input"></input>
                   </div>
 
                   <div className="camping-area">
                     <label className="camping-areas-label" forhtml="camping-area">
                       <div className="green-1">Nilfheim</div>
                     </label>
-                    <input
-                      type="radio"
-                      id="nilfheim"
-                      name="camping-area"
-                      value="2"
-                      className="radio-input"
-                      onClick={disablebutton}
-                    ></input>
+                    <input type="radio" id="nilfheim" name="camping-area" value="2" className="radio-input"></input>
                   </div>
                 </div>
 
@@ -123,7 +128,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={disablebutton}
+                      onClick={() => setDisabled(!false)}
                     ></input>
                   </div>
 
@@ -137,7 +142,7 @@ function Acommodation({ areas }) {
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={disablebutton}
+                      onClick={() => setDisabled(!false)}
                     ></input>
                   </div>
 
@@ -147,11 +152,11 @@ function Acommodation({ areas }) {
                     </label>
                     <input
                       type="radio"
-                      id="alfheim"
+                      id="muspelheim"
                       name="camping-area"
                       value="2"
                       className="radio-input"
-                      onClick={disablebutton}
+                      onClick={() => setDisabled(!false)}
                     ></input>
                   </div>
                 </div>
@@ -169,7 +174,7 @@ function Acommodation({ areas }) {
           </div>
         </div>
       </section>
-      <Basket></Basket>
+      <Basket getTotal={getTotal}></Basket>
 
       {/* <!-- Modal acommodation  --> */}
 
@@ -197,7 +202,7 @@ function Acommodation({ areas }) {
   );
 }
 
-export default Acommodation;
+///////////////////////////////////////
 
 function displayAcommodation() {
   document.querySelector("#modal-acommodation").classList.remove("hiden");
@@ -212,6 +217,7 @@ export async function getStaticProps() {
     - once we have the data, it put into the component
     - so the component can render with that data inside it  */
 
+  // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
   const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();
 
