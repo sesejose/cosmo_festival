@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
 import { useState } from "react";
 import Owner from "../elements/Owner";
@@ -7,6 +7,7 @@ import Owner from "../elements/Owner";
 
 function personal(props) {
   // Define an state for the array of tickets
+
   // Map loop trough the array to see
   // Once we have the ticket spread, get amount
   // Define state to one ticket owner (Regular Pass)
@@ -21,7 +22,20 @@ function personal(props) {
 
   //   )
   // }
-
+  function displayRegInfo() {
+    let personalinfosReg = [];
+    for (let e = 0; e < props.cartReg.amount; e++) {
+      personalinfosReg.push(<Owner index={e} key={e} />);
+    }
+    return personalinfosReg;
+  }
+  function displayVipInfo() {
+    let personalinfosVip = [];
+    for (let e = 0; e < props.cartVip.amount; e++) {
+      personalinfosVip.push(<Owner index={e} key={e} />);
+    }
+    return personalinfosVip;
+  }
   return (
     <>
       <section id="personal">
@@ -32,77 +46,15 @@ function personal(props) {
             <p className="text-center">Select the area in the camping where you wanna set your tent/s.</p>
           </div>
           <div className="owners-container">
-            <Owner cartReg={props.cartReg} cartVip={props.cartVip}></Owner>
-            {/* <Accordion>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>{Regular Pass} owner 1</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <div className="form-group">
-                    <div className="field-group">
-                      <div className="field">
-                        <label forhtml="name">Full name</label>
-                        <input type="text" name="name" id="name" placeholder="Insert your full name" minLength="2" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
-                      <div className="field">
-                        <label forhtml="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Insert your email" minLength="2" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
-                    </div>
-                    <div className="field-group">
-                      <div className="field">
-                        <label forhtml="age">Age</label>
-                        <input type="text" name="age" id="age" placeholder="Insert your age" minLength="2" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
-                      <div className="field">
-                        <label forhtml="id">ID</label>
-                        <input type="text" name="id" id="id" placeholder="Insert your ID" minLength="2" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
-                    </div>
-                  </div>
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>Regular Pass owner 2</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>Here comes form group</p>
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>Regular Pass owner 3</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>Here comes form group</p>
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>Regular Pass owner 4</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>Here comes form group</p>
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>Regular Pass owner 5</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>Here comes form group</p>
-                </AccordionItemPanel>
-              </AccordionItem>
-            </Accordion> */}
-
+            <div>
+              <h2>VIP</h2>
+              {displayVipInfo()}
+            </div>
+            <div>
+              <h2>Reg</h2>
+              {displayRegInfo()}
+            </div>
             <hr></hr>
-
             <div className="personal-camping-options">
               <diV className="personal-green-camping">
                 <input type="checkbox" name="check-green-camping" placeholder="0"></input>
@@ -127,7 +79,16 @@ function personal(props) {
                   <label htmlFor="tents-quantity"></label>
                   <h3 className="pink">Tent (2 persons) DKK 299,-</h3>
                   <div className="flex-row-space-around">
-                    <input type="number" name="tents-quantity" id="tent2-quantity" min="0" placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent2}></input>
+                    <input
+                      type="number"
+                      name="tents-quantity"
+                      id="tent2-quantity"
+                      min="0"
+                      placeholder="0"
+                      disabled
+                      className="input-number-tents"
+                      onChange={displayQuantityTent2}
+                    ></input>
                     <h3 className="tent2">x</h3>
                     <h3 className="white">DKK 299,-</h3>
                     <h3 className="white">Total:</h3>
@@ -138,7 +99,16 @@ function personal(props) {
                   <label htmlFor="tents-quantity"></label>
                   <h3 className="pink">Tent (3 persons) DKK 399,-</h3>
                   <div className="flex-row-space-around">
-                    <input type="number" name="tents-quantity" id="tent3-quantity" min="0" placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent3}></input>
+                    <input
+                      type="number"
+                      name="tents-quantity"
+                      id="tent3-quantity"
+                      min="0"
+                      placeholder="0"
+                      disabled
+                      className="input-number-tents"
+                      onChange={displayQuantityTent3}
+                    ></input>
                     <h3 className="tent3">x</h3>
                     <h3 className="white">DKK 399,-</h3>
                     <h3 className="white">Total:</h3>
@@ -148,7 +118,7 @@ function personal(props) {
               </div>
 
               <div className="spot-container">
-                <input type="checkbox" name="check-spot" checked required></input>
+                <input type="checkbox" name="check-spot" defaultChecked required></input>
                 <label htmlFor="check-spot"></label>
                 <div>
                   <h3 className="pink">Booking camping spot (required)</h3>

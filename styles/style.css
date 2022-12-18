@@ -6,6 +6,9 @@
   padding: 0px;
   list-style: none;
 }
+.hidden1 {
+  display: none;
+}
 
 :root {
   --font: "Roboto Mono", monospace;
