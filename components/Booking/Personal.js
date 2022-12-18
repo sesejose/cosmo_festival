@@ -1,5 +1,7 @@
 import React from "react";
-import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
+// import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
+import { useState } from "react";
+import Owner from "../elements/Owner";
 // import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
 
@@ -30,7 +32,23 @@ import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, Ac
 //   tentSize = "2-person tent"
 // }
 
-function personal() {
+function personal(props) {
+  // Define an state for the array of tickets
+  // Map loop trough the array to see
+  // Once we have the ticket spread, get amount
+  // Define state to one ticket owner (Regular Pass)
+  // Define state to one ticket owner (Regular VIP)
+  // Get the quantity of tickets from index
+  // Define a new state for those two /(Reg and Vip) and make a copies according to the quantity of tickets of each one
+
+  // const [formReg, setFormReg] = useState
+
+  // function ownerReg(){
+  //   setFormReg(
+
+  //   )
+  // }
+
   return (
     <>
       <section id="personal">
@@ -41,10 +59,11 @@ function personal() {
             <p className="text-center">Select the area in the camping where you wanna set your tent/s.</p>
           </div>
           <div className="owners-container">
-            <Accordion>
+            <Owner cartReg={props.cartReg} cartVip={props.cartVip}></Owner>
+            {/* <Accordion>
               <AccordionItem>
                 <AccordionItemHeading>
-                  <AccordionItemButton>Regular Pass owner 1</AccordionItemButton>
+                  <AccordionItemButton>{Regular Pass} owner 1</AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   <div className="form-group">
@@ -107,7 +126,7 @@ function personal() {
                   <p>Here comes form group</p>
                 </AccordionItemPanel>
               </AccordionItem>
-            </Accordion>
+            </Accordion> */}
 
             <hr></hr>
 
@@ -164,7 +183,7 @@ function personal() {
                 </div>
               </div>
             </div>
-            <button className="btn-main">SUBMIT</button>
+            <button className="btn-main">NEXT</button>
           </div>
         </div>
         {/* </div> */}

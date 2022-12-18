@@ -21,12 +21,12 @@ export default function Tickets(props) {
   const area5 = props.areas[4].available;
   // console.log(area5);
   const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
-  console.log("Tickets", ticketsQuantity);
-  console.log("Area1:", area1);
-  console.log("Area2:", area2);
-  console.log("Area3:", area3);
-  console.log("Area4:", area4);
-  console.log("Area5:", area5);
+  // console.log("Tickets", ticketsQuantity);
+  // console.log("Area1:", area1);
+  // console.log("Area2:", area2);
+  // console.log("Area3:", area3);
+  // console.log("Area4:", area4);
+  // console.log("Area5:", area5);
 
   function checkAvailability() {
     if (ticketsQuantity > area1) {

@@ -11,6 +11,7 @@ export default function TicketsPage(props) {
   // const [tickets, setTickets] = useState([]);
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
+  const [totalPrice, setTotalPrice] = useState();
   const [availables, setAvailables] = useState([]);
   const [spot, setSpot] = useState();
 
@@ -21,7 +22,7 @@ export default function TicketsPage(props) {
     if (cartReg.amount === 0) {
       setCartReg({ ...cartReg, amount: amount });
     }
-    console.log(availables);
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
   }
 
   // 2 Parameters come from the callback function in VipTicket component
@@ -31,6 +32,7 @@ export default function TicketsPage(props) {
     if (cartVip.amount === 0) {
       setCartVip({ ...cartVip, amount: amount });
     }
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
   }
 
   // Fetching tickets from Supabase (Tickets table)
@@ -81,7 +83,7 @@ export default function TicketsPage(props) {
   return (
     <>
       <Pages areas={props.areas} cartReg={cartReg} cartVip={cartVip} addRegToCart={addRegToCart} addVipToCart={addVipToCart} chosenArea={chosenArea} />
-      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} spot={spot} />
+      <Basket areas={props.areas} totalReg={totalReg} totalVip={totalVip} cartReg={cartReg} cartVip={cartVip} spot={spot} totalPrice={totalPrice} />
     </>
   );
 }

@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 
 export default function Basket(props) {
   const [data, setData] = useState();
+
   // const quaReg = parseInt(props.totalReg, 10);
   // const quaVip = parseInt(props.totalVip, 10);
   // const [totalTickets, setTotalTickets] = useState([]);
+
+  // const total = setTotalPrice(props.cartVip.amount * props.cartVip.price + props.cartReg.amount * props.cartReg.price);
+  // console.log(total);
 
   // useEffect(() => {
   //   function getTotal() {
@@ -158,11 +162,12 @@ export default function Basket(props) {
           <div className="sub-total-container">
             <div className="flex-row-space-around">
               <p className="white">Subtotal</p>
-              <p className="white">DKK 4.995</p>
+              <p className="white">DKK {props.totalPrice}</p>
             </div>
             <div className="flex-row-space-around">
               <h3 className="white">Total</h3>
-              <h3 className="white">DKK 4.995</h3>
+              {/* <h3 className="white">DKK 4.995</h3> */}
+              <h3 className="white">DKK {props.totalPrice}</h3>
             </div>
           </div>
           <button className="btn-main">PAY</button>
@@ -171,15 +176,3 @@ export default function Basket(props) {
     </>
   );
 }
-
-// function totalTicketsSum() {
-//   const regTicketCount = document.querySelector("#ticket-regular-quantity").value;
-//   // console.log(regTicketCount);
-//   const notstring = parseInt(regTicketCount, 10);
-//   const vipTicketCount = document.querySelector("#ticket-vip-quantity").value;
-//   // console.log(vipTicketCount);
-//   const notstring1 = parseInt(vipTicketCount, 10);
-//   const totalTickets = notstring + notstring1;
-//   // console.log(notstring1);
-//   console.log(totalTickets);
-// }
