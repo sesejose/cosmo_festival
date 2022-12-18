@@ -12,7 +12,6 @@ function Owner(props) {
     <>
       <form>
         <fieldset>
-          {/* in this legend we can put with index what number of the ticket is what I am giving the details to*/}
           <legend>
             <label htmlFor="name">
               Full name
