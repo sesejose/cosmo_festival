@@ -166,7 +166,6 @@ export default function Basket(props) {
             </div>
             <div className="flex-row-space-around">
               <h3 className="white">Total</h3>
-              {/* <h3 className="white">DKK 4.995</h3> */}
               <h3 className="white">DKK {props.totalPrice}</h3>
             </div>
           </div>
