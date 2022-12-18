@@ -8,7 +8,7 @@ export default function TicketsPage(props) {
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   // const [cart, setCart] = useState([]);
-  // const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState([]);
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
   const [totalPrice, setTotalPrice] = useState();
@@ -22,6 +22,7 @@ export default function TicketsPage(props) {
     if (cartReg.amount === 0) {
       setCartReg({ ...cartReg, amount: amount });
     }
+    // Setting total Price State
     setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
   }
 
@@ -60,6 +61,7 @@ export default function TicketsPage(props) {
       // return data; // This returned "data/array" used in the showData();
       setCartReg(tickets[0]);
       setCartVip(tickets[1]);
+      setTickets(tickets);
     }
     getData();
   }, []);
