@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 // import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Owner from "./Owner";
 // import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
