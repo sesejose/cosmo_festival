@@ -224,25 +224,6 @@ p {
 .dates-animated {
 }
 
-/* Lineup */
-
-#lineup {
-  padding: var(--ptb-large);
-  color: var(--turquoise);
-}
-#lineup h1 {
-  text-align: center;
-}
-#lineup ol {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  flex-direction: row;
-  padding-left: 0;
-}
-
 /* Module react-tabs */
 
 .react-tabs {
@@ -313,6 +294,57 @@ p {
   margin: var(--m-large);
 }
 
+/* Lineup */
+
+#days {
+  margin: var(--mtb-auto-large);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--turquoise);
+}
+
+#lineup {
+  /* padding: var(--ptb-large); */
+  color: var(--turquoise);
+}
+#lineup #days h1 {
+  text-align: center;
+}
+#lineup ol {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-direction: row;
+  padding-left: 0;
+}
+
+.lineup {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: var(--turquoise);
+  flex-wrap: wrap;
+}
+
+.lineup li {
+  text-decoration: none;
+  list-style-type: none;
+  padding: var(--p);
+}
+
+.lineup a:link {
+  color: var(--turquoise);
+}
+
+.lineup a:visited {
+  color: var(--turquoise);
+}
 /* */
 .btn-days {
   font-family: var(--font);
@@ -324,6 +356,7 @@ p {
   cursor: pointer;
   height: 48px;
   padding: 15px 32px;
+  line-height: 0;
 }
 .btn-days:hover {
   font-family: var(--font);
@@ -335,8 +368,20 @@ p {
   cursor: pointer;
   height: 48px;
   padding: 15px 32px;
+  line-height: 0;
 }
-
+.btn-days:focus {
+  font-family: var(--font);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--turquoise);
+  border: 1px solid var(--turquoise);
+  background-color: var(--black);
+  cursor: pointer;
+  height: 48px;
+  padding: 15px 32px;
+  line-height: 0;
+}
 .btn-turquoise {
   font-family: var(--font);
   font-size: 1.125rem;
@@ -559,6 +604,16 @@ select.input-text {
 
 /* Nav */
 
+.logo {
+  width: 4rem;
+  max-width: 4rem;
+  height: auto;
+}
+
+.logo img {
+  padding: 0;
+}
+
 .logo,
 .open,
 .basket-icon {
@@ -757,6 +812,7 @@ footer svg {
   padding: var(--p);
   width: 24px;
   fill: var(--turquoise);
+  cursor: pointer;
 }
 
 /* Body */

@@ -1,13 +1,73 @@
 import Link from "next/link";
-// import styles from "../styles/Home.module.css";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 // import "react-tabs/style/react-tabs.css";
 
-export default function Lineup({ bands }) {
+export default function Lineup({ bands, filter, schedule }) {
+  //this /bands.map makes dynamic links to open the bands pages
+  //logic if the bands are playing on the filter day then print
+  //const { Midgard : {mon, tue , wen , thu , fri , sat ,sun}}= schedule;
+  //dynamic [] gives me every data after Midgard in this case the obj days with their object shows
+  const midgard = schedule.Midgard[filter];
+  const jotunheim = schedule.Jotunheim[filter];
+  const vanaheim = schedule.Vanaheim[filter];
+
   return (
     <>
       <section id="lineup">
-        <div className="">
+        <div className="container">
+          <ul className="lineup">
+            {midgard.map((band) => {
+              if (band.act !== "break") {
+                return (
+                  <Link key={band.act + Date.now()} href={`bands/${band.act}`}>
+                    <li>
+                      <h3>- {band.act}</h3>
+                    </li>
+                  </Link>
+                );
+              }
+            })}
+
+            {jotunheim.map((band) => {
+              if (band.act !== "break") {
+                return (
+                  <Link key={band.act + Date.now()} href={`bands/${band.act}`}>
+                    <li>
+                      <h3>- {band.act}</h3>
+                    </li>
+                  </Link>
+                );
+              }
+            })}
+
+            {vanaheim.map((band) => {
+              if (band.act !== "break") {
+                return (
+                  <Link key={band.act + Date.now()} href={`bands/${band.act}`}>
+                    <li>
+                      <h3>- {band.act}</h3>
+                    </li>
+                  </Link>
+                );
+              }
+            })}
+          </ul>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// export async function getStaticProps() {
+//   // const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
+//   const res = await fetch("http://localhost:8080/bands");
+//   const data = await res.json();
+//   return {
+//     props: { bands: data },
+//   };
+// }
+
+/* <div className="">
           <Tabs>
             <TabList className="flex-row-space-around container">
               <Tab>Monday</Tab>
@@ -44,38 +104,4 @@ export default function Lineup({ bands }) {
               <h2>{bands}</h2>
             </TabPanel>
           </Tabs>
-
-          {/* <div>{bands}</div> */}
-        </div>
-      </section>
-
-      {/* {bands.map((band) => (
-        <div key={band.name + Date.now()}>
-          <Link href={`${band.name}`}>
-            <h3>Band: {band.name}</h3>
-          </Link>
-        </div>
-      ))} */}
-    </>
-  );
-}
-
-export async function getStaticProps() {
-  /* This function runs before the component bands is render
-    - fetch the data
-    - wait for that data
-    - once we have the data, it put into the component
-    - so the component can render with that data inside it  */
-
-  // const res = await fetch("https://bitter-moon-5524.fly.dev/bands");
-  const res = await fetch("http://localhost:8080/bands");
-  const data = await res.json();
-
-  /* - we return a value for this function 
-- that value is got we have a props property we give the property a value
-- that value is going to be an object 
-- inside the objecint to be an object so we can past all the properties that we need*/
-  return {
-    props: { bands: data },
-  };
-}
+        </div> */
