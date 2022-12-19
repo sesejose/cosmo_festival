@@ -40,7 +40,7 @@ export default function Viptickets(props) {
           <div className="flex-row-space-around">
             {/* <h2>{props.ticket.name}</h2> */}
             {/* <h2>DKK {props.ticket.price}</h2> */}
-            <h2>Regular Pass</h2>
+            <h2>VIP Pass</h2>
             <h2>DKK 1299</h2>
           </div>
           <div className="flex-row-space-around">
@@ -55,7 +55,16 @@ export default function Viptickets(props) {
         <div className="flex-row-space-around quantity-container">
           <form className="flex-row-space-around">
             <label htmlFor="ticket-vip-quantity"></label>
-            <input id="ticket-vip-quantity" type="number" name="tickets-quantity" min="0" max="9" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsVip}></input>
+            <input
+              id="ticket-vip-quantity"
+              type="number"
+              name="tickets-quantity"
+              min="0"
+              max="9"
+              placeholder="0"
+              className="input-number-tickets"
+              onChange={displayQuantityTicketsVip}
+            ></input>
           </form>
           <div className="flex-row-space-around">
             <h3 className="vip-quantity">0X</h3>

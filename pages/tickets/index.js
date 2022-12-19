@@ -5,6 +5,7 @@ import Pages from "../../components/Booking/Pages";
 // import Regtickets from "../../components/Booking/Regticket";
 
 export default function TicketsPage(props) {
+  const fixedCampingPrice = 99;
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   // const [cart, setCart] = useState([]);
@@ -12,9 +13,9 @@ export default function TicketsPage(props) {
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
   const [totalPrice, setTotalPrice] = useState();
+  const [subtotalPrice, setSubtotalPrice] = useState();
   const [availables, setAvailables] = useState([]);
   const [spot, setSpot] = useState();
-
   // 2 Parameters come from the callback function in RegTicket component
   function addRegToCart(cartReg, totalReg) {
     setTotalReg(totalReg);
@@ -22,8 +23,10 @@ export default function TicketsPage(props) {
     if (cartReg.amount === 0) {
       setCartReg({ ...cartReg, amount: amount });
     }
+    // setting subtotal price state
+    setSubtotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
     // Setting total Price State
-    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price + fixedCampingPrice);
   }
 
   // 2 Parameters come from the callback function in VipTicket component
@@ -33,9 +36,12 @@ export default function TicketsPage(props) {
     if (cartVip.amount === 0) {
       setCartVip({ ...cartVip, amount: amount });
     }
-    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
-  }
+    setSubtotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
 
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price + fixedCampingPrice);
+  }
+  // make the steps
+  //
   // Fetching tickets from Supabase (Tickets table)
   useEffect(() => {
     async function getData() {
@@ -102,6 +108,8 @@ export default function TicketsPage(props) {
         cartVip={cartVip}
         spot={spot}
         totalPrice={totalPrice}
+        subtotalPrice={subtotalPrice}
+        // greenCamping={greenCamping}
       />
     </>
   );

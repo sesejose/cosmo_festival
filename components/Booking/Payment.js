@@ -15,7 +15,7 @@ function payment() {
             <div className="form-group">
               <div className="field-group">
                 <div className="field">
-                  <label forHtml="card">Credit card</label>
+                  <label htmlFor="card">Credit card</label>
                   <input
                     type="text"
                     name="card"
@@ -31,7 +31,7 @@ function payment() {
               <div className="form-group">
                 <div className="field-group">
                   <div className="field">
-                    <label forHtml="name">Full name</label>
+                    <label htmlFor="name">Full name</label>
                     <input
                       type="text"
                       name="name"
@@ -44,7 +44,7 @@ function payment() {
                     <span className="error-message">Enter a valid value</span>
                   </div>
                   <div className="field">
-                    <label forHtml="card-number">Card number</label>
+                    <label htmlFor="card-number">Card number</label>
                     <input
                       type="text"
                       name="card-number"
@@ -59,7 +59,7 @@ function payment() {
                 </div>
                 <div className="field-group">
                   <div className="field">
-                    <label forHtml="code">Check digits</label>
+                    <label htmlFor="code">Check digits</label>
                     <input
                       type="text"
                       name="code"
@@ -72,7 +72,7 @@ function payment() {
                     <span className="error-message">Enter a valid value</span>
                   </div>
                   <div className="field">
-                    <label forHtml="date">Expiration date</label>
+                    <label htmlFor="date">Expiration date</label>
                     <input
                       type="date"
                       name="date"

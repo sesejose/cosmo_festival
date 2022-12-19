@@ -1328,16 +1328,27 @@ footer svg {
   justify-content: baseline;
   align-items: baseline;
   margin: var(--mtb-medium);
+  width: 50%;
 }
-
+.fee-aside {
+  padding-top: 10px;
+  text-align: right;
+}
 .personal-green-camping,
-.personal-rent,
-.spot-container {
+.personal-rent {
   display: flex;
   flex-flow: row;
   gap: 1rem;
   width: 100%;
   justify-content: flex-start;
+}
+.spot-container div:nth-child(1),
+.spot-container div:nth-child(2) {
+  padding-left: 3rem;
+}
+.spot-container {
+  padding-right: 0;
+  width: 100%;
 }
 .tents-container {
   /* display: flex; */

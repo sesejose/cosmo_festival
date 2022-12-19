@@ -40,7 +40,7 @@ export default function Regtickets(props) {
           <div className="flex-row-space-around">
             {/* <h2>{props.ticket.name}</h2> */}
             {/* <h2>DKK {props.ticket.price}</h2> */}
-            <h2>VIP Pass</h2>
+            <h2>Regular Pass</h2>
             <h2>DKK 799</h2>
           </div>
           <div className="flex-row-space-around">
@@ -55,7 +55,16 @@ export default function Regtickets(props) {
         <div className="flex-row-space-around quantity-container">
           <form className="flex-row-space-around">
             <label htmlFor="ticket-regular-quantity"></label>
-            <input id="ticket-regular-quantity" type="number" name="tickets-quantity" min="0" max="9" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsRegular}></input>
+            <input
+              id="ticket-regular-quantity"
+              type="number"
+              name="tickets-quantity"
+              min="0"
+              max="9"
+              placeholder="0"
+              className="input-number-tickets"
+              onChange={displayQuantityTicketsRegular}
+            ></input>
           </form>
           <div className="flex-row-space-around">
             <h3 className="regular-quantity">0X</h3>

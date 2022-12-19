@@ -4,24 +4,6 @@ import { useEffect, useState } from "react";
 export default function Basket(props) {
   const [data, setData] = useState();
 
-  // const quaReg = parseInt(props.totalReg, 10);
-  // const quaVip = parseInt(props.totalVip, 10);
-  // const [totalTickets, setTotalTickets] = useState([]);
-
-  // const total = setTotalPrice(props.cartVip.amount * props.cartVip.price + props.cartReg.amount * props.cartReg.price);
-  // console.log(total);
-
-  // useEffect(() => {
-  //   function getTotal() {
-  //     const total = 10;
-  //     setTotalTickets(total);
-  //     // return totalTickets
-  //   }
-  //   getTotal(totalTickets);
-  //   // console.log(totalTickets);
-  //   // console.log(props.cartReg.displayname);
-  // });
-
   // Fetching the cosmo_festival table from Supabase
   useEffect(() => {
     async function getData() {
@@ -47,40 +29,7 @@ export default function Basket(props) {
     }
     getData();
   }, []);
-
-  // init();
-
-  // async function init() {
-  //   showTickets();
-  // }
-
-  // function addTickets(data) {
-  // }
-
-  // showTickets();
-
-  // async function showTickets() {
-  // console.log(quaReg);
-  // const data = await getTickets();
-  // Await: It makes the code wait until the promise returns a result.
-  // console.log(data);
-  // data.forEach((element) => {
-  //   const template = document.querySelector("#ticket-template").content;
-  //   const copy = template.cloneNode(true);
-  //   copy.querySelector(".type").textContent = element.type;
-  //   copy.querySelector(".price").textContent = element.price;
-  //   const button = copy.querySelector("btn-remove");
-  //   button.addEventListener("click", () => {
-  //     deleteTickets(element.id);
-  //   });
-  //   document.querySelector(".post-text-container").appendChild(copy);
-  // });
-  // }
-
-  // function deleteTickets() {
-  //   console.log(props.id);
-  // }
-
+  const fixedCampingPrice = 99;
   return (
     <>
       <section id="basket">
@@ -132,7 +81,7 @@ export default function Basket(props) {
           <hr></hr>
           <div className="posts">
             <div className="post-text-container">
-              <h3 className="turquoise">Booking camping spot</h3>
+              <h3 className="turquoise">Green camping spot</h3>
               <h4 className="white">Yes</h4>
             </div>
           </div>
@@ -164,7 +113,11 @@ export default function Basket(props) {
           <div className="sub-total-container">
             <div className="flex-row-space-around">
               <p className="white">Subtotal</p>
-              <p className="white">DKK {props.totalPrice}</p>
+              <p className="white">DKK {props.subtotalPrice}</p>
+            </div>
+            <div className="flex-row-space-around">
+              <p className="white">Fixed camping fee</p>
+              <p className="white">{fixedCampingPrice} DKK</p>
             </div>
             <div className="flex-row-space-around">
               <h3 className="white">Total</h3>
@@ -177,3 +130,53 @@ export default function Basket(props) {
     </>
   );
 }
+// const quaReg = parseInt(props.totalReg, 10);
+// const quaVip = parseInt(props.totalVip, 10);
+// const [totalTickets, setTotalTickets] = useState([]);
+
+// const total = setTotalPrice(props.cartVip.amount * props.cartVip.price + props.cartReg.amount * props.cartReg.price);
+// console.log(total);
+
+// useEffect(() => {
+//   function getTotal() {
+//     const total = 10;
+//     setTotalTickets(total);
+//     // return totalTickets
+//   }
+//   getTotal(totalTickets);
+//   // console.log(totalTickets);
+//   // console.log(props.cartReg.displayname);
+// });
+
+// init();
+
+// async function init() {
+//   showTickets();
+// }
+
+// function addTickets(data) {
+// }
+
+// showTickets();
+
+// async function showTickets() {
+// console.log(quaReg);
+// const data = await getTickets();
+// Await: It makes the code wait until the promise returns a result.
+// console.log(data);
+// data.forEach((element) => {
+//   const template = document.querySelector("#ticket-template").content;
+//   const copy = template.cloneNode(true);
+//   copy.querySelector(".type").textContent = element.type;
+//   copy.querySelector(".price").textContent = element.price;
+//   const button = copy.querySelector("btn-remove");
+//   button.addEventListener("click", () => {
+//     deleteTickets(element.id);
+//   });
+//   document.querySelector(".post-text-container").appendChild(copy);
+// });
+// }
+
+// function deleteTickets() {
+//   console.log(props.id);
+// }
