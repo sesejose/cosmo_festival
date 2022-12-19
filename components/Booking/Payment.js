@@ -1,7 +1,7 @@
 import React from "react";
 // import Basket from "../../components/Booking/Basket";
 
-function payment() {
+export default function Payment() {
   return (
     <>
       <section id="payment">
@@ -96,5 +96,3 @@ function payment() {
     </>
   );
 }
-
-export default payment;
