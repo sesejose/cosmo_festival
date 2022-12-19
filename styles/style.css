@@ -550,6 +550,11 @@ p {
   outline: none;
 }
 
+select.input-text {
+  background-color: var(--black);
+  color: var(--white);
+}
+
 /* Layout */
 
 /* Nav */
