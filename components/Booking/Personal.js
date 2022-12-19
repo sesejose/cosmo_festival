@@ -8,15 +8,15 @@ import Owner from "./Owner";
 export default function Personal(props) {
   function displayRegInfo() {
     let personalInfosReg = [];
-    for (let e = 0; e < props.cartReg.amount; e++) {
-      personalInfosReg.push(<Owner index={e} key={e} />);
+    for (let i = 0; i < props.cartReg.amount; i++) {
+      personalInfosReg.push(<Owner index={i} key={i} />);
     }
     return personalInfosReg;
   }
   function displayVipInfo() {
     let personalInfosVip = [];
-    for (let e = 0; e < props.cartVip.amount; e++) {
-      personalInfosVip.push(<Owner index={e} key={e} />);
+    for (let i = 0; i < props.cartVip.amount; i++) {
+      personalInfosVip.push(<Owner index={i} key={i} />);
     }
     return personalInfosVip;
   }
