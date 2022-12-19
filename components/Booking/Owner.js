@@ -1,22 +1,11 @@
 import React from "react";
 
 function Owner(props) {
-  function openPersInfo() {
-    const infopanel = document.querySelectorAll("legend");
-    console.log("btn");
-    //   if (infopanel.classList === "hidden") {
-    //     infopanel.classList.remove("hidden");
-    //   } else if (infopanel.classList != "hidden") {
-    //     infopanel.classList.add("hidden");
-    //   }
-  }
   return (
     <>
       <form>
         <fieldset>
-          <h2 onClick={openPersInfo} className="turquoise">
-            Person
-          </h2>
+          <h2 className="turquoise">Person</h2>
           <div>
             <legend>
               <label htmlFor={`full_name_ticketholder_${props.index}`} className="turquoise">
