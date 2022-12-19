@@ -21,7 +21,9 @@ function Owner(props) {
     <>
       <form>
         <fieldset>
-          <h2 onClick={openPersInfo}>Person </h2>
+          <h2 onClick={openPersInfo} className="turquoise">
+            Person{" "}
+          </h2>
           <div>
             <legend>
               <label htmlFor="name" className="turquoise">
