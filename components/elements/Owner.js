@@ -8,33 +8,50 @@ import {
 } from "react-accessible-accordion";
 
 function Owner(props) {
+  function openPersInfo() {
+    const infopanel = document.querySelectorAll("legend");
+    console.log("btn");
+    //   if (infopanel.classList === "hidden") {
+    //     infopanel.classList.remove("hidden");
+    //   } else if (infopanel.classList != "hidden") {
+    //     infopanel.classList.add("hidden");
+    //   }
+  }
   return (
     <>
       <form>
         <fieldset>
-          <legend>
-            <label htmlFor="name">
-              Full name
-              <input type="text" placeholder="Full name" />
-            </label>
+          <h2 onClick={openPersInfo}>Person </h2>
+          <div>
+            <legend>
+              <label htmlFor="name" className="turquoise">
+                Full name
+                <input type="text" placeholder="Full name" required autoComplete="true" />
+              </label>
+              <span className="error-message">Enter a valid value</span>
+              <label htmlFor="email" className="turquoise">
+                Email
+                <input type="email" placeholder="Email address" required />
+              </label>
+              <span className="error-message">Enter a valid value</span>
 
-            <label htmlFor="email">
-              Email
-              <input type="email" placeholder="Email" />
-            </label>
-            <label htmlFor="dateofbirth">
-              Date of birth
-              <input type="date" placeholder="Date of birth (DD/MM/YY)" />
-            </label>
-            <label htmlFor="id">
-              ID
-              <input type="text" placeholder="123456AB" />
-            </label>
-          </legend>
+              <label htmlFor="dateofbirth" className="turquoise">
+                Date of birth
+                <input type="date" min="" placeholder="Date of birth (DD/MM/YY)" required />
+              </label>
+              <span className="error-message">Enter a valid value</span>
+
+              <label htmlFor="id" className="turquoise">
+                ID number
+                <input type="text" placeholder="123456AB" required />
+              </label>
+              <span className="error-message">Enter a valid value</span>
+            </legend>
+          </div>
         </fieldset>
       </form>
-      {/* <Accordion className="regAccordion">
-        <AccordionItem id="one" className="hidden1">
+      {/* <Accordion>
+        <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>Regular Pass owner 1</AccordionItemButton>
           </AccordionItemHeading>

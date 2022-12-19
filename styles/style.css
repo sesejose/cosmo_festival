@@ -6,9 +6,6 @@
   padding: 0px;
   list-style: none;
 }
-.hidden1 {
-  display: none;
-}
 
 :root {
   --font: "Roboto Mono", monospace;
@@ -174,7 +171,32 @@ p {
   /* line-height: 1.125rem; */
   color: var(--white) !important;
 }
-
+fieldset {
+  border: var(--purple) 2px solid;
+  padding: 1rem 3rem 3rem 3rem;
+}
+legend {
+  display: grid;
+  gap: 2rem;
+  color: var(--turquoise);
+}
+legend label {
+  padding-bottom: 20px;
+}
+legend input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: var(--purple) 2px solid;
+  color: var(--gray);
+}
+.personal-form-reg,
+.personal-form-vip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
 /*******************************************/
 
 /* Home wrapper */

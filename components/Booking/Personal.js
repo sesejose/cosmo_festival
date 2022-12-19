@@ -43,16 +43,21 @@ function personal(props) {
         <div className="wrapper-forms">
           <div className="forms-intro-text">
             <h1 className="turquoise text-center">Personal information</h1>
-            <p className="text-center">Select the area in the camping where you wanna set your tent/s.</p>
+            <p className="text-center">Enter your personal information</p>
+            <p className="text-center">
+              Note! The information provided is how we can identify you as ticket owner so make sure its correct!
+            </p>
           </div>
           <div className="owners-container">
-            <div>
-              <h2>VIP</h2>
-              {displayVipInfo()}
-            </div>
-            <div>
-              <h2>Reg</h2>
-              {displayRegInfo()}
+            <div className="personal-form">
+              <div>
+                <h2 className="turquoise">Regular passes</h2>
+                <div className="personal-form-reg">{displayRegInfo()}</div>
+              </div>
+              <div>
+                <h2 className="turquoise">VIP passes</h2>
+                <div className="personal-form-vip">{displayVipInfo()}</div>
+              </div>
             </div>
             <hr></hr>
             <div className="personal-camping-options">
