@@ -20,7 +20,6 @@ export default function Tickets(props) {
   // console.log(area4);
   const area5 = props.areas[4].available;
   // console.log(area5);
-  const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
   // console.log("Tickets", ticketsQuantity);
   // console.log("Area1:", area1);
   // console.log("Area2:", area2);
@@ -29,27 +28,27 @@ export default function Tickets(props) {
   // console.log("Area5:", area5);
 
   function checkAvailability() {
-    if (ticketsQuantity > area1) {
+    if (props.ticketsQuantity > area1) {
       const svartheim = document.querySelector("#svartheim");
       svartheim.disabled = { status1 };
       setStatus1(true);
     }
-    if (ticketsQuantity > area2) {
+    if (props.ticketsQuantity > area2) {
       const nilfheim = document.querySelector("#nilfheim");
       nilfheim.disabled = { status2 };
       setStatus2(true);
     }
-    if (ticketsQuantity > area3) {
+    if (props.ticketsQuantity > area3) {
       const helheim = document.querySelector("#helheim");
       helheim.disabled = { status3 };
       setStatus3(true);
     }
-    if (ticketsQuantity > area4) {
+    if (props.ticketsQuantity > area4) {
       const muspelheim = document.querySelector("#muspelheim");
       muspelheim.disabled = { status4 };
       setStatus4(true);
     }
-    if (ticketsQuantity > area5) {
+    if (props.ticketsQuantity > area5) {
       const alfheim = document.querySelector("#alfheim");
       alfheim.disabled = { status5 };
       setStatus5(true);

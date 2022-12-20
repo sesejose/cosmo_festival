@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { insertOrder } from "../../modules/Dd";
 // import Basket from "../../components/Booking/Basket";
 
 export default function Payment() {
@@ -41,6 +42,8 @@ The form should be the same.
       acommodation: theForm.current.elements.ticket.value,
       fullname: theForm.current.elements.fullname.value,
       email: theForm.current.elements.email.value,
+      // identification: theForm.current.elements.id_number.value,
+      // dob: theForm.current.elements.dob.value,
       green: theForm.current.elements.green.value,
       spot: theForm.current.elements.spot.value,
       tent: theForm.current.elements.tent.value,

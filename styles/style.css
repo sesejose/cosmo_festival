@@ -856,29 +856,28 @@ footer svg {
   margin-top: 6.5rem;
   /* height: 100vh; */
   /* overflow: auto; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #basket {
   margin-top: 6.5rem;
-  width: 25vw;
-  min-width: fit-content;
-  display: none;
-  border-left: 1px solid var(--pink);
-  overflow: scroll;
+  border: 1px solid var(--pink);
+  height: 1200px;
+  margin-right: 30px;
 }
 
-.tab-basket {
+/* .tab-basket {
   display: flex;
   position: relative;
   cursor: pointer;
   height: fit-content;
-}
+} */
 
 .basket-container {
   /* border-left: 1px solid var(--pink); */
   /* height: 100vh; */
   padding: var(--p-large);
-  overflow: scroll;
 }
 
 .sub-total-container {
@@ -889,7 +888,7 @@ footer svg {
   display: flex;
   flex-flow: column;
   min-width: fit-content;
-  max-width: 50%;
+  max-width: 75%;
   justify-content: center;
   margin: var(--m-auto);
   padding: var(--ptb-large);
@@ -1273,65 +1272,8 @@ footer svg {
 
 /* Personal Information Page */
 
-.accordion {
-  /* width: 65%; */
-  font-family: var(--font);
-  color: var(--turquoise);
-  text-align: left;
-  background-color: var(--black);
-  outline: none;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.accordion__heading {
-  border: 1px solid var(--pink);
-  /* padding: var(--p-medium); */
-}
-
-.accordion__item {
-  /* border: 1px solid var(--pink); */
-  padding: var(--ptb);
-}
-
-.accordion__button {
-  /* background-color: var(--black); */
-  color: var(--turquoise);
-  cursor: pointer;
-  padding: var(--p-medium);
-  /* width: 100%; */
-  text-align: left;
-  border: none;
-}
-
-.accordion__button:hover {
-  /* background-color: var(--gray); */
-  color: var(--white);
-}
-
-.accordion__button:before {
-  display: inline-block;
-  content: "";
-  height: 10px;
-  width: 10px;
-  margin-right: 12px;
-  border-bottom: 2px solid var(--pink);
-  border-right: 2px solid var(--pink);
-  transform: rotate(-45deg);
-}
-
-.accordion__button[aria-expanded="true"]::before,
-.accordion__button[aria-selected="true"]::before {
-  transform: rotate(45deg);
-}
-
 .hidden {
   display: none;
-}
-
-.accordion__panel {
-  padding: var(--p-medium);
-  animation: fadein 0.35s ease-in;
 }
 
 /* Personal information Animation part */
@@ -1388,7 +1330,7 @@ footer svg {
   justify-content: baseline;
   align-items: baseline;
   margin: var(--mtb-medium);
-  width: 50%;
+  width: 75%;
 }
 .fee-aside {
   padding-top: 10px;

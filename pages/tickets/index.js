@@ -1,11 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Basket from "../../components/Booking/Basket";
-import Pages from "../../components/Booking/Pages";
+import Ticket from "../../components/Booking/Ticket";
+import Acommodation from "../../components/Booking/Acommodation";
+import Personal from "../../components/Booking/Personal";
+import Payment from "../../components/Booking/Payment";
+import Thanks from "../../components/Booking/Thanks";
 // import Regtickets from "../../components/Booking/Regticket";
 
 export default function TicketsPage(props) {
   const fixedCampingPrice = 99;
+
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   const [tickets, setTickets] = useState([]);
@@ -91,25 +96,54 @@ export default function TicketsPage(props) {
 
   return (
     <>
-      <Pages
-        areas={props.areas}
-        cartReg={cartReg}
-        cartVip={cartVip}
-        addRegToCart={addRegToCart}
-        addVipToCart={addVipToCart}
-        chosenArea={chosenArea}
-      />
-      <Basket
-        areas={props.areas}
-        totalReg={totalReg}
-        totalVip={totalVip}
-        cartReg={cartReg}
-        cartVip={cartVip}
-        spot={spot}
-        totalPrice={totalPrice}
-        subtotalPrice={subtotalPrice}
-        // greenCamping={greenCamping}
-      />
+      <section id="pages">
+        <div className="container-page">
+          <ul>
+            <li>
+              <Ticket
+                areas={props.areas}
+                cartReg={cartReg}
+                cartVip={cartVip}
+                addRegToCart={addRegToCart}
+                addVipToCart={addVipToCart}
+              />
+            </li>
+            <li>
+              <Acommodation
+                areas={props.areas}
+                cartReg={cartReg}
+                cartVip={cartVip}
+                addRegToCart={addRegToCart}
+                addVipToCart={addVipToCart}
+                chosenArea={props.chosenArea}
+              />
+            </li>
+            <li>
+              <Personal cartReg={cartReg} cartVip={cartVip} />
+            </li>
+            <li>
+              <Payment />
+            </li>
+            <li>
+              <Thanks />
+            </li>
+          </ul>
+
+          <Basket
+            areas={props.areas}
+            cartReg={cartReg}
+            cartVip={cartVip}
+            addRegToCart={addRegToCart}
+            addVipToCart={addVipToCart}
+            ticketsQuantity={props.ticketsQuantity}
+            spot={props.spot}
+            totalPrice={totalPrice}
+            subtotalPrice={subtotalPrice}
+            totalReg={totalReg}
+            totalVip={totalVip}
+          />
+        </div>
+      </section>
     </>
   );
 }

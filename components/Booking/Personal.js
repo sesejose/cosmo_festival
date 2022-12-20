@@ -8,6 +8,8 @@ import Owner from "./Owner";
 export default function Personal(props) {
   const [showFormReg, setShowFormReg] = useState(false);
   const [showFormVip, setShowFormVip] = useState(false);
+  const [showRegFormTitle, setShowRegFormTitle] = useState(false);
+  const [showVipFormTitle, setShowVipFormTitle] = useState(false);
 
   function displayRegInfo() {
     let personalInfosReg = [];
@@ -23,9 +25,6 @@ export default function Personal(props) {
     }
     return personalInfosVip;
   }
-  function validatePersonalinfo() {
-    console.log("valid");
-  }
   return (
     <>
       <section id="personal">
@@ -35,20 +34,21 @@ export default function Personal(props) {
             <h1 className="turquoise text-center">Personal information</h1>
             <p className="text-center">Enter your personal information</p>
             <p className="text-center">Note! The information provided is how we can identify you as ticket owner so make sure its correct!</p>
+            <p className="text-center">Note! The information provided is how we can identify you as ticket owner so make sure it is the same as on your ID!</p>
           </div>
           <div className="owners-container">
             <div className="personal-form">
-              <div className="regular-container">
+              <div className="regular-container small">
                 {!showFormReg && (
-                  <button className="turquoise" onClick={() => setShowFormReg(true)}>
+                  <button onClick={() => setShowFormReg(true)} className="btn-main">
                     Regular pass(es)
                   </button>
                 )}
                 {showFormReg && <div className="personal-form-reg">{displayRegInfo()}</div>}
               </div>
-              <div>
+              <div className="regular-container small">
                 {!showFormVip && (
-                  <button onClick={() => setShowFormVip(true)} className="turquoise">
+                  <button onClick={() => setShowFormVip(true)} className="btn-main">
                     VIP pass(es)
                   </button>
                 )}
@@ -57,7 +57,7 @@ export default function Personal(props) {
             </div>
             <hr></hr>
 
-            <button className="btn-main" onClick={validatePersonalinfo()}>
+            <button className="btn-main" type="submit">
               NEXT
             </button>
           </div>
