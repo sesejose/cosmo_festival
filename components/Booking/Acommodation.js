@@ -48,14 +48,29 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Svartheim</div>
                   </label>
-                  <input type="radio" id="svartheim" name="camping-area" value="Area: Svartheim" className="radio-input" defaultChecked onClick={defineAcommodation}></input>
+                  <input
+                    type="radio"
+                    id="svartheim"
+                    name="camping-area"
+                    value="Area: Svartheim"
+                    className="radio-input"
+                    defaultChecked
+                    onClick={defineAcommodation}
+                  ></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Nilfheim</div>
                   </label>
-                  <input type="radio" id="nilfheim" name="camping-area" value="Area: Nilfheim" className="radio-input" onClick={defineAcommodation}></input>
+                  <input
+                    type="radio"
+                    id="nilfheim"
+                    name="camping-area"
+                    value="Area: Nilfheim"
+                    className="radio-input"
+                    onClick={defineAcommodation}
+                  ></input>
                 </div>
               </div>
 
@@ -68,21 +83,42 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Helheim</div>
                   </label>
-                  <input type="radio" id="helheim" name="camping-area" value="Area: Helheim" className="radio-input" onClick={defineAcommodation}></input>
+                  <input
+                    type="radio"
+                    id="helheim"
+                    name="camping-area"
+                    value="Area: Helheim"
+                    className="radio-input"
+                    onClick={defineAcommodation}
+                  ></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Muspelheim</div>
                   </label>
-                  <input type="radio" id="muspelheim" name="camping-area" value="Area: Muspelheim" className="radio-input" onClick={defineAcommodation}></input>
+                  <input
+                    type="radio"
+                    id="muspelheim"
+                    name="camping-area"
+                    value="Area: Muspelheim"
+                    className="radio-input"
+                    onClick={defineAcommodation}
+                  ></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="camping-area">
                     <div className="green-1">Alfheim</div>
                   </label>
-                  <input type="radio" id="alfheim" name="camping-area" value="Area: Alfheim" className="radio-input" onClick={defineAcommodation}></input>
+                  <input
+                    type="radio"
+                    id="alfheim"
+                    name="camping-area"
+                    value="Area: Alfheim"
+                    className="radio-input"
+                    onClick={defineAcommodation}
+                  ></input>
                 </div>
               </div>
             </div>
@@ -108,7 +144,14 @@ export default function Acommodation(props) {
       <div id="modal-acommodation" className="hiden">
         <div className="modal-acommodation">
           <div className="close-modal" onClick={hideAcommodation}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              fill="currentColor"
+              className="bi bi-x"
+              viewBox="0 0 16 16"
+            >
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </div>

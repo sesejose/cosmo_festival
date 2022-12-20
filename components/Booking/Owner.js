@@ -1,17 +1,14 @@
 import React from "react";
+import { useRef } from "react";
 
 function Owner(props) {
-  window.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("input[data-relmax]").each(function () {
-      var oldVal = $(this).prop("value");
-      var relmax = $(this).data("relmax");
-      var max = new Date();
-      max.setFullYear(max.getFullYear() + relmax);
-      $.prop(this, "max", $(this).prop("valueAsDate", max).val());
-      $.prop(this, "value", oldVal);
-      console.log("dob");
-    });
-  });
+  const fullName = useRef(null);
+  const email = useRef(null);
+  const dob = useRef(null);
+  const identification = useRef(null);
+  // function validateFormPersonal() {
+  //   console.log("submit fromS");
+  // }
   return (
     <>
       <form>
@@ -28,6 +25,7 @@ function Owner(props) {
                 minLength="2"
                 required
                 className="input-text"
+                ref={fullName}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
@@ -40,6 +38,7 @@ function Owner(props) {
                 placeholder="Email address"
                 required
                 className="input-text"
+                ref={email}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
@@ -51,10 +50,10 @@ function Owner(props) {
                 name={`dob_ticketholder_${props.index}`}
                 id={`dob_ticketholder_${props.index}`}
                 placeholder="Date of birth (DD/MM/YY)"
-                data-relmax="-18"
                 max="2004-12-01"
                 required
                 className="input-text"
+                ref={dob}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
@@ -68,10 +67,12 @@ function Owner(props) {
                 placeholder="123456AB"
                 required
                 className="input-text"
+                ref={identification}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
           </div>
+          <button>Submit</button>
         </fieldset>
       </form>
     </>
