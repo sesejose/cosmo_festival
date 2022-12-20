@@ -1,10 +1,12 @@
-import styles from "../styles/Home.module.css";
+import dark_theme_logo from "../public/dark_theme_logo.png";
+import Image from "next/image";
 
 function Footer() {
   return (
     <footer>
       <div className="footer-col1">
-        <h3>Logo</h3>
+        {/* <h3>Logo</h3> */}
+        <Image className="logo" src={dark_theme_logo} alt={""} width={"50"} height={"45"} priority sizes="(max-width: 700px) 100vw, 700px" />
         <p>Cosmos Festival the greatest festival of all the times.</p>
       </div>
 

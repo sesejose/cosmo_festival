@@ -8,7 +8,6 @@ export default function TicketsPage(props) {
   const fixedCampingPrice = 99;
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
-  // const [cart, setCart] = useState([]);
   const [tickets, setTickets] = useState([]);
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
@@ -64,7 +63,7 @@ export default function TicketsPage(props) {
       // Await then execute the code.
       const res = await fetch(url, options, body); // Fetchs the data (await)
       const tickets = await res.json(); //When it's done getting it
-      // return data; // This returned "data/array" used in the showData();
+      // return data; // This returned tickets in an array - square brackets to define each one.
       setCartReg(tickets[0]);
       setCartVip(tickets[1]);
       setTickets(tickets);
