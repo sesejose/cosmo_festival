@@ -28,22 +28,29 @@ The form should be the same.
 
 */
 
-  // We use props to receive the what comes from Basket --> Cart
-  // const [paymentCompleted, setPaymentCompleted] = useState();
-  // 13. When the page loads the payment is not completed (false) --> But when we have a response from the server we want to set the payment to complete.
-  const theForm = useRef(null);
-  // The const response await until the insertOrder fetchs the data, why? If it does not need the data to do the things.
+  const postOrder = useRef(null);
   async function submit(e) {
     e.preventDefault();
     const response = await insertOrder({
-      id: theForm.current.elements.id.value,
+      id: "",
+      reg_tickets: 0,
+      vip_tickets: 0,
+      acommodation: "",
+      green: true,
+      spot: true,
+      tent_2: 0,
+      tent_3: 0,
+      fullnames: [],
+      emails: [],
+      ages: [],
+      cprs: [],
     });
     console.log(response);
-    // We do something with the response returned from insertOrder().
     if (response && response.length) {
-      // If response is not null AND has a length asumme that is an array (How??)
       setPaymentCompleted(true);
-      // 14. Now we have a variable that we can use in our UI.
+    }
+    if (setPaymentCompleted === true) {
+      console.log("Works!");
     }
   }
 
@@ -54,7 +61,7 @@ The form should be the same.
         <p>THANK YOU!!!</p>
       ) : ( */}
       <section id="payment">
-        <form>
+        <form ref={postOrder} onSubmit={submit}>
           <div className="wrapper-forms">
             <div className="forms-intro-text">
               <h1 className="turquoise text-center">Pay with Credit Card</h1>
@@ -79,63 +86,32 @@ The form should be the same.
                   <div className="field-group">
                     <div className="field">
                       <label htmlFor="name">Full name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Insert your full name"
-                        minLength="2"
-                        className="input-text"
-                        required
-                      />
+                      <input type="text" name="name" id="name" placeholder="Insert your full name" minLength="2" className="input-text" required />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                     <div className="field">
                       <label htmlFor="card-number">Card number</label>
-                      <input
-                        type="text"
-                        name="card-number"
-                        id="card-number"
-                        placeholder="Insert card number"
-                        minLength="8"
-                        maxLength="11"
-                        className="input-text"
-                        required
-                      />
+                      <input type="text" name="card-number" id="card-number" placeholder="Insert card number" minLength="8" maxLength="11" className="input-text" required />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>
                   <div className="field-group">
                     <div className="field">
                       <label htmlFor="code">Check digits</label>
-                      <input
-                        type="text"
-                        name="code"
-                        id="code"
-                        placeholder="Insert card check digits"
-                        minLength="3"
-                        maxLength="3"
-                        className="input-text"
-                        required
-                      />
+                      <input type="text" name="code" id="code" placeholder="Insert card check digits" minLength="3" maxLength="3" className="input-text" required />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                     <div className="field">
                       <label htmlFor="date">Expiration date</label>
-                      <input
-                        type="date"
-                        name="date"
-                        id="date"
-                        placeholder="Insert expiration date"
-                        className="input-text"
-                        required
-                      />
+                      <input type="date" name="date" id="date" placeholder="Insert expiration date" className="input-text" required />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <button className="btn-main">PAY</button>
+              <button className="btn-main" type="submit">
+                PAY
+              </button>
             </div>
           </div>
         </form>
