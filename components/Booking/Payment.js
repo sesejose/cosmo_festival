@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import { insertOrder } from "../../modules/Dd";
+import { insertOrder } from "./Db";
 // import Basket from "../../components/Booking/Basket";
 
-export default function Payment() {
+export default function Payment(props) {
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
+  // const [ages, setAges] = useState();
   /* Here the POST with the object as example from Insomnia
 
 The form should be the same.
@@ -33,17 +35,17 @@ The form should be the same.
     e.preventDefault();
     const response = await insertOrder({
       id: "",
-      reg_tickets: 0,
-      vip_tickets: 0,
-      acommodation: "",
-      green: true,
-      spot: true,
-      tent_2: 0,
-      tent_3: 0,
-      fullnames: [],
-      emails: [],
-      ages: [],
-      cprs: [],
+      reg_tickets: props.cartReg.amount, // This is the totalReg
+      vip_tickets: props.cartReg.amount, // This i sthe totalVip
+      accommodation: props.spot, // This is the props.spot
+      green: true, // this is a new State
+      spot: true, // This is a new state
+      tent_2: 0, // This is a new State (number)
+      tent_3: 0, // This is a new State (number)
+      fullnames: [], // This is a new State (Array)
+      emails: [], // This is a new State (Array)
+      ages: [], // This is a new State (Array)
+      cprs: [], // This is a new State (Array)
     });
     console.log(response);
     if (response && response.length) {
@@ -116,7 +118,6 @@ The form should be the same.
           </div>
         </form>
       </section>
-      {/* )} */}
     </>
   );
 }
