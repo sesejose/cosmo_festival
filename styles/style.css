@@ -631,7 +631,7 @@ select.input-text {
 .logo {
   width: 4rem;
   max-width: 4rem;
-  height: auto;
+  /* height: auto; */
 }
 
 .logo img {
