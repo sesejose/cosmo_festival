@@ -52,7 +52,6 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Svartheim"
                     className="radio-input"
-                    defaultChecked
                     onClick={props.defineAcommodation}
                   ></input>
                 </div>
