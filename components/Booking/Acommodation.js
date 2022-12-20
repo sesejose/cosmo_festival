@@ -14,9 +14,9 @@ export default function Acommodation(props) {
   //   // 14. Now we have a variable that we can use in our UI.
 
   function newFunction(e) {
-    const acommodation = e.target.value;
-    props.defineAcommodation(acommodation);
-    console.log(acommodation);
+    const spot = e.target.value;
+    props.defineAcommodation(spot);
+    console.log(spot);
   }
 
   return (

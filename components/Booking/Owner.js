@@ -23,6 +23,7 @@ function Owner(props) {
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   }
+  // timeout 300000
   // console.log(reserveTicket);
   async function submit(e) {
     e.preventDefault();

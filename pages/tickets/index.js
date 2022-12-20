@@ -20,7 +20,7 @@ export default function TicketsPage(props) {
   const [subtotalPrice, setSubtotalPrice] = useState();
   const [availables, setAvailables] = useState([]);
   // const [spot, setSpot] = useState();
-  const [acommodation, setAcommodation] = useState();
+  const [spot, setAcommodation] = useState();
   // Then achange the state according to event
 
   const [status1, setStatus1] = useState(false);
@@ -74,9 +74,9 @@ export default function TicketsPage(props) {
     }
     console.log(ticketsQuantity);
   }
-  function defineAcommodation(chosen) {
-    setAcommodation(chosen);
-    console.log(chosen);
+  function defineAcommodation(spot) {
+    setAcommodation(spot);
+    console.log(spot);
     // chosenArea(acommodation);
   }
   // const [vipTicketsQuantity, setVipTicketsQuantity] = useState();
@@ -120,8 +120,10 @@ export default function TicketsPage(props) {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
       const headers = {
         "Content-Type": "application/jsonS",
-        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
         Prefer: "return-representation",
       };
       const options = {
@@ -173,6 +175,7 @@ export default function TicketsPage(props) {
                 addRegToCart={addRegToCart}
                 addVipToCart={addVipToCart}
                 checkAvailability={checkAvailability}
+                spot={spot}
                 // regTicketsQuantityCount={regTicketsQuantityCount}
                 // vipTicketsQuantityCount={vipTicketsQuantityCount}
               />
@@ -184,7 +187,7 @@ export default function TicketsPage(props) {
                 cartVip={cartVip}
                 addRegToCart={addRegToCart}
                 addVipToCart={addVipToCart}
-                // chosenArea={chosenArea}
+                spot={spot}
                 defineAcommodation={defineAcommodation}
                 // regTicketsQuantityCount={regTicketsQuantityCount}
                 // vipTicketsQuantityCount={vipTicketsQuantityCount}
@@ -197,7 +200,7 @@ export default function TicketsPage(props) {
                 areas={props.areas}
                 addRegToCart={addRegToCart}
                 addVipToCart={addVipToCart}
-                acommodation={acommodation}
+                spot={spot}
                 totalPrice={totalPrice}
                 subtotalPrice={subtotalPrice}
                 totalReg={totalReg}
@@ -223,7 +226,7 @@ export default function TicketsPage(props) {
             addVipToCart={addVipToCart}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
-            acommodation={acommodation}
+            spot={spot}
             totalPrice={totalPrice}
             subtotalPrice={subtotalPrice}
             totalReg={totalReg}
