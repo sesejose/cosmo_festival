@@ -13,6 +13,12 @@ export default function Acommodation(props) {
   //   setPaymentCompleted(true);
   //   // 14. Now we have a variable that we can use in our UI.
 
+  function newFunction(e) {
+    const acommodation = e.target.value;
+    props.defineAcommodation(acommodation);
+    console.log(acommodation);
+  }
+
   return (
     <>
       <section id="acommodation">
@@ -52,7 +58,8 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Svartheim"
                     className="radio-input"
-                    onClick={props.defineAcommodation}
+                    defaultChecked
+                    onClick={newFunction}
                   ></input>
                 </div>
 
@@ -66,7 +73,7 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Nilfheim"
                     className="radio-input"
-                    onClick={props.defineAcommodation}
+                    onClick={newFunction}
                   ></input>
                 </div>
               </div>
@@ -86,7 +93,7 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Helheim"
                     className="radio-input"
-                    onClick={props.defineAcommodation}
+                    onClick={newFunction}
                   ></input>
                 </div>
 
@@ -100,7 +107,7 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Muspelheim"
                     className="radio-input"
-                    onClick={props.defineAcommodation}
+                    onClick={newFunction}
                   ></input>
                 </div>
 
@@ -114,7 +121,7 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Alfheim"
                     className="radio-input"
-                    onClick={props.defineAcommodation}
+                    onClick={newFunction}
                   ></input>
                 </div>
               </div>
