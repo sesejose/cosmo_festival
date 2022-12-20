@@ -1,12 +1,14 @@
 import Anchor from "./Anchor";
-import styles from "../styles/Home.module.css";
+import dark_theme_logo from "../public/dark_theme_logo.png";
+import Image from "next/image";
 
 export default function Nav() {
   return (
     <>
       <nav className="nav">
         <div className="logo">
-          <h3 className="white">Logo</h3>
+          {/* <h3 className="white">Logo</h3> */}
+          <Image className="logo" src={dark_theme_logo} alt={""} width={"50"} height={"45"} priority sizes="(max-width: 700px) 100vw, 700px" />
         </div>
         <div className="icons-nav-container">
           <a className="tab-basket basket-icon" onClick={openBasket}>
@@ -38,7 +40,7 @@ export default function Nav() {
               </Anchor>
             </li>
             <li>
-              <Anchor className="nav-lineup" href={"/line-up"} onClick={closeMenu}>
+              <Anchor className="nav-lineup" href={"/lineup"} onClick={closeMenu}>
                 Line Up
               </Anchor>
             </li>

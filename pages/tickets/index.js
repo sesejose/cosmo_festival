@@ -64,7 +64,7 @@ export default function TicketsPage(props) {
       // Await then execute the code.
       const res = await fetch(url, options, body); // Fetchs the data (await)
       const tickets = await res.json(); //When it's done getting it
-      // return data; // This returned "data/array" used in the showData();
+      // return data; // This returned tickets in an array - square brackets to define each one.
       setCartReg(tickets[0]);
       setCartVip(tickets[1]);
       setTickets(tickets);

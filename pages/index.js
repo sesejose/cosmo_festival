@@ -5,18 +5,13 @@ import Lineup from "../components/elements/Lineup";
 import TIcketsmain from "../components/elements/TIcketsmain";
 import Accomodation from "../components/elements/Accomodation";
 import Basket from "../components/Booking/Basket";
+import Days from "../components/elements/Days";
 
 export default function Home({ areas, schedule, bands }) {
-  // const [availableTickets, setTickets] = useState([]);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch("http://localhost:8080/available-spots");
-  //     const data = await res.json();
-  //     setTickets(data);
-  //   }
-  //   getData();
-  // }, []);
+  //const { Midgard : {mon, tue , wen , thu , fri , sat ,sun}}= schedule;
+  const [filter, setFilter] = useState("mon");
+  // const [search, setSearch] = useState("");
+  // const [genre, setGenre] = useState("");
 
   return (
     <>
@@ -27,7 +22,8 @@ export default function Home({ areas, schedule, bands }) {
       </Head>
       <div className="container-page">
         <Herosection />
-        <Lineup />
+        <Days setFilter={setFilter} />
+        <Lineup bands={bands} schedule={schedule} filter={filter} />
         <TIcketsmain />
         <Accomodation />
       </div>
@@ -51,6 +47,3 @@ export async function getServerSideProps() {
 
   return { props: { schedule, bands, areas } };
 }
-// className="container-page"
-
-// className="wrapper-forms"
