@@ -13,6 +13,12 @@ export default function Acommodation(props) {
   //   setPaymentCompleted(true);
   //   // 14. Now we have a variable that we can use in our UI.
 
+  function newFunction(e) {
+    const chosen = e.target.value;
+    props.defineAcommodation(chosen);
+    console.log(chosen);
+  }
+
   return (
     <>
       <section id="acommodation">
@@ -46,29 +52,14 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Svartheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="svartheim"
-                    name="campingArea"
-                    value="Svartheim"
-                    className="radio-input"
-                    defaultChecked
-                    onClick={props.defineAcommodation}
-                  ></input>
+                  <input type="radio" id="svartheim" name="campingArea" value="Svartheim" className="radio-input" defaultChecked onClick={newFunction}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Nilfheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="nilfheim"
-                    name="campingArea"
-                    value="Nilfheim"
-                    className="radio-input"
-                    onClick={props.defineAcommodation}
-                  ></input>
+                  <input type="radio" id="nilfheim" name="campingArea" value="Nilfheim" className="radio-input" onClick={newFunction}></input>
                 </div>
               </div>
 
@@ -81,42 +72,21 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Helheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="helheim"
-                    name="campingArea"
-                    value="Helheim"
-                    className="radio-input"
-                    onClick={props.defineAcommodation}
-                  ></input>
+                  <input type="radio" id="helheim" name="campingArea" value="Helheim" className="radio-input" onClick={newFunction}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Muspelheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="muspelheim"
-                    name="campingArea"
-                    value="Muspelheim"
-                    className="radio-input"
-                    onClick={props.defineAcommodation}
-                  ></input>
+                  <input type="radio" id="muspelheim" name="campingArea" value="Muspelheim" className="radio-input" onClick={newFunction}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Alfheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="alfheim"
-                    name="campingArea"
-                    value="Alfheim"
-                    className="radio-input"
-                    onClick={props.defineAcommodation}
-                  ></input>
+                  <input type="radio" id="alfheim" name="campingArea" value="Alfheim" className="radio-input" onClick={newFunction}></input>
                 </div>
               </div>
             </form>
@@ -142,14 +112,7 @@ export default function Acommodation(props) {
       <div id="modal-acommodation" className="hiden">
         <div className="modal-acommodation">
           <div className="close-modal" onClick={hideAcommodation}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              fill="currentColor"
-              className="bi bi-x"
-              viewBox="0 0 16 16"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </div>
