@@ -72,7 +72,6 @@ function Owner(props) {
             </label>
             <span className="error-message">Enter a valid value</span>
           </div>
-          <button>Submit</button>
         </fieldset>
       </form>
     </>

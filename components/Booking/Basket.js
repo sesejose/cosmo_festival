@@ -48,11 +48,11 @@ export default function Basket(props) {
           <div id="ticket-template">
             <div className="posts">
               <div className="post-quantity-remove">
-                <h3 className="turquoise type">{props.cartReg.displayname}</h3>
-                <h4 className="white price">Ticket price: DKK {props.cartReg.price}</h4>
+                <h3 className="turquoise type"></h3>
+                <h4 className="white price">Ticket price: DKK </h4>
               </div>
               <div className="post-type-price">
-                <h3 className="turquoise type">x{props.cartReg.amount}</h3>
+                <h3 className="turquoise type">x</h3>
                 <button className="btn-remove">Remove</button>
               </div>
             </div>
@@ -61,11 +61,11 @@ export default function Basket(props) {
           <div id="ticket-template">
             <div className="posts">
               <div className="post-quantity-remove">
-                <h3 className="turquoise type">{props.cartVip.displayname}</h3>
-                <h4 className="white price">Ticket price: DKK {props.cartVip.price}</h4>
+                <h3 className="turquoise type"></h3>
+                <h4 className="white price">Ticket price: DKK </h4>
               </div>
               <div className="post-type-price">
-                <h3 className="turquoise type">x{props.cartVip.amount}</h3>
+                <h3 className="turquoise type">x</h3>
                 <button className="btn-remove">Remove</button>
               </div>
             </div>
@@ -74,8 +74,7 @@ export default function Basket(props) {
           <div className="posts">
             <div className="post-text-container">
               <h3 className="turquoise">Acommodation</h3>
-              <h4 className="white">{props.spot}</h4>
-              {/* <h4 className="white">Fuck!</h4> */}
+              <h4 className="white"></h4>
             </div>
           </div>
           <hr></hr>
@@ -122,6 +121,7 @@ export default function Basket(props) {
     </>
   );
 }
+
 // const quaReg = parseInt(props.totalReg, 10);
 // const quaVip = parseInt(props.totalVip, 10);
 // const [totalTickets, setTotalTickets] = useState([]);

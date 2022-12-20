@@ -504,6 +504,8 @@ fieldset div input {
   width: 100%;
   overflow: scroll;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .container-about {
@@ -860,25 +862,20 @@ footer svg {
 
 #basket {
   margin-top: 6.5rem;
-  width: 25vw;
-  min-width: fit-content;
-  display: none;
-  border-left: 1px solid var(--pink);
-  overflow: scroll;
+  border: 1px solid var(--pink);
 }
 
-.tab-basket {
+/* .tab-basket {
   display: flex;
   position: relative;
   cursor: pointer;
   height: fit-content;
-}
+} */
 
 .basket-container {
   /* border-left: 1px solid var(--pink); */
   /* height: 100vh; */
   padding: var(--p-large);
-  overflow: scroll;
 }
 
 .sub-total-container {

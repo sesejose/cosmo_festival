@@ -6,6 +6,7 @@ import Pages from "../../components/Booking/Pages";
 
 export default function TicketsPage(props) {
   const fixedCampingPrice = 99;
+
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   // const [cart, setCart] = useState([]);
@@ -99,17 +100,12 @@ export default function TicketsPage(props) {
         addRegToCart={addRegToCart}
         addVipToCart={addVipToCart}
         chosenArea={chosenArea}
-      />
-      <Basket
-        areas={props.areas}
-        totalReg={totalReg}
-        totalVip={totalVip}
-        cartReg={cartReg}
-        cartVip={cartVip}
+        ticketsQuantity={cartVip.amount + cartReg.amount}
         spot={spot}
         totalPrice={totalPrice}
         subtotalPrice={subtotalPrice}
-        // greenCamping={greenCamping}
+        totalReg={totalReg}
+        totalVip={totalVip}
       />
     </>
   );
