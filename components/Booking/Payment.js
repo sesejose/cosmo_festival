@@ -69,9 +69,9 @@ export default function Payment() {
               </div>
               <div className="credit-card-container">
                 <div className="form-group">
-                  <div class="field-group">
+                  <div className="field-group">
                     <div className="field">
-                      <label forhtml="card">Credit card</label>
+                      <label htmlFor="card">Credit card</label>
                       <select name="cards" id="cards" placeholder="VISA / DANKORT" className="input-text" required>
                         <option value="volvo">VISA / DANKORT</option>
                         <option value="saab">MASTERCARD</option>
@@ -79,32 +79,32 @@ export default function Payment() {
                         <option value="audi">OTHER</option>
                       </select>
 
-                      <span class="error-message">Enter a valid value</span>
+                      <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>
                   <div className="form-group">
-                    <div class="field-group">
+                    <div className="field-group">
                       <div className="field">
-                        <label forhtml="name">Full name</label>
+                        <label htmlFor="name">Full name</label>
                         <input
                           type="text"
                           name="name"
                           id="name"
                           placeholder="Insert your full name"
-                          minlength="2"
+                          minLength="2"
                           className="input-text"
                           required
                         />
                         <span className="error-message">Enter a valid value</span>
                       </div>
                       <div className="field">
-                        <label forhtml="card-number">Card number</label>
+                        <label htmlFor="card-number">Card number</label>
                         <input
                           type="text"
                           name="card-number"
                           id="card-number"
                           placeholder="Insert card number"
-                          minlength="8"
+                          minLength="8"
                           maxLength="11"
                           className="input-text"
                           required
@@ -112,15 +112,15 @@ export default function Payment() {
                         <span className="error-message">Enter a valid value</span>
                       </div>
                     </div>
-                    <div class="field-group">
+                    <div className="field-group">
                       <div className="field">
-                        <label forhtml="code">Check digits</label>
+                        <label htmlFor="code">Check digits</label>
                         <input
                           type="text"
                           name="code"
                           id="code"
                           placeholder="Insert card check digits"
-                          minlength="3"
+                          minLength="3"
                           maxLength="3"
                           className="input-text"
                           required
@@ -128,7 +128,7 @@ export default function Payment() {
                         <span className="error-message">Enter a valid value</span>
                       </div>
                       <div className="field">
-                        <label forHtml="date">Expiration date</label>
+                        <label htmlFor="date">Expiration date</label>
                         <input
                           type="date"
                           name="date"
