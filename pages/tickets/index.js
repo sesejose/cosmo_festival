@@ -119,7 +119,19 @@ export default function TicketsPage(props) {
               />
             </li>
             <li>
-              <Personal cartReg={cartReg} cartVip={cartVip} />
+              <Personal
+                cartReg={cartReg}
+                cartVip={cartVip}
+                areas={props.areas}
+                addRegToCart={addRegToCart}
+                addVipToCart={addVipToCart}
+                ticketsQuantity={props.ticketsQuantity}
+                spot={props.spot}
+                totalPrice={totalPrice}
+                subtotalPrice={subtotalPrice}
+                totalReg={totalReg}
+                totalVip={totalVip}
+              />
             </li>
             <li>
               <Payment />

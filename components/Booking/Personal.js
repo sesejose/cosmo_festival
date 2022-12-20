@@ -14,14 +14,48 @@ export default function Personal(props) {
   function displayRegInfo() {
     let personalInfosReg = [];
     for (let i = 0; i < props.cartReg.amount; i++) {
-      personalInfosReg.push(<Owner index={i} key={i} />);
+      personalInfosReg.push(
+        <Owner
+          areas={props.areas}
+          cartReg={props.cartReg}
+          cartVip={props.cartVip}
+          addRegToCart={props.addRegToCart}
+          addVipToCart={props.addVipToCart}
+          ticketsQuantity={props.ticketsQuantity}
+          spot={props.spot}
+          totalPrice={props.totalPrice}
+          subtotalPrice={props.subtotalPrice}
+          totalReg={props.totalReg}
+          totalVip={props.totalVip}
+          chosenArea={props.chosenArea}
+          index={i}
+          key={i}
+        />
+      );
     }
     return personalInfosReg;
   }
   function displayVipInfo() {
     let personalInfosVip = [];
     for (let i = 0; i < props.cartVip.amount; i++) {
-      personalInfosVip.push(<Owner index={i} key={i} />);
+      personalInfosVip.push(
+        <Owner
+          areas={props.areas}
+          cartReg={props.cartReg}
+          cartVip={props.cartVip}
+          addRegToCart={props.addRegToCart}
+          addVipToCart={props.addVipToCart}
+          ticketsQuantity={props.ticketsQuantity}
+          spot={props.spot}
+          totalPrice={props.totalPrice}
+          subtotalPrice={props.subtotalPrice}
+          totalReg={props.totalReg}
+          totalVip={props.totalVip}
+          chosenArea={props.chosenArea}
+          index={i}
+          key={i}
+        />
+      );
     }
     return personalInfosVip;
   }

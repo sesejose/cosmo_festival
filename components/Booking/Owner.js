@@ -16,7 +16,7 @@ function Owner(props) {
       name: theForm.current.elements.fullName.value,
       email: theForm.current.elements.email.value,
       dob: theForm.current.elements.dob.value,
-      dob: theForm.current.elements.identification.value,
+      identification: theForm.current.elements.identification.value,
     });
     if (response && response.length) {
       setPaymentCompleted(true);
