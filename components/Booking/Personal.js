@@ -33,8 +33,10 @@ export default function Personal(props) {
           <div className="forms-intro-text">
             <h1 className="turquoise text-center">Personal information</h1>
             <p className="text-center">Enter your personal information</p>
-            <p className="text-center">Note! The information provided is how we can identify you as ticket owner so make sure its correct!</p>
-            <p className="text-center">Note! The information provided is how we can identify you as ticket owner so make sure it is the same as on your ID!</p>
+            <p className="text-center">
+              Note! The information provided is how we can identify you as ticket owner so make sure it is the same as
+              on your ID!
+            </p>
           </div>
           <div className="owners-container">
             <div className="personal-form">
@@ -56,10 +58,6 @@ export default function Personal(props) {
               </div>
             </div>
             <hr></hr>
-
-            <button className="btn-main" type="submit">
-              NEXT
-            </button>
           </div>
         </div>
         {/* </div> */}
