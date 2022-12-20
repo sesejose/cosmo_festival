@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 // import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Owner from "./Owner";
 // import Basket from "../../components/Booking/Basket";
 // import "react-accessible-accordion/dist/fancy-example.css";
 
 export default function Personal(props) {
+  const [showFormReg, setShowFormReg] = useState(false);
+  const [showFormVip, setShowFormVip] = useState(false);
+
   function displayRegInfo() {
     let personalInfosReg = [];
     for (let i = 0; i < props.cartReg.amount; i++) {
@@ -20,7 +23,9 @@ export default function Personal(props) {
     }
     return personalInfosVip;
   }
-
+  function validatePersonalinfo() {
+    console.log("valid");
+  }
   return (
     <>
       <section id="personal">
@@ -36,17 +41,27 @@ export default function Personal(props) {
           <div className="owners-container">
             <div className="personal-form">
               <div className="regular-container">
-                <h2 className="turquoise"> Regular pass(es)</h2>
-                <div className="personal-form-reg">{displayRegInfo()}</div>
+                {!showFormReg && (
+                  <button className="turquoise" onClick={() => setShowFormReg(true)}>
+                    Regular pass(es)
+                  </button>
+                )}
+                {showFormReg && <div className="personal-form-reg">{displayRegInfo()}</div>}
               </div>
               <div>
-                <h2 className="turquoise">VIP pass(es)</h2>
-                <div className="personal-form-vip">{displayVipInfo()}</div>
+                {!showFormVip && (
+                  <button onClick={() => setShowFormVip(true)} className="turquoise">
+                    VIP pass(es)
+                  </button>
+                )}
+                {showFormVip && <div className="personal-form-vip">{displayVipInfo()}</div>}
               </div>
             </div>
             <hr></hr>
 
-            <button className="btn-main">NEXT</button>
+            <button className="btn-main" onClick={validatePersonalinfo()}>
+              NEXT
+            </button>
           </div>
         </div>
         {/* </div> */}

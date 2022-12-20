@@ -100,14 +100,6 @@ export default function Basket(props) {
             </div>
             <button className="btn-remove">Remove</button>
           </div>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Ticket owner 1</h3>
-              <h4 className="white">Fullname</h4>
-              <h4 className="white">ID</h4>
-              <h4 className="white">email@mail.com</h4>
-            </div>
-          </div>
 
           <hr></hr>
           <div className="sub-total-container">
