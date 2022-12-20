@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 // import Basket from "../../components/Booking/Basket";
 import ModalAcommodation from "../../components/elements/ModalAcommodation";
 import { useEffect } from "react";
 
 export default function Acommodation(props) {
   // First define the state
-  const [acommodation, setAcommodation] = useState();
-  // Then achange the state according to event
-  function defineAcommodation(event) {
-    setAcommodation(event.target.value);
-    console.log(acommodation);
-    props.chosenArea(acommodation);
-  }
-  // Then update / add it to the cart
+
+  // console.log(response);
+  // // We do something with the response returned from insertOrder().
+  // if (response && response.length) {
+  //   // If response is not null AND has a length asumme that is an array (How??)
+  //   setPaymentCompleted(true);
+  //   // 14. Now we have a variable that we can use in our UI.
 
   return (
     <>
@@ -41,35 +40,34 @@ export default function Acommodation(props) {
                 <h4 className="purple">JOTUNHEIM</h4>
               </div>
             </div>
-
-            <div className="camping-areas-container">
+            <form className="camping-areas-container">
               <div className="camping-areas-row">
                 <div className="camping-area">
-                  <label className="camping-areas-label" forhtml="camping-area">
+                  <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Svartheim</div>
                   </label>
                   <input
                     type="radio"
                     id="svartheim"
-                    name="camping-area"
-                    value="Area: Svartheim"
+                    name="campingArea"
+                    value="Svartheim"
                     className="radio-input"
                     defaultChecked
-                    onClick={defineAcommodation}
+                    onClick={props.defineAcommodation}
                   ></input>
                 </div>
 
                 <div className="camping-area">
-                  <label className="camping-areas-label" forhtml="camping-area">
+                  <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Nilfheim</div>
                   </label>
                   <input
                     type="radio"
                     id="nilfheim"
-                    name="camping-area"
-                    value="Area: Nilfheim"
+                    name="campingArea"
+                    value="Nilfheim"
                     className="radio-input"
-                    onClick={defineAcommodation}
+                    onClick={props.defineAcommodation}
                   ></input>
                 </div>
               </div>
@@ -80,48 +78,48 @@ export default function Acommodation(props) {
 
               <div className="camping-areas-row">
                 <div className="camping-area">
-                  <label className="camping-areas-label" forhtml="camping-area">
+                  <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Helheim</div>
                   </label>
                   <input
                     type="radio"
                     id="helheim"
-                    name="camping-area"
-                    value="Area: Helheim"
+                    name="campingArea"
+                    value="Helheim"
                     className="radio-input"
-                    onClick={defineAcommodation}
+                    onClick={props.defineAcommodation}
                   ></input>
                 </div>
 
                 <div className="camping-area">
-                  <label className="camping-areas-label" forhtml="camping-area">
+                  <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Muspelheim</div>
                   </label>
                   <input
                     type="radio"
                     id="muspelheim"
-                    name="camping-area"
-                    value="Area: Muspelheim"
+                    name="campingArea"
+                    value="Muspelheim"
                     className="radio-input"
-                    onClick={defineAcommodation}
+                    onClick={props.defineAcommodation}
                   ></input>
                 </div>
 
                 <div className="camping-area">
-                  <label className="camping-areas-label" forhtml="camping-area">
+                  <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Alfheim</div>
                   </label>
                   <input
                     type="radio"
                     id="alfheim"
-                    name="camping-area"
-                    value="Area: Alfheim"
+                    name="campingArea"
+                    value="Alfheim"
                     className="radio-input"
-                    onClick={defineAcommodation}
+                    onClick={props.defineAcommodation}
                   ></input>
                 </div>
               </div>
-            </div>
+            </form>
 
             <div className="map-green-camping">
               <div className="yellow">

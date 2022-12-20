@@ -7,6 +7,7 @@ export default function Regtickets(props) {
   function setQuantities() {
     props.addRegToCart(props.cartReg, totalReg);
     // console.log(typeof totalReg);
+    // props.regTicketsQuantityCount(totalReg);
   }
 
   function displayQuantityTicketsRegular() {

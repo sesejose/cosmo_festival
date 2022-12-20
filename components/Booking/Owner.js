@@ -1,47 +1,39 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Payment from "./Payment";
 
 function Owner(props) {
-  const theForm = useRef();
-  const fullName = useRef(null);
-  const email = useRef(null);
-  const dob = useRef(null);
-  const identification = useRef(null);
-  // function validateFormPersonal() {
-  //   console.log("submit fromS");
-  // }
-  async function submit(e) {
-    e.preventDefault();
-    const response = await insertOrder({
-      name: theForm.current.elements.fullName.value,
-      email: theForm.current.elements.email.value,
-      dob: theForm.current.elements.dob.value,
-      identification: theForm.current.elements.identification.value,
-    });
-    if (response && response.length) {
-      setPaymentCompleted(true);
-    }
-  }
-  async function insertOrder() {
-    const url = "https://udfchraccrfladlsvbzh.supabase.co";
-    const res = await fetch(url + "/rest/v1/cosmo_festival", {
+  const reserveSpot = useRef();
+
+  const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
+  const spotReserved = props.spot;
+  console.log(spotReserved);
+  // Then update / add it to the cart
+  function reserveTicket(payload) {
+    const options = {
       method: "PUT",
       headers: {
-        apikey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Prefer: "return=minimal",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(),
-    });
+      body: JSON.stringify(payload),
+    };
 
-    return await res.json();
+    fetch("http://localhost:8080/reserve-spot", options)
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+  }
+  // console.log(reserveTicket);
+  async function submit(e) {
+    e.preventDefault();
+    reserveTicket({
+      area: spotReserved,
+      amount: ticketsQuantity,
+    });
   }
   return (
     <>
-      <form onSubmit={submit} ref={theForm}>
+      <form onSubmit={submit} ref={reserveSpot}>
         <fieldset>
           <div>
             <legend>{props.index === 0 ? "Your personal information" : `Guest ${props.index} information`}</legend>
@@ -55,7 +47,6 @@ function Owner(props) {
                 minLength="2"
                 required
                 className="input-text"
-                ref={fullName}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
@@ -63,12 +54,11 @@ function Owner(props) {
               Email
               <input
                 type="email"
-                name={`email_ticketholder_${props.index}`}
+                name="email"
                 id={`email_ticketholder_${props.index}`}
                 placeholder="Email address"
                 required
                 className="input-text"
-                ref={email}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
@@ -77,13 +67,12 @@ function Owner(props) {
               Date of birth
               <input
                 type="date"
-                name={`dob_ticketholder_${props.index}`}
+                name="dob"
                 id={`dob_ticketholder_${props.index}`}
                 placeholder="Date of birth (DD/MM/YY)"
                 max="2004-12-01"
                 required
                 className="input-text"
-                ref={dob}
               />
             </label>
             <span className="error-message">Enter a valid value</span>
@@ -92,12 +81,11 @@ function Owner(props) {
               ID number
               <input
                 type="text"
-                name={`id_ticketholder_${props.index}`}
+                name="identification"
                 id={`id_ticketholder_${props.index}`}
                 placeholder="123456AB"
                 required
                 className="input-text"
-                ref={identification}
               />
             </label>
             <span className="error-message">Enter a valid value</span>

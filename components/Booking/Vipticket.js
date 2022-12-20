@@ -7,6 +7,7 @@ export default function Viptickets(props) {
   function setQuantities() {
     props.addVipToCart(props.cartVip, totalVip);
     console.log(typeof totalVip);
+    // props.vipTicketsQuantityCount(totalVip);
   }
 
   function displayQuantityTicketsVip() {

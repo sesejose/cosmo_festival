@@ -16,7 +16,7 @@ export default function Home({ areas, schedule, bands }) {
   const [totalVip, setTotalVip] = useState(0);
   const [totalPrice, setTotalPrice] = useState();
   const [availables, setAvailables] = useState([]);
-  const [spot, setSpot] = useState();
+  // const [spot, setSpot] = useState();
 
   // Fetching tickets from Supabase (Tickets table)
   useEffect(() => {
@@ -52,17 +52,17 @@ export default function Home({ areas, schedule, bands }) {
   }, []);
 
   // Fetching areas from Available spots
-  useEffect(() => {
-    async function getData() {
-      // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-      const res = await fetch("http://localhost:8080/available-spots");
-      const data = await res.json();
-      setAvailables(data);
-      setSpot("Svartheim");
-      // console.log(data);
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+  //     const res = await fetch("http://localhost:8080/available-spots");
+  //     const data = await res.json();
+  //     setAvailables(data);
+  //     setSpot("Svartheim");
+  //     // console.log(data);
+  //   }
+  //   getData();
+  // }, []);
 
   return (
     <>

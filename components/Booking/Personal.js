@@ -22,7 +22,7 @@ export default function Personal(props) {
           addRegToCart={props.addRegToCart}
           addVipToCart={props.addVipToCart}
           ticketsQuantity={props.ticketsQuantity}
-          spot={props.spot}
+          accomodation={props.accomodation}
           totalPrice={props.totalPrice}
           subtotalPrice={props.subtotalPrice}
           totalReg={props.totalReg}
@@ -46,7 +46,7 @@ export default function Personal(props) {
           addRegToCart={props.addRegToCart}
           addVipToCart={props.addVipToCart}
           ticketsQuantity={props.ticketsQuantity}
-          spot={props.spot}
+          accomodation={props.accomodation}
           totalPrice={props.totalPrice}
           subtotalPrice={props.subtotalPrice}
           totalReg={props.totalReg}
