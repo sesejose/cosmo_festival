@@ -504,6 +504,8 @@ fieldset div input {
   width: 100%;
   overflow: scroll;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .container-about {
@@ -856,8 +858,6 @@ footer svg {
   margin-top: 6.5rem;
   /* height: 100vh; */
   /* overflow: auto; */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 #basket {
