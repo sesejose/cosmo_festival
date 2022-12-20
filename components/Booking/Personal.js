@@ -40,7 +40,7 @@ export default function Personal(props) {
           </div>
           <div className="owners-container">
             <div className="personal-form">
-              <div className="regular-container">
+              <div className="regular-container small">
                 {!showFormReg && (
                   <button onClick={() => setShowFormReg(true)} className="btn-main">
                     Regular pass(es)
@@ -48,7 +48,7 @@ export default function Personal(props) {
                 )}
                 {showFormReg && <div className="personal-form-reg">{displayRegInfo()}</div>}
               </div>
-              <div>
+              <div className="regular-container small">
                 {!showFormVip && (
                   <button onClick={() => setShowFormVip(true)} className="btn-main">
                     VIP pass(es)

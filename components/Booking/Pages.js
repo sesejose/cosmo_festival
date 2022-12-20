@@ -42,20 +42,21 @@ function Pages(props) {
               <Thanks />
             </li>
           </ul>
+
+          <Basket
+            areas={props.areas}
+            cartReg={props.cartReg}
+            cartVip={props.cartVip}
+            addRegToCart={props.addRegToCart}
+            addVipToCart={props.addVipToCart}
+            ticketsQuantity={props.ticketsQuantity}
+            spot={props.spot}
+            totalPrice={props.totalPrice}
+            subtotalPrice={props.subtotalPrice}
+            totalReg={props.totalReg}
+            totalVip={props.totalVip}
+          />
         </div>
-        <Basket
-          areas={props.areas}
-          cartReg={props.cartReg}
-          cartVip={props.cartVip}
-          addRegToCart={props.addRegToCart}
-          addVipToCart={props.addVipToCart}
-          ticketsQuantity={props.ticketsQuantity}
-          spot={props.spot}
-          totalPrice={props.totalPrice}
-          subtotalPrice={props.subtotalPrice}
-          totalReg={props.totalReg}
-          totalVip={props.totalVip}
-        />
       </section>
     </>
   );
