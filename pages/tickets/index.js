@@ -7,7 +7,6 @@ import Pages from "../../components/Booking/Pages";
 export default function TicketsPage(props) {
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
-  // const [cart, setCart] = useState([]);
   const [tickets, setTickets] = useState([]);
   const [totalReg, setTotalReg] = useState(0);
   const [totalVip, setTotalVip] = useState(0);
