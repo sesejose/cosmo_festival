@@ -82,11 +82,7 @@ export default function Tickets(props) {
               addVipToCart={props.addVipToCart}
             />
           </div>
-          <div>
-            <button className="btn-main" onClick={props.checkAvailability}>
-              NEXT
-            </button>
-          </div>
+          <div></div>
         </div>
         <div className="personal-camping-options">
           <div className="spot-container">
@@ -157,7 +153,11 @@ export default function Tickets(props) {
               </div>
             </form>
           </div>
+          <button className="btn-main" onClick={props.checkAvailability}>
+            NEXT
+          </button>
         </div>
+
         {/* </div> */}
       </section>
     </>

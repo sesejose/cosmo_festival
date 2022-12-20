@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Basket from "../../components/Booking/Basket";
 import Ticket from "../../components/Booking/Ticket";
 import Acommodation from "../../components/Booking/Acommodation";
@@ -161,62 +161,71 @@ export default function TicketsPage(props) {
   // function chosenArea(acommodation) {
   //   setSpot(acommodation);
   // }
-
+  const theForm = useRef(null);
   return (
     <>
       <section id="pages">
         <div className="container-page">
-          <ul>
-            <li>
-              <Ticket
-                areas={props.areas}
-                cartReg={cartReg}
-                cartVip={cartVip}
-                addRegToCart={addRegToCart}
-                addVipToCart={addVipToCart}
-                checkAvailability={checkAvailability}
-                spot={spot}
-                // regTicketsQuantityCount={regTicketsQuantityCount}
-                // vipTicketsQuantityCount={vipTicketsQuantityCount}
-              />
-            </li>
-            <li>
-              <Acommodation
-                areas={props.areas}
-                cartReg={cartReg}
-                cartVip={cartVip}
-                addRegToCart={addRegToCart}
-                addVipToCart={addVipToCart}
-                spot={spot}
-                defineAcommodation={defineAcommodation}
-                // regTicketsQuantityCount={regTicketsQuantityCount}
-                // vipTicketsQuantityCount={vipTicketsQuantityCount}
-              />
-            </li>
-            <li>
-              <Personal
-                cartReg={cartReg}
-                cartVip={cartVip}
-                areas={props.areas}
-                addRegToCart={addRegToCart}
-                addVipToCart={addVipToCart}
-                spot={spot}
-                totalPrice={totalPrice}
-                subtotalPrice={subtotalPrice}
-                totalReg={totalReg}
-                totalVip={totalVip}
-                // chosenArea={chosenArea}
-                // regTicketsQuantityCount={regTicketsQuantityCount}
-                // vipTicketsQuantityCount={vipTicketsQuantityCount}
-              />
-            </li>
-            <li>
-              <Payment />
-            </li>
-            <li>
-              <Thanks />
-            </li>
-          </ul>
+          <Ticket
+            areas={props.areas}
+            cartReg={cartReg}
+            cartVip={cartVip}
+            addRegToCart={addRegToCart}
+            addVipToCart={addVipToCart}
+            checkAvailability={checkAvailability}
+            spot={spot}
+            // regTicketsQuantityCount={regTicketsQuantityCount}
+            // vipTicketsQuantityCount={vipTicketsQuantityCount}
+          />
+
+          <Acommodation
+            areas={props.areas}
+            cartReg={cartReg}
+            cartVip={cartVip}
+            addRegToCart={addRegToCart}
+            addVipToCart={addVipToCart}
+            spot={spot}
+            defineAcommodation={defineAcommodation}
+            totalPrice={totalPrice}
+            subtotalPrice={subtotalPrice}
+            totalReg={totalReg}
+            totalVip={totalVip}
+            // regTicketsQuantityCount={regTicketsQuantityCount}
+            // vipTicketsQuantityCount={vipTicketsQuantityCount}
+          />
+
+          <Personal
+            cartReg={cartReg}
+            cartVip={cartVip}
+            areas={props.areas}
+            addRegToCart={addRegToCart}
+            addVipToCart={addVipToCart}
+            spot={spot}
+            totalPrice={totalPrice}
+            subtotalPrice={subtotalPrice}
+            totalReg={totalReg}
+            totalVip={totalVip}
+            // chosenArea={chosenArea}
+            // regTicketsQuantityCount={regTicketsQuantityCount}
+            // vipTicketsQuantityCount={vipTicketsQuantityCount}
+          />
+
+          <Payment
+            checkAvailability={checkAvailability}
+            areas={props.areas}
+            cartReg={cartReg}
+            cartVip={cartVip}
+            addRegToCart={addRegToCart}
+            addVipToCart={addVipToCart}
+            spot={spot}
+            defineAcommodation={defineAcommodation}
+            totalPrice={totalPrice}
+            subtotalPrice={subtotalPrice}
+            totalReg={totalReg}
+            totalVip={totalVip}
+          />
+
+          <Thanks />
 
           <Basket
             areas={props.areas}

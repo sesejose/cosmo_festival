@@ -3,38 +3,9 @@ import { useRef, useState } from "react";
 import Payment from "./Payment";
 
 function Owner(props) {
-  const reserveSpot = useRef();
-
-  const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
-  const spotReserved = props.spot;
-  console.log(spotReserved);
-  // Then update / add it to the cart
-  function reserveTicket(payload) {
-    const options = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    };
-
-    fetch("http://localhost:8080/reserve-spot", options)
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
-  }
-  // timeout 300000
-  // console.log(reserveTicket);
-  async function submit(e) {
-    e.preventDefault();
-    reserveTicket({
-      area: spotReserved,
-      amount: ticketsQuantity,
-    });
-  }
   return (
     <>
-      <form onSubmit={submit} ref={reserveSpot}>
+      <form>
         <fieldset>
           <div>
             <legend>{props.index === 0 ? "Your personal information" : `Guest ${props.index} information`}</legend>

@@ -5,20 +5,49 @@ import { useEffect } from "react";
 
 export default function Acommodation(props) {
   // First define the state
-
   // console.log(response);
   // // We do something with the response returned from insertOrder().
   // if (response && response.length) {
   //   // If response is not null AND has a length asumme that is an array (How??)
   //   setPaymentCompleted(true);
   //   // 14. Now we have a variable that we can use in our UI.
-
   function newFunction(e) {
     const spot = e.target.value;
     props.defineAcommodation(spot);
     console.log(spot);
   }
+  const reserveSpot = useRef();
 
+  const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
+  const spotReserved = props.spot;
+  console.log(spotReserved);
+  const [reserveID, setReserveID] = useState({});
+
+  // Then update / add it to the cart
+  function reserveTicket(payload) {
+    fetch("http://localhost:8080/reserve-spot", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      // .then((response) => console.log(response))
+      .then((response) => setReserveID(response.id))
+
+      .catch((err) => console.error(err));
+  }
+  // timeout 300000
+  // console.log(reserveTicket);
+  async function submit(e) {
+    e.preventDefault();
+    reserveTicket({
+      area: spotReserved,
+      amount: ticketsQuantity,
+    });
+  }
+  console.log(reserveID);
   return (
     <>
       <section id="acommodation">
@@ -46,7 +75,7 @@ export default function Acommodation(props) {
                 <h4 className="purple">JOTUNHEIM</h4>
               </div>
             </div>
-            <form className="camping-areas-container">
+            <form onSubmit={submit} ref={reserveSpot} className="camping-areas-container">
               <div className="camping-areas-row">
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
@@ -125,20 +154,10 @@ export default function Acommodation(props) {
                   ></input>
                 </div>
               </div>
+              <button className="btn-main">NEXT</button>
             </form>
-
-            <div className="map-green-camping">
-              <div className="yellow">
-                <p>Green camping</p>
-              </div>
-              {/* <label className="camping-areas-label" forhtml="green-camping"> */}
-              {/* </label> */}
-              {/* <input type="radio" id="green-camping" name="green-camping" value="1" className="radio-input" checked></input> */}
-            </div>
           </div>
-          <div>
-            <button className="btn-main">NEXT</button>
-          </div>
+          <div></div>
         </div>
         {/* </div> */}
       </section>
