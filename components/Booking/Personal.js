@@ -80,7 +80,14 @@ export default function Personal(props) {
                     Regular pass(es)
                   </button>
                 )}
-                {showFormReg && <div className="personal-form-reg">{displayRegInfo()}</div>}
+                {showFormReg && (
+                  <form className="personal-form-reg">
+                    {displayRegInfo()}{" "}
+                    <button className="btn-main" type="submit">
+                      Submit
+                    </button>
+                  </form>
+                )}
               </div>
               <div className="regular-container small">
                 {!showFormVip && (
@@ -88,7 +95,14 @@ export default function Personal(props) {
                     VIP pass(es)
                   </button>
                 )}
-                {showFormVip && <div className="personal-form-vip">{displayVipInfo()}</div>}
+                {showFormVip && (
+                  <form className="personal-form-vip">
+                    {displayVipInfo()}
+                    <button className="btn-main" type="submit">
+                      Submit
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
             <hr></hr>
