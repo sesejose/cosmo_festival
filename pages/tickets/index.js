@@ -263,8 +263,8 @@ export async function getStaticProps() {
   - wait for that data
   - once we have the data, it put into the component
   - so the component can render with that data inside it  */
-  // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-  const res = await fetch("http://localhost:8080/available-spots");
+  const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+  //const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();
 
   /* - we return a value for this function 

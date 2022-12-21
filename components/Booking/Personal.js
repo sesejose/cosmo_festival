@@ -60,7 +60,7 @@ export default function Personal(props) {
   }
   const fullfillres = useRef();
   async function fullfillReservation() {
-    const url = "http://localhost:8080";
+    const url = "https://bitter-moon-5524.fly.dev";
     const res = await fetch(url + "/fullfill-reservation", {
       method: "POST",
       headers: {
