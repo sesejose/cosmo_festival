@@ -221,7 +221,7 @@ fieldset div input {
   position: relative;
   background-image: url("../public/festival-landing.jpg");
   background-size: cover;
-  padding: var(--p-large);
+  padding: 3rem 3rem;
   /* text-align: center; */
 }
 
@@ -235,7 +235,6 @@ fieldset div input {
 .will-you-and-btn-container {
   display: flex;
   flex-flow: column;
-  width: 20%;
 }
 
 .will-you {
@@ -406,6 +405,7 @@ fieldset div input {
   padding: 15px 32px;
   line-height: 0;
 }
+
 .btn-turquoise {
   font-family: var(--font);
   font-size: 1.125rem;
@@ -414,8 +414,8 @@ fieldset div input {
   border: 1px solid var(--turquoise);
   background-color: transparent;
   cursor: pointer;
-  height: 48px;
-  padding: 15px 32px;
+  padding: 2rem;
+  text-decoration: none;
 }
 .btn-turquoise:hover {
   font-family: var(--font);
@@ -425,8 +425,7 @@ fieldset div input {
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   cursor: pointer;
-  height: 48px;
-  padding: 15px 32px;
+  padding: 2rem;
 }
 
 /* Tickets Home Page */
@@ -532,6 +531,7 @@ fieldset div input {
   position: relative;
   background-image: url("../public/about.png");
   background-size: cover;
+  max-width: 100%;
 }
 
 .about-img img {
@@ -639,16 +639,17 @@ select.input-text {
   width: 4rem;
   max-width: 4rem;
   /* height: auto; */
+  cursor: pointer;
 }
 
 .logo img {
-  padding: 0;
+  padding: 0.5rem;
 }
 
 .logo,
 .open,
 .basket-icon {
-  padding: var(--p-medium);
+  padding: 0.3rem;
   display: flex;
   /* align-items: center; */
 }
@@ -688,8 +689,6 @@ footer {
   z-index: 3;
   background-color: var(--black);
   border-top: 1px solid var(--pink);
-  padding: var(--ptb-large);
-  gap: 4rem;
   width: 100%;
 }
 
@@ -748,12 +747,16 @@ footer h3 {
 #menu {
   display: none;
 }
-
+.nav {
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
 .nav-container {
   background-color: var(--black);
   border-left: 1px solid var(--pink);
   width: 50%;
-  height: 100vh;
   height: 100vh;
   padding: var(--p-large);
   position: relative;
@@ -860,7 +863,6 @@ footer svg {
   /* grid-column: 1/2; */
   min-width: 1024px;
   width: 100%;
-  margin-top: 6.5rem;
   /* height: 100vh; */
   /* overflow: auto; */
 }
@@ -939,7 +941,16 @@ footer svg {
   padding: var(--ptb-large);
   gap: 1rem;
 }
-
+.wrapper-forms1 {
+  display: flex;
+  flex-flow: column;
+  min-width: fit-content;
+  max-width: 75%;
+  justify-content: center;
+  margin: var(--m-auto);
+  padding-top: 8rem;
+  gap: 1rem;
+}
 .wrapper-ticket-downloable {
   display: flex;
   flex-flow: column;
@@ -1023,7 +1034,13 @@ footer svg {
   align-items: center;
   gap: 0.5rem;
 }
-
+.flex-row-space-around1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
 .flex-row {
   width: 100%;
   display: flex;
@@ -1144,7 +1161,9 @@ footer svg {
   border: 1px solid var(--pink);
   background-color: transparent;
   cursor: pointer;
-  padding: 32px 32px;
+  margin-top: 30px;
+  padding: 2rem;
+  text-decoration: none;
 }
 .btn-main:hover {
   width: 100%;
@@ -1154,7 +1173,7 @@ footer svg {
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   cursor: pointer;
-  padding: 32px 32px;
+  padding: 2rem;
 }
 
 .btn-acommodation {
@@ -1227,7 +1246,14 @@ footer svg {
 }
 
 /* Acommodation Page */
-
+.page-accomodation {
+  height: 50rem;
+  padding-top: 7rem;
+  max-width: 80%;
+}
+.page-accomodation .flex-row {
+  padding: 1rem;
+}
 .map-container {
   display: flex;
   flex-flow: column;

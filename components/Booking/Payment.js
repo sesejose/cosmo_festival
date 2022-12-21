@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { insertOrder } from "./Db";
+import Thanks from "./Thanks";
 // import Basket from "../../components/Booking/Basket";
 
 export default function Payment(props) {
@@ -59,7 +60,7 @@ The form should be the same.
     <>
       {/* 15. Ternary operator
       {paymentCompleted ? (
-        <p>THANK YOU!!!</p>
+      <Thanks />;
       ) : ( */}
       <section id="payment">
         <form ref={postOrder} onSubmit={submit}>

@@ -13,7 +13,7 @@ export default function Tickets(props) {
       {/* Tickets */}
       <section id="tickets">
         {/* <div className="container-page"> */}
-        <div className="wrapper-forms">
+        <div className="wrapper-forms1">
           <div className="forms-intro-text">
             <h1 className="turquoise text-center">Tickets</h1>
             <p className="text-center">Note! The limit per purchase is 9 tickets!</p>

@@ -111,7 +111,7 @@ export default function Personal(props) {
           <div className="owners-container">
             <div className="personal-form">
               <div className="regular-container small">
-                {!showFormReg && (
+                {!showFormReg && props.cartReg.amount > 0 && (
                   <button onClick={() => setShowFormReg(true)} className="btn-main">
                     Regular pass(es)
                   </button>
@@ -125,8 +125,8 @@ export default function Personal(props) {
                   </form>
                 )}
               </div>
-              <div className="regular-container small">
-                {!showFormVip && (
+              <div className="vip-container small">
+                {!showFormVip && props.cartVip.amount > 0 && (
                   <button onClick={() => setShowFormVip(true)} className="btn-main">
                     VIP pass(es)
                   </button>

@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       <header>
         <Nav />
       </header>
-      <div className="wrapper">{children}</div>
+      <div>{children}</div>
       <Footer />
     </>
   );

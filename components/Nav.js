@@ -1,22 +1,24 @@
 import Anchor from "./Anchor";
 import dark_theme_logo from "../public/dark_theme_logo.png";
 import Image from "next/image";
-
+import Link from "next/link";
 export default function Nav() {
   return (
     <>
       <nav className="nav">
         <div className="logo">
           {/* <h3 className="white">Logo</h3> */}
-          <Image
-            className="logo"
-            src={dark_theme_logo}
-            alt={""}
-            width={"50"}
-            height={"45"}
-            priority
-            sizes="(max-width: 700px) 100vw, 700px"
-          />
+          <Link href="/#">
+            <Image
+              className="logo"
+              src={dark_theme_logo}
+              alt={""}
+              width={"50"}
+              height={"45"}
+              priority
+              sizes="(max-width: 700px) 100vw, 700px"
+            />
+          </Link>
         </div>
         <div className="icons-nav-container">
           <a className="open" onClick={openMenu}>
@@ -47,13 +49,13 @@ export default function Nav() {
                 Tickets
               </Anchor>
             </li>
-            <li>
+            {/* <li>
               <Anchor className="nav-lineup" href={"/lineup"} onClick={closeMenu}>
                 Line Up
               </Anchor>
-            </li>
+            </li> */}
             <li>
-              <Anchor className="nav-acommodation" href={"/acommodation"} onClick={closeMenu}>
+              <Anchor className="nav-acommodation" href={"/accomodation"} onClick={closeMenu}>
                 Acomodation
               </Anchor>
             </li>
