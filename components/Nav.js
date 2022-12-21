@@ -49,11 +49,11 @@ export default function Nav() {
                 Tickets
               </Anchor>
             </li>
-            {/* <li>
+            <li>
               <Anchor className="nav-lineup" href={"/lineup"} onClick={closeMenu}>
                 Line Up
               </Anchor>
-            </li> */}
+            </li>
             <li>
               <Anchor className="nav-acommodation" href={"/accomodation"} onClick={closeMenu}>
                 Acomodation

@@ -1,8 +1,11 @@
 import Link from "next/link";
 // import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 // import "react-tabs/style/react-tabs.css";
+import { useState } from "react";
 
-export default function Lineup({ bands, filter, schedule }) {
+export default function Lineup({ bands, schedule }) {
+  const [filter, setFilter] = useState("mon");
+
   //this /bands.map makes dynamic links to open the bands pages
   //logic if the bands are playing on the filter day then print
   //const { Midgard : {mon, tue , wen , thu , fri , sat ,sun}}= schedule;

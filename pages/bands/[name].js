@@ -10,7 +10,7 @@ export default function Band({ bands }) {
   const band = bands.find((band) => band.name === name);
 
   return (
-    <div className="container-page">
+    <div className="container-page layout">
       <div className="container">
         <section className="artist">
           <section className="artisthero">

@@ -214,36 +214,62 @@ fieldset div input {
 /* Herosection */
 
 .herosection {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
   position: relative;
-  background-image: url("../public/festival-landing.jpg");
-  background-size: cover;
-  padding: 3rem 3rem;
-  /* text-align: center; */
+  text-align: center;
+}
+.herosection img {
+  object-fit: cover;
+  opacity: 50%;
+  max-width: 100%;
+  height: 50vw;
 }
 
-.dates-and-will-you-container {
-  display: flex;
-  align-items: flex-end;
-  padding: var(--p-large);
-  height: 100vh;
+.herosection h2,
+.herosection h3 {
+  color: var(--pink);
 }
-
-.will-you-and-btn-container {
-  display: flex;
-  flex-flow: column;
+.herosection h2 {
+  font-weight: 100;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 75%;
+  left: 20%;
+  font-size: 9rem;
+  z-index: 1;
 }
-
-.will-you {
-  display: flex;
-  flex-flow: column;
+.herosection h3 {
+  font-weight: bold;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 70%;
+  left: 85%;
+  right: 5%;
+  font-size: 2rem;
   text-align: right;
-  width: 100%;
 }
-
+.booknowBtn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 90%;
+  left: 85%;
+  font-family: var(--font);
+  font-size: 1.5rem;
+  color: var(--turquoise);
+  border: 1px solid var(--pink);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2rem;
+  text-decoration: none;
+}
+.booknowBtn:hover {
+  font-family: var(--font);
+  font-size: 1.5rem;
+  color: var(--black);
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  cursor: pointer;
+  padding: 2rem;
+}
 .dates-animated {
 }
 
@@ -316,9 +342,17 @@ fieldset div input {
   display: flex;
   margin: var(--m-large);
 }
-
+/*Line up PAGE*/
+.lineupPage {
+  padding-top: 8rem;
+}
+.lineupPage h1 {
+  text-align: center;
+}
 /* Lineup */
-
+.layout {
+  padding-top: 8rem;
+}
 #days {
   margin: var(--mtb-auto-large);
   display: flex;
@@ -347,7 +381,6 @@ fieldset div input {
 
 .lineup {
   display: flex;
-  flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -523,17 +556,28 @@ fieldset div input {
   max-width: 1024px;
 }
 
-.about-hero {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
+.aboutHero {
   position: relative;
-  background-image: url("../public/about.png");
-  background-size: cover;
-  max-width: 100%;
+  text-align: center;
 }
-
+.aboutHero img {
+  width: 100%;
+  opacity: 50%;
+  max-width: 100%;
+  object-fit: cover;
+  height: 50vw;
+}
+.aboutHero h1 {
+  margin-top: 2rem;
+  font-weight: 300;
+  opacity: 30%;
+  color: var(--pink);
+  font-size: 9rem;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .about-img img {
   max-width: 100%;
   height: auto;
