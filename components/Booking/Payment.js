@@ -44,10 +44,10 @@ The form should be the same.
       spot: true, // This is a new state
       tent_2: 0, // This is a new State (number)
       tent_3: 0, // This is a new State (number)
-      // fullnames: [], // This is a new State (Array)
-      // emails: [], // This is a new State (Array)
-      // ages: [], // This is a new State (Array)
-      // IDs: [], // This is a new State (Array)
+      fullnames: [], // This is a new State (Array)
+      emails: [], // This is a new State (Array)
+      ages: [], // This is a new State (Array)
+      IDs: [], // This is a new State (Array)
     });
     console.log(response);
     if (response && response.length) {
