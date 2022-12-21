@@ -25,7 +25,7 @@ export default function Viptickets(props) {
     const vip = document.querySelector(".open-ticket-vip");
     if ((vip.style.display = "none")) {
       vip.style.display = "flex";
-    } else {
+    } else if ((vip.style.display = "flex")) {
       vip.style.display = "none";
     }
   }
@@ -47,7 +47,7 @@ export default function Viptickets(props) {
           <div className="flex-row-space-around">
             <button className="read-more">Read more</button>
             <button className="btn-add" onClick={openVip}>
-              Add to cart
+              Choose amount{" "}
             </button>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Viptickets(props) {
           </div>
         </div>
         <button onClick={setQuantities} className="btn-add">
-          Add to cart
+          Choose amount
         </button>
       </div>
     </>

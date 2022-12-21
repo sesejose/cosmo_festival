@@ -29,78 +29,76 @@ export default function Basket(props) {
     }
     getData();
   }, []);
-  const fixedCampingPrice = 99;
   return (
     <>
       <section id="basket">
         <div className="basket-container">
-          <h2 className="turquoise">Summary order</h2>
+          <div className="summery">
+            <h2 className="turquoise">Order summery</h2>
 
-          <div>
             <h4 className="white">Time to complete the order:</h4>
             <p className="turuoise">0</p>
           </div>
-          <div>
-            <h4 className="white">Total of tickets:</h4>
-            <p className="turquoise">{props.totalReg + props.totalVip}</p>
-          </div>
+          <div className="ticekt-display-basket">
+            <div id="ticket-template">
+              <div className="posts">
+                <div className="post-quantity-remove">
+                  <h4 className="turquoise type">{props.cartReg.displayname}</h4>
+                  <h5 className="white price">Ticket price: DKK {props.cartReg.price}</h5>
+                </div>
+                <div className="post-type-price">
+                  <h4 className="turquoise type">x{props.cartReg.amount}</h4>
+                  <button className="btn-remove">Remove</button>
+                </div>
+              </div>
+            </div>
 
-          <div id="ticket-template">
+            <div id="ticket-template">
+              <div className="posts">
+                <div className="post-quantity-remove">
+                  <h4 className="turquoise type">{props.cartVip.displayname}</h4>
+                  <h5 className="white price">Ticket price: DKK {props.cartVip.price}</h5>
+                </div>
+                <div className="post-type-price">
+                  <h4 className="turquoise type">x{props.cartVip.amount}</h4>
+                  <button className="btn-remove">Remove</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5 className="white">Total of tickets:</h5>
+              <p className="turquoise">{props.totalReg + props.totalVip}</p>
+            </div>
+          </div>
+          <div className="extra-display-basket">
             <div className="posts">
-              <div className="post-quantity-remove">
-                <h3 className="turquoise type">{props.cartReg.displayname}</h3>
-                <h4 className="white price">Ticket price: DKK {props.cartReg.price}</h4>
-              </div>
-              <div className="post-type-price">
-                <h3 className="turquoise type">x{props.cartReg.amount}</h3>
-                <button className="btn-remove">Remove</button>
+              <div className="post-text-container">
+                <h4 className="turquoise">Acommodation</h4>
+                <h5 className="white">{props.spot}</h5>
               </div>
             </div>
-          </div>
-
-          <div id="ticket-template">
             <div className="posts">
-              <div className="post-quantity-remove">
-                <h3 className="turquoise type">{props.cartVip.displayname}</h3>
-                <h4 className="white price">Ticket price: DKK {props.cartVip.price}</h4>
-              </div>
-              <div className="post-type-price">
-                <h3 className="turquoise type">x{props.cartVip.amount}</h3>
-                <button className="btn-remove">Remove</button>
+              <div className="post-text-container">
+                <h4 className="turquoise">Green camping spot</h4>
+                {/* <h5 className="white">Yes</h5> */}
               </div>
             </div>
-          </div>
-          <hr></hr>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Acommodation</h3>
-              <h4 className="white">{props.acommodation}</h4>
-            </div>
-          </div>
-          <hr></hr>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Green camping spot</h3>
-              <h4 className="white">Yes</h4>
-            </div>
-          </div>
-          <hr></hr>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Tent 2 persons</h3>
-              <h4 className="white">Tent 2 pers. price: DKK 299</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div>
-          <div className="posts">
-            <div className="post-text-container">
-              <h3 className="turquoise">Tent 2 persons</h3>
-              <h4 className="white">Tent 3 pers. price: DKK 399</h4>
-            </div>
-            <button className="btn-remove">Remove</button>
-          </div>
 
-          <hr></hr>
+            <div className="posts">
+              <div className="post-text-container">
+                <h4 className="turquoise">Tent 2 persons</h4>
+                <h5 className="white">Tent 2 pers. price: DKK 299</h5>
+              </div>
+              <button className="btn-remove">Remove</button>
+            </div>
+            <div className="posts">
+              <div className="post-text-container">
+                <h4 className="turquoise">Tent 2 persons</h4>
+                <h5 className="white">Tent 3 pers. price: DKK 399</h5>
+              </div>
+              <button className="btn-remove">Remove</button>
+            </div>
+          </div>
           <div className="sub-total-container">
             <div className="flex-row-space-around">
               <p className="white">Subtotal</p>
@@ -108,14 +106,14 @@ export default function Basket(props) {
             </div>
             <div className="flex-row-space-around">
               <p className="white">Fixed camping fee</p>
-              <p className="white">{fixedCampingPrice} DKK</p>
+              <p className="white">{props.fixedCampingPrice} DKK</p>
             </div>
             <div className="flex-row-space-around">
               <h3 className="white">Total</h3>
               <h3 className="white">DKK {props.totalPrice}</h3>
             </div>
+            <button className=" basket-display-pay">PAY</button>
           </div>
-          <button className="btn-main">PAY</button>
         </div>
       </section>
     </>

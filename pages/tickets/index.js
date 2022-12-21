@@ -10,7 +10,6 @@ import Thanks from "../../components/Booking/Thanks";
 
 export default function TicketsPage(props) {
   const fixedCampingPrice = 99;
-
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   const [tickets, setTickets] = useState([]);
@@ -22,6 +21,7 @@ export default function TicketsPage(props) {
   // const [spot, setSpot] = useState();
   const [spot, setAcommodation] = useState();
   // Then achange the state according to event
+  console.log(totalPrice);
 
   const [status1, setStatus1] = useState(false);
   const [status2, setStatus2] = useState(false);
@@ -161,7 +161,10 @@ export default function TicketsPage(props) {
   // function chosenArea(acommodation) {
   //   setSpot(acommodation);
   // }
-  const theForm = useRef(null);
+  const fixedGreenCampingPrice = 249;
+  const priceInclGreen = totalPrice + fixedCampingPrice;
+
+  const [reserveID, setReserveID] = useState({});
   return (
     <>
       <section id="pages">
@@ -174,6 +177,9 @@ export default function TicketsPage(props) {
             addVipToCart={addVipToCart}
             checkAvailability={checkAvailability}
             spot={spot}
+            totalPrice={totalPrice}
+            fixedGreenCampingPrice={fixedGreenCampingPrice}
+            priceInclGreen={priceInclGreen}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
           />
@@ -190,6 +196,8 @@ export default function TicketsPage(props) {
             subtotalPrice={subtotalPrice}
             totalReg={totalReg}
             totalVip={totalVip}
+            setReserveID={setReserveID}
+            reserveID={reserveID}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
           />
@@ -205,6 +213,8 @@ export default function TicketsPage(props) {
             subtotalPrice={subtotalPrice}
             totalReg={totalReg}
             totalVip={totalVip}
+            setReserveID={setReserveID}
+            reserveID={reserveID}
             // chosenArea={chosenArea}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
@@ -224,24 +234,23 @@ export default function TicketsPage(props) {
             totalReg={totalReg}
             totalVip={totalVip}
           />
-
-          <Thanks />
-
-          <Basket
-            areas={props.areas}
-            cartReg={cartReg}
-            cartVip={cartVip}
-            addRegToCart={addRegToCart}
-            addVipToCart={addVipToCart}
-            // regTicketsQuantityCount={regTicketsQuantityCount}
-            // vipTicketsQuantityCount={vipTicketsQuantityCount}
-            spot={spot}
-            totalPrice={totalPrice}
-            subtotalPrice={subtotalPrice}
-            totalReg={totalReg}
-            totalVip={totalVip}
-          />
         </div>
+
+        <Basket
+          areas={props.areas}
+          cartReg={cartReg}
+          cartVip={cartVip}
+          addRegToCart={addRegToCart}
+          addVipToCart={addVipToCart}
+          // regTicketsQuantityCount={regTicketsQuantityCount}
+          // vipTicketsQuantityCount={vipTicketsQuantityCount}
+          spot={spot}
+          totalPrice={totalPrice}
+          subtotalPrice={subtotalPrice}
+          totalReg={totalReg}
+          totalVip={totalVip}
+          fixedCampingPrice={fixedCampingPrice}
+        />
       </section>
     </>
   );

@@ -29,12 +29,13 @@ The form should be the same.
   }
 
 */
+  console.log(props.reserveID);
 
   const postOrder = useRef(null);
   async function submit(e) {
     e.preventDefault();
     const response = await insertOrder({
-      id: "",
+      id: props.reserveID,
       reg_tickets: props.cartReg.amount, // This is the totalReg
       vip_tickets: props.cartReg.amount, // This i sthe totalVip
       accommodation: props.spot, // This is the props.spot
@@ -42,16 +43,14 @@ The form should be the same.
       spot: true, // This is a new state
       tent_2: 0, // This is a new State (number)
       tent_3: 0, // This is a new State (number)
-      fullnames: [], // This is a new State (Array)
-      emails: [], // This is a new State (Array)
-      ages: [], // This is a new State (Array)
-      cprs: [], // This is a new State (Array)
+      // fullnames: [], // This is a new State (Array)
+      // emails: [], // This is a new State (Array)
+      // ages: [], // This is a new State (Array)
+      // IDs: [], // This is a new State (Array)
     });
     console.log(response);
     if (response && response.length) {
       setPaymentCompleted(true);
-    }
-    if (setPaymentCompleted === true) {
       console.log("Works!");
     }
   }
@@ -88,24 +87,57 @@ The form should be the same.
                   <div className="field-group">
                     <div className="field">
                       <label htmlFor="name">Full name</label>
-                      <input type="text" name="name" id="name" placeholder="Insert your full name" minLength="2" className="input-text" required />
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Insert your full name"
+                        minLength="2"
+                        className="input-text"
+                        required
+                      />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                     <div className="field">
                       <label htmlFor="card-number">Card number</label>
-                      <input type="text" name="card-number" id="card-number" placeholder="Insert card number" minLength="8" maxLength="11" className="input-text" required />
+                      <input
+                        type="text"
+                        name="card-number"
+                        id="card-number"
+                        placeholder="Insert card number"
+                        minLength="8"
+                        maxLength="11"
+                        className="input-text"
+                        required
+                      />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>
                   <div className="field-group">
                     <div className="field">
                       <label htmlFor="code">Check digits</label>
-                      <input type="text" name="code" id="code" placeholder="Insert card check digits" minLength="3" maxLength="3" className="input-text" required />
+                      <input
+                        type="text"
+                        name="code"
+                        id="code"
+                        placeholder="Insert card check digits"
+                        minLength="3"
+                        maxLength="3"
+                        className="input-text"
+                        required
+                      />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                     <div className="field">
                       <label htmlFor="date">Expiration date</label>
-                      <input type="date" name="date" id="date" placeholder="Insert expiration date" className="input-text" required />
+                      <input
+                        type="date"
+                        name="date"
+                        id="date"
+                        placeholder="Insert expiration date"
+                        className="input-text"
+                        required
+                      />
                       <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>

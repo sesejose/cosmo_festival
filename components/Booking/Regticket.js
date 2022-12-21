@@ -47,7 +47,7 @@ export default function Regtickets(props) {
           <div className="flex-row-space-around">
             <button className="read-more">Read more</button>
             <button className="btn-add" onClick={openRegular}>
-              Add to cart
+              Choose amount
             </button>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Regtickets(props) {
           </div>
         </div>
         <button value="Add to cart" onClick={setQuantities} className="btn-add">
-          Add to cart
+          Choose amount
         </button>
       </div>
     </>

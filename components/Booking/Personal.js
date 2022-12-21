@@ -10,7 +10,6 @@ export default function Personal(props) {
   const [showFormVip, setShowFormVip] = useState(false);
   const [showRegFormTitle, setShowRegFormTitle] = useState(false);
   const [showVipFormTitle, setShowVipFormTitle] = useState(false);
-
   function displayRegInfo() {
     let personalInfosReg = [];
     for (let i = 0; i < props.cartReg.amount; i++) {
@@ -59,10 +58,47 @@ export default function Personal(props) {
     }
     return personalInfosVip;
   }
+  const fullfillres = useRef();
+  async function fullfillReservation() {
+    const url = "http://localhost:8080";
+    const res = await fetch(url + "/fullfill-reservation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: props.reserveID,
+      }),
+    });
+    console.log(props.reserveID.id);
+    return await res.json();
+  }
+  async function submit(e) {
+    e.preventDefault();
+    fullfillReservation();
+  }
+  // export async function insertOrder(payload) {
+  //   const key =
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6dnhic2FiYnR2eWphZGFyenp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDA0NTQsImV4cCI6MTk4MzY3NjQ1NH0.Z4BtwWfFmlNfVJk5UlDZ9OMPrfXOSQaCkfTY6zyUCNE";
+  //   const url = "https://xzvxbsabbtvyjadarzzt.supabase.co";
+  //   const res = await fetch(url + "/rest/v1/simpleshop", {
+  //     method: "POST",
+  //     headers: {
+  //       apikey:
+  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6dnhic2FiYnR2eWphZGFyenp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDA0NTQsImV4cCI6MTk4MzY3NjQ1NH0.Z4BtwWfFmlNfVJk5UlDZ9OMPrfXOSQaCkfTY6zyUCNE",
+  //       Prefer: "return=representation",
+  //       Authorization:
+  //         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6dnhic2FiYnR2eWphZGFyenp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDA0NTQsImV4cCI6MTk4MzY3NjQ1NH0.Z4BtwWfFmlNfVJk5UlDZ9OMPrfXOSQaCkfTY6zyUCNE",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(payload),
+  //   });
+  //   return await res.json();
+  // }
+
   return (
     <>
       <section id="personal">
-        {/* <div className="container-page"> */}
         <div className="wrapper-forms">
           <div className="forms-intro-text">
             <h1 className="turquoise text-center">Personal information</h1>
@@ -81,7 +117,7 @@ export default function Personal(props) {
                   </button>
                 )}
                 {showFormReg && (
-                  <form className="personal-form-reg">
+                  <form ref={fullfillres} onSubmit={submit} className="personal-form-reg">
                     {displayRegInfo()}{" "}
                     <button className="btn-main" type="submit">
                       Submit
@@ -96,7 +132,7 @@ export default function Personal(props) {
                   </button>
                 )}
                 {showFormVip && (
-                  <form className="personal-form-vip">
+                  <form ref={fullfillres} onSubmit={submit} className="personal-form-vip">
                     {displayVipInfo()}
                     <button className="btn-main" type="submit">
                       Submit
@@ -108,9 +144,7 @@ export default function Personal(props) {
             <hr></hr>
           </div>
         </div>
-        {/* </div> */}
       </section>
-      {/* <Basket></Basket> */}
     </>
   );
 }
