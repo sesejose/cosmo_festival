@@ -28,9 +28,9 @@ The form should be the same.
 
 function payment() {
   // We use props to receive the what comes from Basket --> Cart
-  const [paymentCompleted, setPaymentCompleted] = useState();
+  // const [paymentCompleted, setPaymentCompleted] = useState();
   // 13. When the page loads the payment is not completed (false) --> But when we have a response from the server we want to set the payment to complete.
-  const theForm = useRef(null);
+  // const theForm = useRef(null);
   // The const response await until the insertOrder fetchs the data, why? If it does not need the data to do the things.
   async function submit(e) {
     e.preventDefault();
