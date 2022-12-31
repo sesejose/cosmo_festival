@@ -34,7 +34,7 @@ The form should be the same.
   async function submit(e) {
     e.preventDefault();
     const response = await insertOrder({
-      id: "",
+      id: 4,
       reg_tickets: props.cartReg.amount, // This is the totalReg
       vip_tickets: props.cartReg.amount, // This i sthe totalVip
       accommodation: props.spot, // This is the props.spot
