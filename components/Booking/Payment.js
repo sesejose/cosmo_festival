@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { insertOrder } from "./Db";
 // import Basket from "../../components/Booking/Basket";
 
-/* Here the POST with the object as example from Insomnia
+export default function Payment(props) {
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
+  // const [ages, setAges] = useState();
+  /* Here the POST with the object as example from Insomnia
 
 The form should be the same.
 
@@ -26,102 +30,97 @@ The form should be the same.
 
 */
 
-function payment() {
-  // We use props to receive the what comes from Basket --> Cart
-  // const [paymentCompleted, setPaymentCompleted] = useState();
-  // 13. When the page loads the payment is not completed (false) --> But when we have a response from the server we want to set the payment to complete.
-  // const theForm = useRef(null);
-  // The const response await until the insertOrder fetchs the data, why? If it does not need the data to do the things.
+  const postOrder = useRef(null);
   async function submit(e) {
     e.preventDefault();
     const response = await insertOrder({
-      id: theForm.current.elements.id.value,
-      created_at: theForm.current.elements.date.value,
-      ticket: theForm.current.elements.ticket.value,
-      acommodation: theForm.current.elements.ticket.value,
-      fullname: theForm.current.elements.fullname.value,
-      email: theForm.current.elements.email.value,
-      green: theForm.current.elements.green.value,
-      spot: theForm.current.elements.spot.value,
-      tent: theForm.current.elements.tent.value,
+      id: 4,
+      reg_tickets: props.cartReg.amount, // This is the totalReg
+      vip_tickets: props.cartReg.amount, // This i sthe totalVip
+      accommodation: props.spot, // This is the props.spot
+      green: true, // this is a new State
+      spot: true, // This is a new state
+      tent_2: 0, // This is a new State (number)
+      tent_3: 0, // This is a new State (number)
+      fullnames: [], // This is a new State (Array)
+      emails: [], // This is a new State (Array)
+      ages: [], // This is a new State (Array)
+      cprs: [], // This is a new State (Array)
     });
     console.log(response);
-    // We do something with the response returned from insertOrder().
     if (response && response.length) {
-      // If response is not null AND has a length asumme that is an array (How??)
       setPaymentCompleted(true);
-      // 14. Now we have a variable that we can use in our UI.
+    }
+    if (setPaymentCompleted === true) {
+      console.log("Works!");
     }
   }
 
   return (
     <>
-      {/* 15. Ternary operator */}
+      {/* 15. Ternary operator
       {paymentCompleted ? (
         <p>THANK YOU!!!</p>
-      ) : (
-        <section id="payment">
-          <form onSubmit={submit} ref={theForm}>
-            <div className="wrapper-forms">
-              <div className="forms-intro-text">
-                <h1 className="turquoise text-center">Pay with Credit Card</h1>
-                <p className="text-center">Set you credit card</p>
-              </div>
-              <div className="credit-card-container">
-                <div className="form-group">
-                  <div class="field-group">
-                    <div className="field">
-                      <label forhtml="card">Credit card</label>
-                      <select name="cards" id="cards" placeholder="VISA / DANKORT" className="input-text" required>
-                        <option value="volvo">VISA / DANKORT</option>
-                        <option value="saab">MASTERCARD</option>
-                        <option value="fiat">AMERICAN EXPRESS</option>
-                        <option value="audi">OTHER</option>
-                      </select>
+      ) : ( */}
+      <section id="payment">
+        <form ref={postOrder} onSubmit={submit}>
+          <div className="wrapper-forms">
+            <div className="forms-intro-text">
+              <h1 className="turquoise text-center">Pay with Credit Card</h1>
+              <p className="text-center">Set you credit card</p>
+            </div>
+            <div className="credit-card-container">
+              <div className="form-group">
+                <div className="field-group">
+                  <div className="field">
+                    <label htmlFor="card">Credit card</label>
+                    <select name="cards" id="cards" placeholder="VISA / DANKORT" className="input-text" required>
+                      <option value="volvo">VISA / DANKORT</option>
+                      <option value="saab">MASTERCARD</option>
+                      <option value="fiat">AMERICAN EXPRESS</option>
+                      <option value="audi">OTHER</option>
+                    </select>
 
-                      <span class="error-message">Enter a valid value</span>
+                    <span className="error-message">Enter a valid value</span>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="field-group">
+                    <div className="field">
+                      <label htmlFor="name">Full name</label>
+                      <input type="text" name="name" id="name" placeholder="Insert your full name" minLength="2" className="input-text" required />
+                      <span className="error-message">Enter a valid value</span>
+                    </div>
+                    <div className="field">
+                      <label htmlFor="card-number">Card number</label>
+                      <input type="text" name="card-number" id="card-number" placeholder="Insert card number" minLength="8" maxLength="11" className="input-text" required />
+                      <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>
-                  <div className="form-group">
-                    <div class="field-group">
-                      <div className="field">
-                        <label forhtml="name">Full name</label>
-                        <input type="text" name="name" id="name" placeholder="Insert your full name" minlength="2" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
-                      <div className="field">
-                        <label forhtml="card-number">Card number</label>
-                        <input type="text" name="card-number" id="card-number" placeholder="Insert card number" minlength="8" maxLength="11" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
+                  <div className="field-group">
+                    <div className="field">
+                      <label htmlFor="code">Check digits</label>
+                      <input type="text" name="code" id="code" placeholder="Insert card check digits" minLength="3" maxLength="3" className="input-text" required />
+                      <span className="error-message">Enter a valid value</span>
                     </div>
-                    <div class="field-group">
-                      <div className="field">
-                        <label forhtml="code">Check digits</label>
-                        <input type="text" name="code" id="code" placeholder="Insert card check digits" minlength="3" maxLength="3" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
-                      <div className="field">
-                        <label forHtml="date">Expiration date</label>
-                        <input type="date" name="date" id="date" placeholder="Insert expiration date" className="input-text" required />
-                        <span className="error-message">Enter a valid value</span>
-                      </div>
+                    <div className="field">
+                      <label htmlFor="date">Expiration date</label>
+                      <input type="date" name="date" id="date" placeholder="Insert expiration date" className="input-text" required />
+                      <span className="error-message">Enter a valid value</span>
                     </div>
                   </div>
                 </div>
-                <button className="btn-main" onClick={submit}>
-                  PAY
-                </button>
               </div>
+              <button className="btn-main" type="submit">
+                PAY
+              </button>
             </div>
-          </form>
-        </section>
-      )}
+          </div>
+        </form>
+      </section>
     </>
   );
 }
-
-export default payment;
 
 // 1. First we tell the form on submit call the isertOrder() function
 // 2. We define that function in a new file. Db.js in modules.
