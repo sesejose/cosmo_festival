@@ -42,7 +42,7 @@ export default function Basket(props) {
               <div className="posts">
                 <div className="post-quantity-remove">
                   {/* <h4 className="turquoise type">{props.cartReg.displayname}</h4> */}
-                  <h5 className="white price">Ticket price: DKK {props.cartReg.price}</h5>
+                  {/* <h5 className="white price">Ticket price: DKK {props.cartReg.price}</h5> */}
                 </div>
                 <div className="post-type-price">
                   <h4 className="turquoise type">x{props.cartReg.amount}</h4>
@@ -55,7 +55,7 @@ export default function Basket(props) {
               <div className="posts">
                 <div className="post-quantity-remove">
                   {/* <h4 className="turquoise type">{props.cartVip.displayname}</h4> */}
-                  <h5 className="white price">Ticket price: DKK {props.cartVip.price}</h5>
+                  {/* <h5 className="white price">Ticket price: DKK {props.cartVip.price}</h5> */}
                 </div>
                 <div className="post-type-price">
                   <h4 className="turquoise type">x{props.cartVip.amount}</h4>
