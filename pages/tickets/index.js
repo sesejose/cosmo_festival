@@ -162,8 +162,8 @@ export default function TicketsPage(props) {
   const fixedGreenCampingPrice = 249;
   const priceInclGreen = totalPrice + fixedCampingPrice;
   const [reserveID, setReserveID] = useState({});
-  const regPrice = regCart.price;
-  const regAmount = regCart.amount;
+  const regPrice = cartReg.price;
+  const regAmount = cartReg.amount;
   return (
     <>
       <section id="pages">
