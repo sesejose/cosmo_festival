@@ -4,7 +4,7 @@ import Basket from "../components/Booking/Basket";
 // import styles from "../styles/Home.module.css";
 // import aboutImg from "/public/about.png";
 import aboutImg2 from "/public/about2.png";
-
+import Link from "next/link";
 export default function About() {
   return (
     <>
@@ -25,12 +25,13 @@ export default function About() {
                 the best user experience, the Cosmo´s founders accepted the challenge and founded the best electronic
                 festival of all times.
               </p>
-              <button className="btn-turquoise">CHECK OUT OUR LINEUP!</button>
+              <Link href="/lineup" className="btn-turquoise">
+                CHECK OUT OUR LINEUP!
+              </Link>
             </div>
           </div>
         </div>
       </section>
-      <Basket></Basket>
     </>
   );
 }

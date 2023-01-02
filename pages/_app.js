@@ -4,28 +4,6 @@ import "../styles/style.css";
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }) {
-  // object to store the order of the user
-  const [bookingInfo, setBookingInfo] = useState({
-    totalTickets: 0,
-    regTicket: 0,
-    vipTicket: 0,
-    acommodation: "",
-    // setting up tent
-    spot: false,
-    // green camping
-    green: false,
-    timedOut: false,
-  });
-
-  function setAccomodation(area) {
-    setBookingInfo({ ...bookingInfo, acommodation: area });
-  }
-  function setallTickets(ticketSum, regSum, vipSum) {
-    setBookingInfo({ ...bookingInfo, totalTickets: ticketSum, regTicket: regSum, vipTicket: vipSum });
-  }
-  function setExtras(tentSetup, greenTent) {
-    setBookingInfo({ ...bookingInfo, spot: tentSetup, green: greenTent });
-  }
   return (
     <Layout>
       <Component

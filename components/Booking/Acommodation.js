@@ -21,11 +21,10 @@ export default function Acommodation(props) {
   const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
   const spotReserved = props.spot;
   console.log(spotReserved);
-  const [reserveID, setReserveID] = useState({});
 
   // Then update / add it to the cart
   function reserveTicket(payload) {
-    fetch("http://localhost:8080/reserve-spot", {
+    fetch("https://bitter-moon-5524.fly.dev/reserve-spot", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +33,7 @@ export default function Acommodation(props) {
     })
       .then((response) => response.json())
       // .then((response) => console.log(response))
-      .then((response) => setReserveID(response.id))
+      .then((response) => props.setReserveID(response.id))
 
       .catch((err) => console.error(err));
   }
@@ -47,7 +46,7 @@ export default function Acommodation(props) {
       amount: ticketsQuantity,
     });
   }
-  console.log(reserveID);
+  console.log(props.reserveID);
   return (
     <>
       <section id="acommodation">
@@ -87,7 +86,6 @@ export default function Acommodation(props) {
                     name="campingArea"
                     value="Svartheim"
                     className="radio-input"
-                    defaultChecked
                     onClick={newFunction}
                   ></input>
                 </div>
@@ -154,7 +152,7 @@ export default function Acommodation(props) {
                   ></input>
                 </div>
               </div>
-              <button className="btn-main">NEXT</button>
+              <button className="btn-main">Choose accommodation</button>
             </form>
           </div>
           <div></div>
@@ -203,8 +201,8 @@ export async function getStaticProps() {
     - once we have the data, it put into the component
     - so the component can render with that data inside it  */
 
-  // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-  const res = await fetch("http://localhost:8080/available-spots");
+  const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+  //const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();
 
   /* - we return a value for this function 

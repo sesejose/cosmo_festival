@@ -214,37 +214,62 @@ fieldset div input {
 /* Herosection */
 
 .herosection {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
   position: relative;
-  background-image: url("../public/festival-landing.jpg");
-  background-size: cover;
-  padding: var(--p-large);
-  /* text-align: center; */
+  text-align: center;
+}
+.herosection img {
+  object-fit: cover;
+  opacity: 50%;
+  max-width: 100%;
+  height: 50vw;
 }
 
-.dates-and-will-you-container {
-  display: flex;
-  align-items: flex-end;
-  padding: var(--p-large);
-  height: 100vh;
+.herosection h2,
+.herosection h3 {
+  color: var(--pink);
 }
-
-.will-you-and-btn-container {
-  display: flex;
-  flex-flow: column;
-  width: 20%;
+.herosection h2 {
+  font-weight: 100;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 75%;
+  left: 20%;
+  font-size: 9rem;
+  z-index: 1;
 }
-
-.will-you {
-  display: flex;
-  flex-flow: column;
+.herosection h3 {
+  font-weight: bold;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 70%;
+  left: 85%;
+  right: 5%;
+  font-size: 2rem;
   text-align: right;
-  width: 100%;
 }
-
+.booknowBtn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 90%;
+  left: 85%;
+  font-family: var(--font);
+  font-size: 1.5rem;
+  color: var(--turquoise);
+  border: 1px solid var(--pink);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2rem;
+  text-decoration: none;
+}
+.booknowBtn:hover {
+  font-family: var(--font);
+  font-size: 1.5rem;
+  color: var(--black);
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  cursor: pointer;
+  padding: 2rem;
+}
 .dates-animated {
 }
 
@@ -317,9 +342,17 @@ fieldset div input {
   display: flex;
   margin: var(--m-large);
 }
-
+/*Line up PAGE*/
+.lineupPage {
+  padding-top: 8rem;
+}
+.lineupPage h1 {
+  text-align: center;
+}
 /* Lineup */
-
+.layout {
+  padding-top: 8rem;
+}
 #days {
   margin: var(--mtb-auto-large);
   display: flex;
@@ -348,7 +381,6 @@ fieldset div input {
 
 .lineup {
   display: flex;
-  flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -406,6 +438,7 @@ fieldset div input {
   padding: 15px 32px;
   line-height: 0;
 }
+
 .btn-turquoise {
   font-family: var(--font);
   font-size: 1.125rem;
@@ -414,8 +447,8 @@ fieldset div input {
   border: 1px solid var(--turquoise);
   background-color: transparent;
   cursor: pointer;
-  height: 48px;
-  padding: 15px 32px;
+  padding: 2rem;
+  text-decoration: none;
 }
 .btn-turquoise:hover {
   font-family: var(--font);
@@ -425,8 +458,7 @@ fieldset div input {
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   cursor: pointer;
-  height: 48px;
-  padding: 15px 32px;
+  padding: 2rem;
 }
 
 /* Tickets Home Page */
@@ -507,7 +539,12 @@ fieldset div input {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
+#pages .container-page {
+  min-width: 100%;
+}
+.hidestep1 {
+  display: none;
+}
 .container-about {
   display: flex;
   flex-flow: row;
@@ -519,16 +556,28 @@ fieldset div input {
   max-width: 1024px;
 }
 
-.about-hero {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
+.aboutHero {
   position: relative;
-  background-image: url("../public/about.png");
-  background-size: cover;
+  text-align: center;
 }
-
+.aboutHero img {
+  width: 100%;
+  opacity: 50%;
+  max-width: 100%;
+  object-fit: cover;
+  height: 50vw;
+}
+.aboutHero h1 {
+  margin-top: 2rem;
+  font-weight: 300;
+  opacity: 30%;
+  color: var(--pink);
+  font-size: 9rem;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .about-img img {
   max-width: 100%;
   height: auto;
@@ -634,16 +683,17 @@ select.input-text {
   width: 4rem;
   max-width: 4rem;
   /* height: auto; */
+  cursor: pointer;
 }
 
 .logo img {
-  padding: 0;
+  padding: 0.5rem;
 }
 
 .logo,
 .open,
 .basket-icon {
-  padding: var(--p-medium);
+  padding: 0.3rem;
   display: flex;
   /* align-items: center; */
 }
@@ -683,8 +733,6 @@ footer {
   z-index: 3;
   background-color: var(--black);
   border-top: 1px solid var(--pink);
-  padding: var(--ptb-large);
-  gap: 4rem;
   width: 100%;
 }
 
@@ -743,12 +791,16 @@ footer h3 {
 #menu {
   display: none;
 }
-
+.nav {
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
 .nav-container {
   background-color: var(--black);
   border-left: 1px solid var(--pink);
   width: 50%;
-  height: 100vh;
   height: 100vh;
   padding: var(--p-large);
   position: relative;
@@ -855,16 +907,19 @@ footer svg {
   /* grid-column: 1/2; */
   min-width: 1024px;
   width: 100%;
-  margin-top: 6.5rem;
   /* height: 100vh; */
   /* overflow: auto; */
 }
 
 #basket {
-  margin-top: 6.5rem;
+  margin-top: 9.6rem;
+  max-width: 100%;
+  width: 48%;
+  max-height: 100%;
+  height: 78%;
   border: 1px solid var(--pink);
-  height: 1200px;
-  margin-right: 30px;
+  left: 50%;
+  position: fixed;
 }
 
 /* .tab-basket {
@@ -877,11 +932,47 @@ footer svg {
 .basket-container {
   /* border-left: 1px solid var(--pink); */
   /* height: 100vh; */
-  padding: var(--p-large);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: 0.5fr 1fr 1fr 0.5fr;
+  column-gap: 30px;
+}
+.summery {
+  grid-column: 1/-1;
+  grid-row: 1/4;
+  text-align: center;
+}
+.ticekt-display-basket {
+  grid-column: 1;
+  grid-row: 2/4;
+}
+.extra-display-basket {
+  grid-column: 2;
+  grid-row: 2/4;
 }
 
 .sub-total-container {
   margin: var(--mtb-medium);
+  grid-column: 1/-1;
+  grid-row: 4/4;
+  width: 80%;
+}
+.basket-display-pay {
+  color: var(--turquoise);
+  border: 1px solid var(--pink);
+  background-color: transparent;
+  cursor: pointer;
+  font-family: var(--font);
+  width: 100%;
+}
+.basket-display-pay:hover {
+  width: 100%;
+  font-family: var(--font);
+  color: var(--black);
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  cursor: pointer;
 }
 
 .wrapper-forms {
@@ -894,7 +985,16 @@ footer svg {
   padding: var(--ptb-large);
   gap: 1rem;
 }
-
+.wrapper-forms1 {
+  display: flex;
+  flex-flow: column;
+  min-width: fit-content;
+  max-width: 75%;
+  justify-content: center;
+  margin: var(--m-auto);
+  padding-top: 8rem;
+  gap: 1rem;
+}
 .wrapper-ticket-downloable {
   display: flex;
   flex-flow: column;
@@ -978,7 +1078,13 @@ footer svg {
   align-items: center;
   gap: 0.5rem;
 }
-
+.flex-row-space-around1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
 .flex-row {
   width: 100%;
   display: flex;
@@ -1099,7 +1205,9 @@ footer svg {
   border: 1px solid var(--pink);
   background-color: transparent;
   cursor: pointer;
-  padding: 32px 32px;
+  margin-top: 30px;
+  padding: 2rem;
+  text-decoration: none;
 }
 .btn-main:hover {
   width: 100%;
@@ -1109,7 +1217,7 @@ footer svg {
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   cursor: pointer;
-  padding: 32px 32px;
+  padding: 2rem;
 }
 
 .btn-acommodation {
@@ -1182,7 +1290,14 @@ footer svg {
 }
 
 /* Acommodation Page */
-
+.page-accomodation {
+  height: 50rem;
+  padding-top: 7rem;
+  max-width: 80%;
+}
+.page-accomodation .flex-row {
+  padding: 1rem;
+}
 .map-container {
   display: flex;
   flex-flow: column;

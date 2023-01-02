@@ -10,7 +10,6 @@ import Thanks from "../../components/Booking/Thanks";
 
 export default function TicketsPage(props) {
   const fixedCampingPrice = 99;
-
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   const [tickets, setTickets] = useState([]);
@@ -22,6 +21,7 @@ export default function TicketsPage(props) {
   // const [spot, setSpot] = useState();
   const [spot, setAcommodation] = useState();
   // Then achange the state according to event
+  console.log(totalPrice);
 
   const [status1, setStatus1] = useState(false);
   const [status2, setStatus2] = useState(false);
@@ -120,10 +120,8 @@ export default function TicketsPage(props) {
       const url = "https://udfchraccrfladlsvbzh.supabase.co/rest/v1/tickets";
       const headers = {
         "Content-Type": "application/jsonS",
-        apikey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkZmNocmFjY3JmbGFkbHN2YnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA4NzQzODEsImV4cCI6MTk4NjQ1MDM4MX0.0eTW-TRibvc-FFW6XlCaTEfX52g-3SsrjMh3t7XXvIw",
         Prefer: "return-representation",
       };
       const options = {
@@ -161,7 +159,11 @@ export default function TicketsPage(props) {
   // function chosenArea(acommodation) {
   //   setSpot(acommodation);
   // }
-  const theForm = useRef(null);
+  const fixedGreenCampingPrice = 249;
+  const priceInclGreen = totalPrice + fixedCampingPrice;
+  const [reserveID, setReserveID] = useState({});
+  const regPrice = cartReg.price;
+  const regAmount = cartReg.amount;
   return (
     <>
       <section id="pages">
@@ -174,6 +176,9 @@ export default function TicketsPage(props) {
             addVipToCart={addVipToCart}
             checkAvailability={checkAvailability}
             spot={spot}
+            totalPrice={totalPrice}
+            fixedGreenCampingPrice={fixedGreenCampingPrice}
+            priceInclGreen={priceInclGreen}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
           />
@@ -190,6 +195,8 @@ export default function TicketsPage(props) {
             subtotalPrice={subtotalPrice}
             totalReg={totalReg}
             totalVip={totalVip}
+            setReserveID={setReserveID}
+            reserveID={reserveID}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
           />
@@ -205,6 +212,8 @@ export default function TicketsPage(props) {
             subtotalPrice={subtotalPrice}
             totalReg={totalReg}
             totalVip={totalVip}
+            setReserveID={setReserveID}
+            reserveID={reserveID}
             // chosenArea={chosenArea}
             // regTicketsQuantityCount={regTicketsQuantityCount}
             // vipTicketsQuantityCount={vipTicketsQuantityCount}
@@ -224,24 +233,25 @@ export default function TicketsPage(props) {
             totalReg={totalReg}
             totalVip={totalVip}
           />
-
-          <Thanks />
-
-          <Basket
-            areas={props.areas}
-            cartReg={cartReg}
-            cartVip={cartVip}
-            addRegToCart={addRegToCart}
-            addVipToCart={addVipToCart}
-            // regTicketsQuantityCount={regTicketsQuantityCount}
-            // vipTicketsQuantityCount={vipTicketsQuantityCount}
-            spot={spot}
-            totalPrice={totalPrice}
-            subtotalPrice={subtotalPrice}
-            totalReg={totalReg}
-            totalVip={totalVip}
-          />
         </div>
+
+        <Basket
+          areas={props.areas}
+          cartReg={cartReg}
+          regPrice={regPrice}
+          regAmount={regAmount}
+          cartVip={cartVip}
+          addRegToCart={addRegToCart}
+          addVipToCart={addVipToCart}
+          // regTicketsQuantityCount={regTicketsQuantityCount}
+          // vipTicketsQuantityCount={vipTicketsQuantityCount}
+          spot={spot}
+          totalPrice={totalPrice}
+          subtotalPrice={subtotalPrice}
+          totalReg={totalReg}
+          totalVip={totalVip}
+          fixedCampingPrice={fixedCampingPrice}
+        />
       </section>
     </>
   );
@@ -254,8 +264,8 @@ export async function getStaticProps() {
   - wait for that data
   - once we have the data, it put into the component
   - so the component can render with that data inside it  */
-  // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-  const res = await fetch("http://localhost:8080/available-spots");
+  const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
+  //const res = await fetch("http://localhost:8080/available-spots");
   const data = await res.json();
 
   /* - we return a value for this function 

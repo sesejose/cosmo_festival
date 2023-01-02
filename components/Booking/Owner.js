@@ -20,7 +20,7 @@ function Owner(props) {
               className="input-text"
             />
           </label>
-          <span className="error-message">Enter a valid value</span>
+          <span className="error-message">Enter a valid name</span>
           <label htmlFor={`email_ticketholder_${props.index}`} className="turquoise">
             Email
             <input
@@ -32,7 +32,7 @@ function Owner(props) {
               className="input-text"
             />
           </label>
-          <span className="error-message">Enter a valid value</span>
+          <span className="error-message">Enter a valid email</span>
 
           <label htmlFor={`dob_ticketholder_${props.index}`} className="turquoise">
             Date of birth
@@ -46,7 +46,7 @@ function Owner(props) {
               className="input-text"
             />
           </label>
-          <span className="error-message">Enter a valid value</span>
+          <span className="error-message">Enter a valid date</span>
 
           <label htmlFor={`id_ticketholder_${props.index}`} className="turquoise">
             ID number
@@ -59,7 +59,7 @@ function Owner(props) {
               className="input-text"
             />
           </label>
-          <span className="error-message">Enter a valid value</span>
+          <span className="error-message">Enter a valid ID</span>
         </div>
       </fieldset>
     </>

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { insertOrder } from "./Db";
+import Thanks from "./Thanks";
 // import Basket from "../../components/Booking/Basket";
 
 export default function Payment(props) {
@@ -29,12 +30,13 @@ The form should be the same.
   }
 
 */
+  console.log(props.reserveID);
 
   const postOrder = useRef(null);
   async function submit(e) {
     e.preventDefault();
     const response = await insertOrder({
-      id: 4,
+      id: props.reserveID,
       reg_tickets: props.cartReg.amount, // This is the totalReg
       vip_tickets: props.cartReg.amount, // This i sthe totalVip
       accommodation: props.spot, // This is the props.spot
@@ -45,13 +47,11 @@ The form should be the same.
       fullnames: [], // This is a new State (Array)
       emails: [], // This is a new State (Array)
       ages: [], // This is a new State (Array)
-      cprs: [], // This is a new State (Array)
+      IDs: [], // This is a new State (Array)
     });
     console.log(response);
     if (response && response.length) {
       setPaymentCompleted(true);
-    }
-    if (setPaymentCompleted === true) {
       console.log("Works!");
     }
   }
@@ -60,7 +60,7 @@ The form should be the same.
     <>
       {/* 15. Ternary operator
       {paymentCompleted ? (
-        <p>THANK YOU!!!</p>
+      <Thanks />;
       ) : ( */}
       <section id="payment">
         <form ref={postOrder} onSubmit={submit}>

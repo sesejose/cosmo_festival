@@ -1,13 +1,12 @@
 import React from "react";
-
+import Image from "next/image";
+import aboutImg from "/public/about.png";
 function Aboutsection() {
   return (
     <>
-      <section className="about-hero">
-        {/* <Image src={aboutImg} alt="photo of the festival" /> */}
-        <div className="">
-          <h1 className="pink flex-row-space-around">About Cosmo</h1>
-        </div>
+      <section className="aboutHero">
+        <Image src={aboutImg} alt="photo of the festival" />
+        <h1 className="PINK">About Cosmo</h1>
       </section>
     </>
   );
