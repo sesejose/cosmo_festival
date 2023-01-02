@@ -164,6 +164,7 @@ export default function TicketsPage(props) {
   const [reserveID, setReserveID] = useState({});
   const regPrice = cartReg.price;
   const regAmount = cartReg.amount;
+  const regName = cartReg.displayname;
   return (
     <>
       <section id="pages">
