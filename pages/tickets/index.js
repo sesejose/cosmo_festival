@@ -241,6 +241,7 @@ export default function TicketsPage(props) {
           cartReg={cartReg}
           regPrice={regPrice}
           regAmount={regAmount}
+          regName={regName}
           cartVip={cartVip}
           addRegToCart={addRegToCart}
           addVipToCart={addVipToCart}
