@@ -54,11 +54,11 @@ export default function Basket(props) {
             <div id="ticket-template">
               <div className="posts">
                 <div className="post-quantity-remove">
-                  {/* <h4 className="turquoise type">{props.cartVip.displayname}</h4> */}
-                  {/* <h5 className="white price">Ticket price: DKK {props.cartVip.price}</h5> */}
+                  <h4 className="turquoise type">{props.vipName}</h4>
+                  <h5 className="white price">Ticket price: DKK {props.vipPrice}</h5>
                 </div>
                 <div className="post-type-price">
-                  {/* <h4 className="turquoise type">x{props.cartVip.amount}</h4> */}
+                  <h4 className="turquoise type">x{props.vipAmount}</h4>
                   <button className="btn-remove">Remove</button>
                 </div>
               </div>
@@ -78,23 +78,30 @@ export default function Basket(props) {
             <div className="posts">
               <div className="post-text-container">
                 <h4 className="turquoise">Green camping spot</h4>
-                {/* <h5 className="white">Yes</h5> */}
+                <h5 className="white">{props.green}</h5>
               </div>
             </div>
 
             <div className="posts">
-              <div className="post-text-container">
+              <div className="post-quantity-remove">
                 <h4 className="turquoise">Tent 2 persons</h4>
-                <h5 className="white">Tent 2 pers. price: DKK 299</h5>
+                <h5 className="white">Price: DKK 299</h5>
               </div>
-              <button className="btn-remove">Remove</button>
+              <div className="post-type-price">
+                <h4 className="turquoise">x{props.totalTent2}</h4>
+                <button className="btn-remove">Remove</button>
+              </div>
             </div>
+
             <div className="posts">
-              <div className="post-text-container">
-                <h4 className="turquoise">Tent 2 persons</h4>
-                <h5 className="white">Tent 3 pers. price: DKK 399</h5>
+              <div className="post-quantity-remove">
+                <h4 className="turquoise">Tent 3 persons</h4>
+                <h5 className="white">Price: DKK 399</h5>
               </div>
-              <button className="btn-remove">Remove</button>
+              <div className="post-type-price">
+                <h4 className="turquoise">x{props.totalTent3}</h4>
+                <button className="btn-remove">Remove</button>
+              </div>
             </div>
           </div>
           <div className="sub-total-container">
@@ -104,7 +111,11 @@ export default function Basket(props) {
             </div>
             <div className="flex-row-space-around">
               <p className="white">Fixed camping fee</p>
-              <p className="white">{props.fixedCampingPrice} DKK</p>
+              <p className="white">DKK {props.fixedCampingPrice}</p>
+            </div>
+            <div className="flex-row-space-around">
+              <p className="white">Green Camping</p>
+              <p className="white">DKK {props.greenPrice}</p>
             </div>
             <div className="flex-row-space-around">
               <h3 className="white">Total</h3>

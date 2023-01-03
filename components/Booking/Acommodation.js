@@ -14,13 +14,13 @@ export default function Acommodation(props) {
   function newFunction(e) {
     const spot = e.target.value;
     props.defineAcommodation(spot);
-    console.log(spot);
+    // console.log(spot);
   }
   const reserveSpot = useRef();
 
   const ticketsQuantity = props.cartReg.amount + props.cartVip.amount;
   const spotReserved = props.spot;
-  console.log(spotReserved);
+  // console.log(spotReserved);
 
   // Then update / add it to the cart
   function reserveTicket(payload) {
@@ -46,7 +46,7 @@ export default function Acommodation(props) {
       amount: ticketsQuantity,
     });
   }
-  console.log(props.reserveID);
+  // console.log(props.reserveID);
   return (
     <>
       <section id="acommodation">
@@ -80,28 +80,14 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Svartheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="svartheim"
-                    name="campingArea"
-                    value="Svartheim"
-                    className="radio-input"
-                    onClick={newFunction}
-                  ></input>
+                  <input type="radio" id="svartheim" name="campingArea" value="Svartheim" className="radio-input" onClick={newFunction}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Nilfheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="nilfheim"
-                    name="campingArea"
-                    value="Nilfheim"
-                    className="radio-input"
-                    onClick={newFunction}
-                  ></input>
+                  <input type="radio" id="nilfheim" name="campingArea" value="Nilfheim" className="radio-input" onClick={newFunction}></input>
                 </div>
               </div>
 
@@ -114,42 +100,21 @@ export default function Acommodation(props) {
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Helheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="helheim"
-                    name="campingArea"
-                    value="Helheim"
-                    className="radio-input"
-                    onClick={newFunction}
-                  ></input>
+                  <input type="radio" id="helheim" name="campingArea" value="Helheim" className="radio-input" onClick={newFunction}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Muspelheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="muspelheim"
-                    name="campingArea"
-                    value="Muspelheim"
-                    className="radio-input"
-                    onClick={newFunction}
-                  ></input>
+                  <input type="radio" id="muspelheim" name="campingArea" value="Muspelheim" className="radio-input" onClick={newFunction}></input>
                 </div>
 
                 <div className="camping-area">
                   <label className="camping-areas-label" forhtml="campingArea">
                     <div className="green-1">Alfheim</div>
                   </label>
-                  <input
-                    type="radio"
-                    id="alfheim"
-                    name="campingArea"
-                    value="Alfheim"
-                    className="radio-input"
-                    onClick={newFunction}
-                  ></input>
+                  <input type="radio" id="alfheim" name="campingArea" value="Alfheim" className="radio-input" onClick={newFunction}></input>
                 </div>
               </div>
               <button className="btn-main">Choose accommodation</button>
@@ -165,14 +130,7 @@ export default function Acommodation(props) {
       <div id="modal-acommodation" className="hiden">
         <div className="modal-acommodation">
           <div className="close-modal" onClick={hideAcommodation}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              fill="currentColor"
-              className="bi bi-x"
-              viewBox="0 0 16 16"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
             </svg>
           </div>

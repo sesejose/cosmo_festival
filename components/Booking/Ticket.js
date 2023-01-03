@@ -4,8 +4,100 @@ import Viptickets from "./Vipticket";
 import { useState, useRef } from "react";
 
 export default function Tickets(props) {
-  function greenCamping() {
+  // ********** Getting the quantity of tents from the forms *********** //
+
+  const [totalTent2, setTotalTent2] = useState();
+  const [totalTent3, setTotalTent3] = useState();
+
+  function check() {
+    const tents = document.getElementById("tents-container");
+    if (document.getElementById("check-rent-tent").value != "") {
+      document.getElementById("tent2-quantity").disabled = false;
+      document.getElementById("tent3-quantity").disabled = false;
+      tents.style.display = "flex";
+    } else {
+      document.getElementById("tent2-quantity").disabled = true;
+      document.getElementById("tent3-quantity").disabled = true;
+      tents.style.display = "none";
+    }
+    if (document.getElementById("check-rent-tent").checked === false) {
+      tents.style.display = "none";
+    }
+  }
+
+  function displayQuantityTent2() {
+    const quantity = document.querySelector(".tent2");
+    const tents = document.querySelector("#tent2-quantity");
+    quantity.textContent = tents.value + "x";
+    // quantity.classList.add("turquoise");
+    // Calculating the total
+    const total = tents.value * 299;
+    document.querySelector(".totalTent2").textContent = "DKK " + total;
+    // document.querySelector(".totalTent2").classList.add("turquoise");
+    setTotalTent2(parseInt(tents.value, 10));
+    return totalTent2;
+  }
+
+  function displayQuantityTent3() {
+    const quantity = document.querySelector(".tent3");
+    const tents = document.querySelector("#tent3-quantity");
+    quantity.textContent = tents.value + "x";
+    // quantity.classList.add("turquoise");
+    // Calculating the total
+    const total = tents.value * 399;
+    document.querySelector(".totalTent3").textContent = "DKK " + total;
+    // document.querySelector(".totalTent3").classList.add("turquoise");
+    setTotalTent3(parseInt(tents.value, 10));
+    return totalTent3;
+  }
+
+  sendTentsBack();
+  function sendTentsBack() {
+    props.getTents(totalTent2, totalTent3);
+    // console.log(totalTent2);
+    // console.log(totalTent3);
+  }
+
+  // ********** Defining the Atttribute Max for tents *********** //
+
+  const [maxReg, setMaxReg] = useState(undefined);
+  const [maxVip, setMaxVip] = useState(undefined);
+  const ticketsQuantity = props.totalReg + props.totalVip;
+  // console.log(ticketsQuantity);
+
+  function tentsForTickets() {
+    if (ticketsQuantity >= 0) {
+      setMaxReg(0);
+      setMaxVip(0);
+    }
+    if (ticketsQuantity >= 2) {
+      setMaxReg(1);
+      setMaxVip(1);
+    }
+    if (ticketsQuantity >= 6) {
+      setMaxReg(2);
+      setMaxVip(2);
+    }
+    if (ticketsQuantity >= 11) {
+      setMaxReg(3);
+      setMaxVip(3);
+    }
+    if (ticketsQuantity >= 16) {
+      setMaxReg(4);
+      setMaxVip(4);
+    }
+  }
+
+  function greenCamping(e) {
     // function to add the green camping price to total price
+    const greenCheck = document.querySelector("#check-green-camping");
+    if (greenCheck.checked == true) {
+      const greenYes = (greenCheck.value = "Yes");
+      props.updateGreen(greenYes);
+    } else {
+      const greenNo = (greenCheck.value = "No");
+      props.updateGreen(greenNo);
+    }
   }
 
   return (
@@ -24,12 +116,14 @@ export default function Tickets(props) {
               cartReg={props.cartReg}
               // regTicketsQuantityCount={props.regTicketsQuantityCount}
               addRegToCart={props.addRegToCart}
+              tentsForTickets={tentsForTickets}
             />
             <Viptickets
               key={props.cartVip.id}
               cartVip={props.cartVip}
               // vipTicketsQuantityCount={props.vipTicketsQuantityCount}
               addVipToCart={props.addVipToCart}
+              tentsForTickets={tentsForTickets}
             />
           </div>
           <div></div>
@@ -43,13 +137,7 @@ export default function Tickets(props) {
             </div>
           </div>
           <diV className="personal-green-camping">
-            <input
-              type="checkbox"
-              name="check-green-camping"
-              id="check-green-camping"
-              placeholder="0"
-              onClick={greenCamping()}
-            ></input>
+            <input type="checkbox" name="check-green-camping" id="check-green-camping" value="Yes" onClick={greenCamping}></input>
             <label htmlFor="check-green-camping"></label>
             <div>
               <h3 className="pink">Green Camping</h3>
@@ -71,40 +159,22 @@ export default function Tickets(props) {
               <label htmlFor="tents-quantity"></label>
               <h3 className="pink">Tent (2 persons) 299,- DKK</h3>
               <div className="flex-row-space-around">
-                <input
-                  type="number"
-                  name="tents-quantity"
-                  id="tent2-quantity"
-                  min="0"
-                  placeholder="0"
-                  disabled
-                  className="input-number-tents"
-                  onChange={displayQuantityTent2}
-                ></input>
-                <h3 className="tent2">x</h3>
+                <input type="number" name="tents-quantity" id="tent2-quantity" min="0" max={maxReg} placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent2}></input>
+                <h3 className="tent2 turquoise">0x</h3>
                 <h3 className="white">299,- DKK</h3>
                 <h3 className="white">Total:</h3>
-                <h3 className="totalTent2">0</h3>
+                <h3 className="totalTent2 turquoise">0</h3>
               </div>
             </form>
             <form>
               <label htmlFor="tents-quantity"></label>
               <h3 className="pink">Tent (3 persons) 399,- DKK</h3>
               <div className="flex-row-space-around">
-                <input
-                  type="number"
-                  name="tents-quantity"
-                  id="tent3-quantity"
-                  min="0"
-                  placeholder="0"
-                  disabled
-                  className="input-number-tents"
-                  onChange={displayQuantityTent3}
-                ></input>
-                <h3 className="tent3">x</h3>
+                <input type="number" name="tents-quantity" id="tent3-quantity" min="0" max={maxVip} placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent3}></input>
+                <h3 className="tent3 turquoise">0x</h3>
                 <h3 className="white">399,- DKK</h3>
                 <h3 className="white">Total:</h3>
-                <h3 className="totalTent3">0</h3>
+                <h3 className="totalTent3 turquoise">0</h3>
               </div>
             </form>
           </div>
@@ -123,42 +193,4 @@ export default function Tickets(props) {
       </section>
     </>
   );
-}
-
-function check() {
-  const tents = document.getElementById("tents-container");
-  if (document.getElementById("check-rent-tent").value != "") {
-    document.getElementById("tent2-quantity").disabled = false;
-    document.getElementById("tent3-quantity").disabled = false;
-    tents.style.display = "flex";
-  } else {
-    document.getElementById("tent2-quantity").disabled = true;
-    document.getElementById("tent3-quantity").disabled = true;
-    tents.style.display = "none";
-  }
-  if (document.getElementById("check-rent-tent").checked === false) {
-    tents.style.display = "none";
-  }
-}
-
-function displayQuantityTent2() {
-  const quantity = document.querySelector(".tent2");
-  const tents = document.querySelector("#tent2-quantity");
-  quantity.textContent = tents.value + "x";
-  quantity.classList.add("turquoise");
-  // Calculating the total
-  const total = tents.value * 299;
-  document.querySelector(".totalTent2").textContent = "DKK " + total;
-  document.querySelector(".totalTent2").classList.add("turquoise");
-}
-
-function displayQuantityTent3() {
-  const quantity = document.querySelector(".tent3");
-  const tents = document.querySelector("#tent3-quantity");
-  quantity.textContent = tents.value + "x";
-  quantity.classList.add("turquoise");
-  // Calculating the total
-  const total = tents.value * 399;
-  document.querySelector(".totalTent3").textContent = "DKK " + total;
-  document.querySelector(".totalTent3").classList.add("turquoise");
 }

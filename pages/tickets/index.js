@@ -6,10 +6,9 @@ import Acommodation from "../../components/Booking/Acommodation";
 import Personal from "../../components/Booking/Personal";
 import Payment from "../../components/Booking/Payment";
 import Thanks from "../../components/Booking/Thanks";
-// import Regtickets from "../../components/Booking/Regticket";
+import { sendEtagResponse } from "next/dist/server/send-payload";
 
 export default function TicketsPage(props) {
-  const fixedCampingPrice = 99;
   const [cartReg, setCartReg] = useState([]);
   const [cartVip, setCartVip] = useState([]);
   const [tickets, setTickets] = useState([]);
@@ -17,11 +16,12 @@ export default function TicketsPage(props) {
   const [totalVip, setTotalVip] = useState(0);
   const [totalPrice, setTotalPrice] = useState();
   const [subtotalPrice, setSubtotalPrice] = useState();
-  const [availables, setAvailables] = useState([]);
-  // const [spot, setSpot] = useState();
   const [spot, setAcommodation] = useState();
-  // Then achange the state according to event
-  console.log(totalPrice);
+  const [green, setGreen] = useState();
+  const [greenPrice, setGreenPrice] = useState();
+  const [availables, setAvailables] = useState([]);
+  const [totalTent2, setTotalTent2] = useState();
+  const [totalTent3, setTotalTent3] = useState();
 
   const [status1, setStatus1] = useState(false);
   const [status2, setStatus2] = useState(false);
@@ -30,90 +30,11 @@ export default function TicketsPage(props) {
   const [status5, setStatus5] = useState(false);
   const ticketsQuantity = cartReg.amount + cartVip.amount;
   const area1 = props.areas[0].available;
-  // console.log(area1);
   const area2 = props.areas[1].available;
-  // console.log(area2);
   const area3 = props.areas[2].available;
-  // console.log(area3);
   const area4 = props.areas[3].available;
-  // console.log(area4);
   const area5 = props.areas[4].available;
-  // console.log(area5);
-  // console.log("Tickets", ticketsQuantity);
-  // console.log("Area1:", area1);
-  // console.log("Area2:", area2);
-  // console.log("Area3:", area3);
-  // console.log("Area4:", area4);
-  // console.log("Area5:", area5);
 
-  function checkAvailability() {
-    if (ticketsQuantity > area1) {
-      const svartheim = document.querySelector("#svartheim");
-      svartheim.disabled = { status1 };
-      setStatus1(true);
-    }
-    if (ticketsQuantity > area2) {
-      const nilfheim = document.querySelector("#nilfheim");
-      nilfheim.disabled = { status2 };
-      setStatus2(true);
-    }
-    if (ticketsQuantity > area3) {
-      const helheim = document.querySelector("#helheim");
-      helheim.disabled = { status3 };
-      setStatus3(true);
-    }
-    if (ticketsQuantity > area4) {
-      const muspelheim = document.querySelector("#muspelheim");
-      muspelheim.disabled = { status4 };
-      setStatus4(true);
-    }
-    if (ticketsQuantity > area5) {
-      const alfheim = document.querySelector("#alfheim");
-      alfheim.disabled = { status5 };
-      setStatus5(true);
-    }
-    console.log(ticketsQuantity);
-  }
-  function defineAcommodation(spot) {
-    setAcommodation(spot);
-    console.log(spot);
-    // chosenArea(acommodation);
-  }
-  // const [vipTicketsQuantity, setVipTicketsQuantity] = useState();
-  // const [regTicketsQuantity, setRegTicketsQuantity] = useState();
-
-  // 2 Parameters come from the callback function in RegTicket component
-  function addRegToCart(cartReg, totalReg) {
-    setTotalReg(totalReg);
-    const amount = totalReg;
-    if (cartReg.amount === 0) {
-      setCartReg({ ...cartReg, amount: amount });
-    }
-    // setting subtotal price state
-    setSubtotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
-    // Setting total Price State
-    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price + fixedCampingPrice);
-  }
-
-  // 2 Parameters come from the callback function in VipTicket component
-  function addVipToCart(cartVip, totalVip) {
-    setTotalVip(totalVip);
-    const amount = totalVip;
-    if (cartVip.amount === 0) {
-      setCartVip({ ...cartVip, amount: amount });
-    }
-    setSubtotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
-
-    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price + fixedCampingPrice);
-  }
-  // function regTicketsQuantityCount(totalReg) {
-  //   setRegTicketsQuantity(totalReg);
-  // }
-  // function vipTicketsQuantityCount(totalVip) {
-  //   setVipTicketsQuantity(totalVip);
-  // }
-  // make the steps
-  //
   // Fetching tickets from Supabase (Tickets table)
   useEffect(() => {
     async function getData() {
@@ -142,46 +63,113 @@ export default function TicketsPage(props) {
     getData();
   }, []);
 
-  // Fetching areas from Available spots
-  // useEffect(() => {
-  //   async function getData() {
-  //     // const res = await fetch("https://bitter-moon-5524.fly.dev/available-spots");
-  //     const res = await fetch("http://localhost:8080/available-spots");
-  //     const data = await res.json();
-  //     setAvailables(data);
-  //     // console.log(data);
-  //   }
-  //   getData();
-  // }, []);
+  // Checking the availability
+  function checkAvailability() {
+    if (ticketsQuantity > area1) {
+      const svartheim = document.querySelector("#svartheim");
+      svartheim.disabled = { status1 };
+      setStatus1(true);
+    }
+    if (ticketsQuantity > area2) {
+      const nilfheim = document.querySelector("#nilfheim");
+      nilfheim.disabled = { status2 };
+      setStatus2(true);
+    }
+    if (ticketsQuantity > area3) {
+      const helheim = document.querySelector("#helheim");
+      helheim.disabled = { status3 };
+      setStatus3(true);
+    }
+    if (ticketsQuantity > area4) {
+      const muspelheim = document.querySelector("#muspelheim");
+      muspelheim.disabled = { status4 };
+      setStatus4(true);
+    }
+    if (ticketsQuantity > area5) {
+      const alfheim = document.querySelector("#alfheim");
+      alfheim.disabled = { status5 };
+      setStatus5(true);
+    }
+    // console.log(ticketsQuantity);
+  }
 
-  // Acommodation
-  // This function returns with a parameter (the area selected)
-  // function chosenArea(acommodation) {
-  //   setSpot(acommodation);
-  // }
-  const fixedGreenCampingPrice = 249;
-  const priceInclGreen = totalPrice + fixedCampingPrice;
-  const [reserveID, setReserveID] = useState({});
-  const regPrice = cartReg.price;
-  const regAmount = cartReg.amount;
+  // Define the accommodation
+  function defineAcommodation(spot) {
+    setAcommodation(spot);
+    // console.log(spot);
+  }
+
+  // 2 Parameters come from the callback function in RegTicket component
+  function addRegToCart(cartReg, totalReg) {
+    setTotalReg(totalReg);
+    const amount = totalReg;
+    if (cartReg.amount === 0) {
+      setCartReg({ ...cartReg, amount: amount });
+    }
+    // setting subtotal price state
+    setSubtotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
+    // Setting total Price State
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price + fixedCampingPrice + greenPrice);
+  }
+
+  // 2 Parameters come from the callback function in VipTicket component
+  function addVipToCart(cartVip, totalVip) {
+    setTotalVip(totalVip);
+    const amount = totalVip;
+    if (cartVip.amount === 0) {
+      setCartVip({ ...cartVip, amount: amount });
+    }
+    setSubtotalPrice(totalVip * cartVip.price + totalReg * cartReg.price);
+
+    setTotalPrice(totalVip * cartVip.price + totalReg * cartReg.price + fixedCampingPrice);
+  }
+
+  // Check if green is true and set State
+  function updateGreen(value) {
+    // console.log(greenCheck);
+    setGreen(value);
+    // console.log(value);
+    if (value == "Yes") {
+      setGreenPrice(249);
+    } else {
+      setGreenPrice(0);
+    }
+  }
+
+  // Getting tents from Tickets.js to then pass to the Basket.js
+  function getTents(totalTent2, totalTent3) {
+    // console.log(totalTent2);
+    setTotalTent2(totalTent2);
+    // console.log(totalTent3);
+    setTotalTent3(totalTent3);
+  }
+
   const regName = cartReg.displayname;
+  const regAmount = cartReg.amount;
+  const regPrice = cartReg.price;
+  const vipName = cartVip.displayname;
+  const vipAmount = cartVip.amount;
+  const vipPrice = cartVip.price;
+  const [reserveID, setReserveID] = useState({});
+  const fixedCampingPrice = 99;
+
   return (
     <>
       <section id="pages">
         <div className="container-page">
           <Ticket
             areas={props.areas}
+            totalReg={totalReg}
+            totalVip={totalVip}
             cartReg={cartReg}
             cartVip={cartVip}
             addRegToCart={addRegToCart}
             addVipToCart={addVipToCart}
             checkAvailability={checkAvailability}
             spot={spot}
-            totalPrice={totalPrice}
-            fixedGreenCampingPrice={fixedGreenCampingPrice}
-            priceInclGreen={priceInclGreen}
-            // regTicketsQuantityCount={regTicketsQuantityCount}
-            // vipTicketsQuantityCount={vipTicketsQuantityCount}
+            updateGreen={updateGreen}
+            green={green}
+            getTents={getTents}
           />
 
           <Acommodation
@@ -190,69 +178,69 @@ export default function TicketsPage(props) {
             cartVip={cartVip}
             addRegToCart={addRegToCart}
             addVipToCart={addVipToCart}
+            totalReg={totalReg}
             spot={spot}
             defineAcommodation={defineAcommodation}
-            totalPrice={totalPrice}
-            subtotalPrice={subtotalPrice}
-            totalReg={totalReg}
             totalVip={totalVip}
+            subtotalPrice={subtotalPrice}
+            totalPrice={totalPrice}
             setReserveID={setReserveID}
             reserveID={reserveID}
-            // regTicketsQuantityCount={regTicketsQuantityCount}
-            // vipTicketsQuantityCount={vipTicketsQuantityCount}
           />
 
           <Personal
+            areas={props.areas}
             cartReg={cartReg}
             cartVip={cartVip}
-            areas={props.areas}
             addRegToCart={addRegToCart}
             addVipToCart={addVipToCart}
-            spot={spot}
-            totalPrice={totalPrice}
-            subtotalPrice={subtotalPrice}
             totalReg={totalReg}
             totalVip={totalVip}
+            spot={spot}
+            subtotalPrice={subtotalPrice}
+            totalPrice={totalPrice}
             setReserveID={setReserveID}
             reserveID={reserveID}
-            // chosenArea={chosenArea}
-            // regTicketsQuantityCount={regTicketsQuantityCount}
-            // vipTicketsQuantityCount={vipTicketsQuantityCount}
           />
 
           <Payment
-            checkAvailability={checkAvailability}
             areas={props.areas}
             cartReg={cartReg}
             cartVip={cartVip}
             addRegToCart={addRegToCart}
             addVipToCart={addVipToCart}
-            spot={spot}
-            defineAcommodation={defineAcommodation}
-            totalPrice={totalPrice}
-            subtotalPrice={subtotalPrice}
             totalReg={totalReg}
             totalVip={totalVip}
+            checkAvailability={checkAvailability}
+            spot={spot}
+            defineAcommodation={defineAcommodation}
+            subtotalPrice={subtotalPrice}
+            totalPrice={totalPrice}
           />
         </div>
 
         <Basket
           areas={props.areas}
           cartReg={cartReg}
+          regName={regName}
           regPrice={regPrice}
           regAmount={regAmount}
-          regName={regName}
+          vipName={vipName}
+          vipPrice={vipPrice}
+          vipAmount={vipAmount}
           cartVip={cartVip}
           addRegToCart={addRegToCart}
           addVipToCart={addVipToCart}
-          // regTicketsQuantityCount={regTicketsQuantityCount}
-          // vipTicketsQuantityCount={vipTicketsQuantityCount}
           spot={spot}
-          totalPrice={totalPrice}
           subtotalPrice={subtotalPrice}
           totalReg={totalReg}
           totalVip={totalVip}
+          totalPrice={totalPrice}
           fixedCampingPrice={fixedCampingPrice}
+          greenPrice={greenPrice}
+          green={green}
+          totalTent2={totalTent2}
+          totalTent3={totalTent3}
         />
       </section>
     </>

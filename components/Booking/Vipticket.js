@@ -6,8 +6,8 @@ export default function Viptickets(props) {
   // Sending 2 parameters to addVipToCart
   function setQuantities() {
     props.addVipToCart(props.cartVip, totalVip);
-    console.log(typeof totalVip);
-    // props.vipTicketsQuantityCount(totalVip);
+    // Callback the function that defines the atribute max according to the quantity of tickets.
+    props.tentsForTickets();
   }
 
   function displayQuantityTicketsVip() {
@@ -56,16 +56,7 @@ export default function Viptickets(props) {
         <div className="flex-row-space-around quantity-container">
           <form className="flex-row-space-around">
             <label htmlFor="ticket-vip-quantity"></label>
-            <input
-              id="ticket-vip-quantity"
-              type="number"
-              name="tickets-quantity"
-              min="0"
-              max="9"
-              placeholder="0"
-              className="input-number-tickets"
-              onChange={displayQuantityTicketsVip}
-            ></input>
+            <input id="ticket-vip-quantity" type="number" name="tickets-quantity" min="0" max="9" placeholder="0" className="input-number-tickets" onChange={displayQuantityTicketsVip}></input>
           </form>
           <div className="flex-row-space-around">
             <h3 className="vip-quantity">0X</h3>
