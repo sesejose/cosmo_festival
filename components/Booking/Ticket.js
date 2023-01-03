@@ -4,9 +4,7 @@ import Viptickets from "./Vipticket";
 import { useState, useRef } from "react";
 
 export default function Tickets(props) {
-  function greenCamping() {
-    // function to add the green camping price to total price
-  }
+  function greenCamping() {}
 
   return (
     <>
@@ -43,13 +41,7 @@ export default function Tickets(props) {
             </div>
           </div>
           <diV className="personal-green-camping">
-            <input
-              type="checkbox"
-              name="check-green-camping"
-              id="check-green-camping"
-              placeholder="0"
-              onClick={greenCamping()}
-            ></input>
+            <input type="checkbox" name="check-green-camping" id="check-green-camping" placeholder="0" onClick={greenCamping()}></input>
             <label htmlFor="check-green-camping"></label>
             <div>
               <h3 className="pink">Green Camping</h3>
@@ -71,16 +63,7 @@ export default function Tickets(props) {
               <label htmlFor="tents-quantity"></label>
               <h3 className="pink">Tent (2 persons) 299,- DKK</h3>
               <div className="flex-row-space-around">
-                <input
-                  type="number"
-                  name="tents-quantity"
-                  id="tent2-quantity"
-                  min="0"
-                  placeholder="0"
-                  disabled
-                  className="input-number-tents"
-                  onChange={displayQuantityTent2}
-                ></input>
+                <input type="number" name="tents-quantity" id="tent2-quantity" min="0" placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent2}></input>
                 <h3 className="tent2">x</h3>
                 <h3 className="white">299,- DKK</h3>
                 <h3 className="white">Total:</h3>
@@ -91,16 +74,7 @@ export default function Tickets(props) {
               <label htmlFor="tents-quantity"></label>
               <h3 className="pink">Tent (3 persons) 399,- DKK</h3>
               <div className="flex-row-space-around">
-                <input
-                  type="number"
-                  name="tents-quantity"
-                  id="tent3-quantity"
-                  min="0"
-                  placeholder="0"
-                  disabled
-                  className="input-number-tents"
-                  onChange={displayQuantityTent3}
-                ></input>
+                <input type="number" name="tents-quantity" id="tent3-quantity" min="0" placeholder="0" disabled className="input-number-tents" onChange={displayQuantityTent3}></input>
                 <h3 className="tent3">x</h3>
                 <h3 className="white">399,- DKK</h3>
                 <h3 className="white">Total:</h3>
